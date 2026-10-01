@@ -3925,3 +3925,492 @@ h1, h2, h3, .serif-heading {
     padding-bottom: 18px;
   }
 }
+
+/* ==========================================================================
+   COMPREHENSIVE AUDIT REFINEMENT: TYPOGRAPHY, SCALE, ALIGNMENT & CTA HIERARCHY
+   ========================================================================== */
+:root {
+  --serif-editorial: 'Cormorant Garamond', 'Fraunces', Georgia, serif;
+  --max-w: 1340px;
+}
+
+/* 1. Unified 1340px Left/Right Grid Alignment Across Header, Hero & All Sections */
+.wrap,
+.container,
+.header-inner {
+  width: 100%;
+  max-width: 1340px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+}
+
+@media (max-width: 768px) {
+  .wrap,
+  .container,
+  .header-inner {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+}
+
+/* Warm Alabaster Header Cohesive with LUMEN Reference */
+.site-header {
+  background: rgba(245, 240, 231, 0.94) !important;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(28, 40, 32, 0.09) !important;
+}
+
+.header-inner {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.header-enquire-btn {
+  background: #1c2820 !important;
+  color: #f5f0e7 !important;
+  padding: 13px 24px !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  letter-spacing: 0.12em !important;
+  box-shadow: 0 8px 20px rgba(28, 40, 32, 0.16);
+}
+
+.header-enquire-btn:hover {
+  background: #b8532c !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 24px rgba(184, 83, 44, 0.28) !important;
+}
+
+/* 2. Refined Hero Proportions & Crisp Sculptural Arch */
+.lm-hero {
+  background: #f5f0e7 !important;
+  padding: clamp(36px, 4.5vw, 64px) 0 40px !important;
+  min-height: calc(100vh - 82px);
+}
+
+.lm-hero-container {
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+  gap: clamp(32px, 4.5vh, 52px) !important;
+}
+
+@media (max-width: 768px) {
+  .lm-hero-container {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+}
+
+/* Crisp Sculptural Arch on Right 55% so Left 45% has 100% Clean Text Legibility */
+.lm-arch-stage {
+  width: 56% !important;
+}
+
+.lm-arch-outer {
+  border-top-left-radius: clamp(260px, 34vw, 480px) !important;
+  border-left: 8px solid #eae2d4;
+  box-shadow:
+    -24px 0 60px rgba(28, 40, 32, 0.09),
+    inset 0 0 0 1px rgba(28, 40, 32, 0.08) !important;
+}
+
+.lm-arch-terracotta-alcove {
+  top: 6% !important;
+  left: 6% !important;
+  width: 44% !important;
+  height: 76% !important;
+  background: linear-gradient(165deg, #c0562e 0%, #963c1b 100%) !important;
+  opacity: 0.28 !important;
+}
+
+/* Keep arch edge crisp while gently grounding the bottom into the floor */
+.lm-arch-blend-bottom {
+  height: 165px !important;
+  background: linear-gradient(
+    180deg,
+    rgba(245, 240, 231, 0) 0%,
+    rgba(245, 240, 231, 0.78) 70%,
+    #f5f0e7 100%
+  ) !important;
+}
+
+/* 3. Focal Point #1: Tall Editorial Headline Scale & Optical Rhythm */
+.lm-copy-col {
+  max-width: 560px !important;
+  position: relative;
+  z-index: 5;
+}
+
+.lm-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.24em !important;
+  color: #6b6357 !important;
+  margin-bottom: 18px !important;
+}
+
+.lm-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b8532c;
+}
+
+.lm-headline {
+  font-family: var(--serif-editorial) !important;
+  font-size: clamp(50px, 5.8vw, 84px) !important;
+  font-weight: 400 !important;
+  line-height: 1.01 !important;
+  letter-spacing: -0.022em !important;
+  color: #19261e !important;
+  margin: 0 0 22px !important;
+}
+
+.lm-headline-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: #485841;
+}
+
+.lm-subtitle {
+  font-size: 15.5px !important;
+  line-height: 1.72 !important;
+  color: #544e44 !important;
+  max-width: 44ch !important;
+  margin-bottom: 32px !important;
+}
+
+/* 4. Focal Point #2: High-Prominence Dual CTA Cluster */
+.lm-cta-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px !important;
+}
+
+.lm-primary-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 26px 8px 8px;
+  background: #1a261e;
+  color: #f5f0e7;
+  border-radius: 999px;
+  box-shadow:
+    0 18px 38px rgba(26, 38, 30, 0.22),
+    0 2px 6px rgba(26, 38, 30, 0.12);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lm-primary-cta:hover {
+  background: #27382c;
+  transform: translateY(-3px);
+  box-shadow: 0 22px 46px rgba(26, 38, 30, 0.3);
+}
+
+.lm-primary-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #55644e;
+  color: #f5f0e7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lm-primary-cta:hover .lm-primary-circle {
+  background: #b8532c;
+  transform: translateX(3px) rotate(-45deg);
+}
+
+.lm-primary-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.22;
+}
+
+.lm-primary-text strong {
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f5f0e7;
+}
+
+.lm-primary-text small {
+  font-size: 11px;
+  color: rgba(245, 240, 231, 0.72);
+  font-weight: 500;
+}
+
+.lm-explore-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  padding: 6px 14px 6px 6px;
+  border-radius: 999px;
+  background: rgba(235, 228, 215, 0.75);
+  border: 1px solid rgba(28, 40, 32, 0.14);
+  transition: all 0.25s ease;
+}
+
+.lm-explore-cta:hover {
+  background: #ffffff;
+  border-color: #1a261e;
+  transform: translateY(-2px);
+}
+
+.lm-circle-btn {
+  width: 44px !important;
+  height: 44px !important;
+  background: #55644e !important;
+  box-shadow: none !important;
+}
+
+.lm-explore-label {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #1a261e !important;
+  padding-right: 6px;
+}
+
+/* Arch Case Study Badge */
+.lm-arch-badge {
+  background: rgba(250, 247, 240, 0.94) !important;
+  border: 1px solid rgba(28, 40, 32, 0.16) !important;
+  padding: 12px 18px !important;
+  box-shadow: 0 18px 40px rgba(28, 40, 32, 0.14) !important;
+}
+
+.lm-ab-arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #eae2d3;
+  color: #1a261e;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+}
+
+/* 5. Focal Point #3: Bottom 3-Card Category Dock Alignment & Polish */
+.lm-bottom-cards {
+  gap: 24px !important;
+  padding-top: 12px !important;
+}
+
+.lm-feature-card {
+  grid-template-columns: 148px 1fr !important;
+  gap: 18px !important;
+  padding: 12px 16px 12px 12px !important;
+  background: rgba(250, 247, 240, 0.92) !important;
+  border: 1px solid rgba(28, 40, 32, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 14px 34px rgba(28, 40, 32, 0.06) !important;
+}
+
+.lm-feature-card:hover {
+  background: #ffffff !important;
+  border-color: rgba(184, 83, 44, 0.4) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 22px 44px rgba(28, 40, 32, 0.12) !important;
+}
+
+.lm-fc-thumb {
+  width: 148px !important;
+  height: 102px !important;
+  border-radius: 8px !important;
+}
+
+.lm-fc-index {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #b8532c;
+  margin-bottom: 3px;
+}
+
+.lm-fc-title {
+  font-family: var(--serif-editorial) !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  line-height: 1.12 !important;
+  color: #19261e !important;
+  margin-bottom: 4px !important;
+}
+
+.lm-fc-title span {
+  display: inline !important;
+  margin-right: 5px;
+}
+
+.lm-fc-meta {
+  font-size: 12px !important;
+  color: #635c51 !important;
+  margin-bottom: 6px !important;
+}
+
+/* 6. Upgraded Eye-Catching Architectural Statistic Bar */
+.lm-stats-bar {
+  background: #19231c !important;
+  color: #f5f0e7 !important;
+  padding: 60px 0 64px !important;
+  border-top: 1px solid rgba(245, 240, 231, 0.12) !important;
+  border-bottom: 1px solid rgba(245, 240, 231, 0.12) !important;
+}
+
+.lm-stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 32px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid rgba(245, 240, 231, 0.12);
+  flex-wrap: wrap;
+}
+
+.lm-sh-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 1;
+}
+
+.lm-sh-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #d4af57;
+  white-space: nowrap;
+}
+
+.lm-sh-rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(245, 240, 231, 0.14);
+  max-width: 280px;
+}
+
+.lm-sh-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(245, 240, 231, 0.07);
+  border: 1px solid rgba(212, 175, 87, 0.38);
+  font-size: 12.5px;
+  color: #f5f0e7;
+  transition: all 0.22s ease;
+}
+
+.lm-sh-whatsapp strong {
+  color: #d4af57;
+}
+
+.lm-sh-whatsapp:hover {
+  background: #d4af57;
+  color: #19231c;
+}
+.lm-sh-whatsapp:hover strong {
+  color: #19231c;
+}
+
+.lm-sh-wa-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+}
+
+.lm-stat-item {
+  border-right: 1px solid rgba(245, 240, 231, 0.12) !important;
+  padding-right: 24px !important;
+}
+
+.lm-stat-idx {
+  color: #d4af57 !important;
+  font-family: var(--serif-editorial);
+  font-style: italic;
+  font-size: 15px !important;
+}
+
+.lm-stat-line {
+  background: rgba(245, 240, 231, 0.14) !important;
+}
+
+.lm-stat-value {
+  font-family: var(--serif-editorial) !important;
+  font-size: clamp(48px, 4.8vw, 72px) !important;
+  font-weight: 400 !important;
+  line-height: 0.96 !important;
+  color: #f5f0e7 !important;
+  margin-bottom: 10px !important;
+}
+
+.lm-stat-suffix {
+  color: #d4af57 !important;
+  font-size: 0.65em;
+  vertical-align: super;
+  margin-left: 3px;
+}
+
+.lm-stat-label {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #f5f0e7 !important;
+  margin-bottom: 4px !important;
+}
+
+.lm-stat-detail {
+  font-size: 12.5px !important;
+  color: rgba(245, 240, 231, 0.68) !important;
+  margin-bottom: 14px;
+}
+
+.lm-stat-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(245, 240, 231, 0.12);
+  overflow: hidden;
+}
+
+.lm-stat-bar span {
+  display: block;
+  width: 68%;
+  height: 100%;
+  background: linear-gradient(90deg, #b8532c, #d4af57);
+  transition: width 0.4s ease;
+}
+
+.lm-stat-item:hover .lm-stat-bar span {
+  width: 100%;
+}
+
+/* 7. Page-Wide Section Heading & CTA Scale Consistency */
+.section-title {
+  font-family: var(--serif-editorial) !important;
+  font-size: clamp(36px, 4.2vw, 56px) !important;
+  font-weight: 500 !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.02em !important;
+}
+
+@media (max-width: 1100px) {
+  .lm-arch-stage {
+    width: 100% !important;
+    opacity: 0.26 !important;
+  }
+}

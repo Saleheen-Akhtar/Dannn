@@ -240,7 +240,7 @@ export default function HomePage() {
     <>
       {/* 1. LUMEN-INSPIRED SCULPTURAL ARCH EDITORIAL HERO & WARM GALLERY DOCK */}
       <section className="lm-hero" id="home">
-        {/* Decorative Architectural Arch & Sunlit Room Stage */}
+        {/* Right Sculptural Architectural Plaster Arch & Terracotta Alcove Stage */}
         <div className="lm-arch-stage" aria-hidden="true">
           <div className="lm-arch-outer">
             <div className="lm-arch-terracotta-alcove" />
@@ -258,7 +258,6 @@ export default function HomePage() {
                 />
               </div>
             ))}
-            <div className="lm-arch-blend-left" />
             <div className="lm-arch-blend-bottom" />
           </div>
         </div>
@@ -287,34 +286,46 @@ export default function HomePage() {
 
         <div className="wrap lm-hero-container">
           <div className="lm-hero-main">
-            {/* LEFT EDITORIAL COLUMN */}
+            {/* LEFT EDITORIAL COLUMN — STRICT 1 -> 2 -> 3 FOCAL FLOW */}
             <div className="lm-copy-col">
-              <div className="lm-eyebrow">{activeHero.eyebrow}</div>
+              {/* 1A: Spaced Micro-Eyebrow */}
+              <div className="lm-eyebrow">
+                <span className="lm-eyebrow-dot" />
+                <span>{activeHero.eyebrow}</span>
+              </div>
 
+              {/* 1B: #1 FOCAL POINT — Tall Sculptural Editorial Headline */}
               <h1 className="lm-headline">
                 <span>{activeHero.line1}</span>
-                <span>{activeHero.line2}</span>
+                <span className="lm-headline-accent">{activeHero.line2}</span>
                 <span>{activeHero.line3}</span>
               </h1>
 
+              {/* Concise, Scannable Lead Paragraph */}
               <p className="lm-subtitle">{activeHero.subtitle}</p>
 
-              {/* CIRCULAR SAGE/FOREST BUTTON + EXPLORE OUR WORK */}
+              {/* #2 FOCAL POINT — High-Prominence Dual CTA Cluster */}
               <div className="lm-cta-group">
-                <Link to="/projects" className="lm-explore-cta">
-                  <span className="lm-circle-btn" aria-hidden="true">
-                    <ArrowRight size={20} strokeWidth={1.75} />
+                <Link to="/enquiry" className="lm-primary-cta">
+                  <span className="lm-primary-circle" aria-hidden="true">
+                    <ArrowRight size={19} strokeWidth={2} />
                   </span>
-                  <span className="lm-explore-label">Explore Our Work</span>
+                  <span className="lm-primary-text">
+                    <strong>Book a Consultation</strong>
+                    <small>Free Site Visit &amp; Itemized BOQ</small>
+                  </span>
                 </Link>
 
-                <Link to="/enquiry" className="lm-secondary-link">
-                  Book a Free Site Visit →
+                <Link to="/projects" className="lm-explore-cta">
+                  <span className="lm-circle-btn" aria-hidden="true">
+                    <ArrowRight size={18} strokeWidth={1.8} />
+                  </span>
+                  <span className="lm-explore-label">Explore 640+ Projects</span>
                 </Link>
               </div>
             </div>
 
-            {/* RIGHT FLOATING CAPTION PILL OVER ARCH */}
+            {/* RIGHT FLOATING CASE STUDY PILL ANCHORED INSIDE ARCH */}
             <div className="lm-arch-caption-wrap">
               <Link to={`/projects/${activeHero.slug}`} className="lm-arch-badge">
                 <span className="lm-ab-dot" />
@@ -322,22 +333,25 @@ export default function HomePage() {
                   <div className="lm-ab-title">{activeHero.projectTitle}</div>
                   <div className="lm-ab-meta">{activeHero.projectMeta}</div>
                 </div>
-                <ArrowRight size={15} />
+                <span className="lm-ab-arrow" aria-hidden="true">
+                  <ArrowRight size={14} />
+                </span>
               </Link>
             </div>
           </div>
 
-          {/* BOTTOM 3-CARD HORIZONTAL CATEGORY DOCK (Residential / Commercial / Bespoke) */}
+          {/* #3 FOCAL POINT — BOTTOM 3-CARD HORIZONTAL CATEGORY DOCK */}
           <div className="lm-bottom-cards">
-            {HERO_BOTTOM_CARDS.map((card) => (
+            {HERO_BOTTOM_CARDS.map((card, i) => (
               <Link key={card.path} to={card.path} className="lm-feature-card">
                 <div className="lm-fc-thumb">
                   <img src={card.image} alt={card.lines.join(" ")} loading="eager" />
                 </div>
                 <div className="lm-fc-body">
+                  <span className="lm-fc-index">0{i + 1} // DIVISION</span>
                   <h2 className="lm-fc-title">
-                    {card.lines.map((line, i) => (
-                      <span key={i}>{line}</span>
+                    {card.lines.map((line, idx) => (
+                      <span key={idx}>{line}</span>
                     ))}
                   </h2>
                   <p className="lm-fc-meta">{card.meta}</p>
@@ -351,14 +365,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 1B. COHESIVE WARM ARCHITECTURAL STATISTIC LEDGER */}
+      {/* 1B. EYE-CATCHING ARCHITECTURAL COUNTER SHOWCASE BAR */}
       <section className="lm-stats-bar" aria-label="Key Company Figures">
         <div className="wrap">
+          <div className="lm-stats-header">
+            <div className="lm-sh-left">
+              <span className="lm-sh-tag">VERIFIED UAE DELIVERY LEDGER (2016 — 2026)</span>
+              <span className="lm-sh-rule" aria-hidden="true" />
+            </div>
+            <a
+              href={`https://wa.me/${COMPANY.whatsappNumber}?text=${encodeURIComponent(COMPANY.whatsappDefaultMsg)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lm-sh-whatsapp"
+            >
+              <span className="lm-sh-wa-dot" />
+              <span>Instant WhatsApp Desk: <strong>6361718607</strong> →</span>
+            </a>
+          </div>
+
           <div className="lm-stats-grid">
             {LEDGER_STATS.map((st) => (
               <div key={st.idx} className="lm-stat-item">
                 <div className="lm-stat-top">
-                  <span className="lm-stat-idx">{st.idx}</span>
+                  <span className="lm-stat-idx">/{st.idx}</span>
                   <span className="lm-stat-line" />
                 </div>
                 <div className="lm-stat-value">
@@ -366,6 +396,9 @@ export default function HomePage() {
                 </div>
                 <div className="lm-stat-label">{st.label}</div>
                 <div className="lm-stat-detail">{st.detail}</div>
+                <div className="lm-stat-bar" aria-hidden="true">
+                  <span />
+                </div>
               </div>
             ))}
           </div>
