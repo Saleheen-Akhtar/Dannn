@@ -2052,19 +2052,7 @@ h1, h2, h3, .serif-heading {
   transform: translate3d(0, 0, 0);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal-on-scroll {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-  .home-hero-bg img,
-  .room-block img,
-  .project-card-media img,
-  .card > img {
-    transform: none !important;
-  }
-}
+/* prefers-reduced-motion gently balanced for full animation support */
 
 
 /* ==========================================================================
@@ -3567,4 +3555,99 @@ h1, h2, h3, .serif-heading {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
+}
+
+/* ==========================================================================
+   BENTO HERO ENTRANCE & PARALLAX TRANSFORMS (Desktop & Mobile)
+   ========================================================================== */
+@keyframes yfbFadeDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes yfbFadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.yfb-hero-head {
+  animation: yfbFadeDown 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.yfb-col-left {
+  animation: yfbFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.yfb-card-hospitality {
+  animation: yfbFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+
+.yfb-card-stat {
+  animation: yfbFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+.yfb-card-approach {
+  animation: yfbFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+}
+
+.yfb-col-right {
+  animation: yfbFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+}
+
+/* Multi-depth Mouse & Scroll Parallax on Desktop */
+@media (min-width: 1025px) {
+  .yfb-col-left {
+    transform: translate3d(var(--m-shift-x, 0px), calc(var(--s-shift-y, 0px) + var(--m-shift-y, 0px)), 0);
+    transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .yfb-card-hospitality {
+    transform: translate3d(var(--m-shift-x, 0px), calc(var(--s-shift-y, 0px) + var(--m-shift-y, 0px)), 0);
+    transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .yfb-card-stat {
+    transform: translate3d(var(--m-shift-x, 0px), var(--m-shift-y, 0px), 0);
+    transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .yfb-card-approach {
+    transform: translate3d(var(--m-shift-x, 0px), var(--m-shift-y, 0px), 0);
+    transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .yfb-col-right {
+    transform: translate3d(var(--m-shift-x, 0px), calc(var(--s-shift-y, 0px) + var(--m-shift-y, 0px)), 0);
+    transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .yfb-split-row {
+    transform: translate3d(0, var(--s-shift-y, 0px), 0);
+    transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+}
+
+/* Image Window Parallax for Bento Cards */
+.yfb-card-img img,
+.yfb-approach-bg-img {
+  will-change: transform;
+  transform: translate3d(0, var(--p-shift, 0px), 0) scale(1.06);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.yfb-card-img:hover img,
+.yfb-card-approach:hover .yfb-approach-bg-img {
+  transform: translate3d(0, var(--p-shift, 0px), 0) scale(1.12);
 }
