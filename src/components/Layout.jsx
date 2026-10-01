@@ -45,7 +45,7 @@ export default function Layout({ children }) {
         Skip to main content
       </a>
 
-      <header className={`site-header${location.pathname === "/" && !showScrollTop ? " header-hidden-on-hero" : ""}`}>
+      <header className="site-header">
         <div className="header-inner">
           <Link to="/" className="brand-logo-link" aria-label={`${COMPANY.shortName} Home`}>
             <img
@@ -299,7 +299,7 @@ export default function Layout({ children }) {
         </div>
       </footer>
 
-      <div className={`fab-stack${location.pathname === "/" && !showScrollTop ? " is-hidden-on-hero" : ""}`}>
+      <div className="fab-stack">
         {showScrollTop && (
           <button
             type="button"

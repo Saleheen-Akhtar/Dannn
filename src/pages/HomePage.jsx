@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, ChevronLeft, ChevronRight, Phone, Mail, MapPin, ShieldCheck, Award, Sparkles, Search, User, ArrowUpRight, ArrowDown } from "lucide-react";
+import { ArrowRight, Check, ChevronLeft, ChevronRight, Phone, Mail, MapPin, ShieldCheck, Award, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import {
   COMPANY,
@@ -179,15 +179,9 @@ export default function HomePage() {
   const [projectFilter, setProjectFilter] = useState("All");
   const [activeOfferTab, setActiveOfferTab] = useState(OFFER_TABS[0].id);
   const [testiIdx, setTestiIdx] = useState(0);
-  const [formaHotspot, setFormaHotspot] = useState(2);
-  const [chairHue, setChairHue] = useState("blue");
-
-  const chairFilters = {
-    blue: "none",
-    green: "hue-rotate(240deg) saturate(1.2)",
-    purple: "hue-rotate(50deg) saturate(1.2)",
-    red: "hue-rotate(120deg) saturate(1.4)"
-  };
+  const [heroSlide, setHeroSlide] = useState(0);
+  const [activeHotspot, setActiveHotspot] = useState(2);
+  const activeHero = HERO_SHOWCASES[heroSlide] || HERO_SHOWCASES[0];
 
   // Home Contact Form State
   const [form, setForm] = useState({
@@ -204,7 +198,13 @@ export default function HomePage() {
     const timer = setInterval(() => {
       setTestiIdx((prev) => (prev + 1) % TESTIMONIALS.length);
     }, 6000);
-    return () => clearInterval(timer);
+    const heroTimer = setInterval(() => {
+      setHeroSlide((prev) => (prev + 1) % HERO_SHOWCASES.length);
+    }, 6500);
+    return () => {
+      clearInterval(timer);
+      clearInterval(heroTimer);
+    };
   }, []);
 
   const filteredProjects =
@@ -236,297 +236,152 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. FORMA STUDIO SIGNATURE HERO SECTION */}
-      <section className="forma-hero" id="home">
-        {/* Outer White Frame Container */}
-        <div className="forma-outer-frame">
-          {/* Top Center Logo Tab */}
-          <div className="forma-top-tab" aria-label="Forma Studio">
-            <span className="forma-tab-text">forma studio.</span>
+      {/* 1. AUREN-INSPIRED ARCHITECTURAL BENTO HERO */}
+      <section className="auren-hero" id="home">
+        <div className="wrap auren-hero-wrap">
+          {/* CENTERED EDITORIAL HEADLINE BLOCK */}
+          <div className="auren-head-block">
+            <h1 className="auren-hero-title">
+              Building timeless spaces<br />that inspire better ways of living
+            </h1>
+            <div className="auren-title-rule" aria-hidden="true" />
+            <p className="auren-hero-sub">
+              From concept to completion, we design &amp; build architecture that<br className="auren-sub-br" />
+              balances beauty, functionality, and sustainability.
+            </p>
           </div>
 
-          {/* Left Notch Chevron */}
-          <button
-            type="button"
-            className="forma-side-notch notch-left"
-            aria-label="Previous showcase"
-            onClick={() => {
-              const hues = ["blue", "red", "purple", "green"];
-              const curIdx = hues.indexOf(chairHue);
-              setChairHue(hues[(curIdx - 1 + hues.length) % hues.length]);
-            }}
-          >
-            <ChevronLeft size={16} strokeWidth={2.5} />
-          </button>
+          {/* 3-COLUMN ARCHITECTURAL BENTO GRID */}
+          <div className="auren-bento-grid">
+            {/* COLUMN 1: LEFT (~25%) */}
+            <div className="auren-bento-col auren-col-1">
+              {/* Card 1: Cognac/Caramel Stat Card */}
+              <Link to="/projects" className="auren-card auren-card-stat" aria-label="Explore 640+ Completed Projects">
+                <div className="auren-stat-num">640+</div>
+                <div className="auren-stat-text">
+                  <h3>Completed Projects</h3>
+                  <p>Since 2016</p>
+                </div>
+                <div className="auren-card-arrow" aria-hidden="true">→</div>
+              </Link>
 
-          {/* Right Notch Chevron */}
-          <button
-            type="button"
-            className="forma-side-notch notch-right"
-            aria-label="Next showcase"
-            onClick={() => {
-              const hues = ["blue", "green", "purple", "red"];
-              const curIdx = hues.indexOf(chairHue);
-              setChairHue(hues[(curIdx + 1) % hues.length]);
-            }}
-          >
-            <ChevronRight size={16} strokeWidth={2.5} />
-          </button>
-
-          {/* Bottom Center Notch Arrow */}
-          <a href="#stats" className="forma-bottom-notch" aria-label="Scroll to company statistics">
-            <ArrowDown size={15} strokeWidth={2.5} />
-          </a>
-
-          {/* Inner Cobalt Blue Studio Canvas */}
-          <div className="forma-inner-canvas">
-            {/* Top Navigation Inside Canvas */}
-            <header className="forma-studio-nav" aria-label="Studio Navigation">
-              <nav className="forma-nav-group forma-nav-left" aria-label="Left Links">
-                <Link to="/" className="forma-pill-nav is-active">home</Link>
-                <Link to="/about" className="forma-text-nav">about us</Link>
-                <Link to="/faq" className="forma-text-nav">faqs</Link>
-              </nav>
-
-              <div className="forma-nav-center-spacer" aria-hidden="true" />
-
-              <nav className="forma-nav-group forma-nav-right" aria-label="Right Links">
-                <Link to="/projects" className="forma-text-nav">products</Link>
-                <Link to="/why-us" className="forma-text-nav">team</Link>
-                <button
-                  type="button"
-                  className="forma-icon-circle-btn"
-                  aria-label="Search portfolio"
-                  onClick={() => {
-                    const el = document.getElementById("projects");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                    else window.location.href = "/projects";
-                  }}
-                >
-                  <Search size={14} strokeWidth={2.4} />
-                </button>
-                <Link to="/login" className="forma-icon-circle-btn" aria-label="Client portal login">
-                  <User size={14} strokeWidth={2.4} />
-                </Link>
-                <Link to="/enquiry" className="forma-contact-pill-btn">
-                  <span>Contact</span>
-                  <span className="forma-phone-bubble">
-                    <Phone size={12} fill="currentColor" strokeWidth={0} />
-                  </span>
-                </Link>
-              </nav>
-            </header>
-
-            {/* Giant Monumental Rounded Background Typography (Fredoka 700) */}
-            <div className="forma-monumental-bg" aria-hidden="true">
-              <span className="forma-bg-word forma-word-for">for</span>
-              <span className="forma-bg-word forma-word-studio">studio.</span>
-              <span className="forma-bg-word forma-word-ma">ma</span>
-            </div>
-
-            {/* Central 3D Sculptural Armchair & Interactive Stage */}
-            <div className="forma-center-stage">
-              <div className="forma-chair-holder">
+              {/* Card 2: 01 Cultural & Commercial Architecture */}
+              <Link
+                to="/projects/edc-headquarters-abu-dhabi"
+                className="auren-card auren-card-img auren-card-arch"
+                aria-label="View Cultural Architecture: Beyond Form"
+              >
                 <img
-                  src="/static/forma-chair-cutout.png"
-                  alt="Forma Studio Sculptural Velvet Armchair"
-                  className="forma-chair-hero-img"
-                  style={{ filter: chairFilters[chairHue] || "none" }}
+                  src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80"
+                  alt="Cultural & Commercial Architecture"
+                  loading="eager"
                 />
-
-                {/* Hotspot 1: Backrest Shell */}
-                <button
-                  type="button"
-                  className={`forma-hotspot-pin pin-backrest${formaHotspot === 1 ? " is-open" : ""}`}
-                  onClick={() => setFormaHotspot(formaHotspot === 1 ? 0 : 1)}
-                  aria-label="Toggle backrest specification"
-                  style={{ top: "27%", left: "73%" }}
-                >
-                  {formaHotspot === 1 ? "×" : "+"}
-                </button>
-                {formaHotspot === 1 && (
-                  <div className="forma-frosted-tooltip tooltip-backrest" style={{ top: "22%", left: "79%" }}>
-                    <p>Curved ergonomic shell - cold-cured high resilience foam &amp; tailored velvet.</p>
-                  </div>
-                )}
-
-                {/* Hotspot 2: Seat Cushion (Active by Default matching reference) */}
-                <button
-                  type="button"
-                  className={`forma-hotspot-pin pin-cushion${formaHotspot === 2 ? " is-open" : ""}`}
-                  onClick={() => setFormaHotspot(formaHotspot === 2 ? 0 : 2)}
-                  aria-label="Toggle upholstery specification"
-                  style={{ top: "60%", left: "75%" }}
-                >
-                  {formaHotspot === 2 ? "×" : "+"}
-                </button>
-                {formaHotspot === 2 && (
-                  <div className="forma-frosted-tooltip tooltip-cushion" style={{ top: "61%", left: "81%" }}>
-                    <p>Premium microfiber upholstery - soft, durable, and easy to care for.</p>
-                  </div>
-                )}
-
-                {/* Hotspot 3: Monolithic Leg */}
-                <button
-                  type="button"
-                  className={`forma-hotspot-pin pin-leg${formaHotspot === 3 ? " is-open" : ""}`}
-                  onClick={() => setFormaHotspot(formaHotspot === 3 ? 0 : 3)}
-                  aria-label="Toggle structural base specification"
-                  style={{ top: "74%", left: "13%" }}
-                >
-                  {formaHotspot === 3 ? "×" : "+"}
-                </button>
-                {formaHotspot === 3 && (
-                  <div className="forma-frosted-tooltip tooltip-leg" style={{ top: "68%", left: "19%" }}>
-                    <p>Architectural monolithic frame - continuous structural steel &amp; velvet wrap.</p>
-                  </div>
-                )}
-
-                {/* Floor Meta */}
-                <span className="forma-floor-established">Since 2015</span>
-              </div>
+                <div className="auren-card-overlay">
+                  <span className="auren-card-num">01</span>
+                  <h3 className="auren-card-name">Cultural Architecture</h3>
+                  <p className="auren-card-sub">Beyond Form</p>
+                </div>
+              </Link>
             </div>
 
-            {/* Left Content Column */}
-            <div className="forma-left-deck">
-              <div className="forma-left-editorial">
-                <p className="forma-paragraph-primary">
-                  We create designer chairs that don't just complement an interior - they become its accent.
-                </p>
-                <p className="forma-paragraph-secondary">
-                  Each product is a combination of architectural form, tactile pleasure and visual harmony.
-                </p>
-              </div>
+            {/* COLUMN 2: CENTER (~42%) */}
+            <div className="auren-bento-col auren-col-2">
+              {/* Card 3: 02 Residential Interior - Wide Cantilevered Staircase */}
+              <Link
+                to="/projects/emirates-hills-private-residence"
+                className="auren-card auren-card-img auren-card-interior"
+                aria-label="View Residential Interior: Light & Material"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
+                  alt="Residential Interior"
+                  loading="eager"
+                />
+                <div className="auren-card-overlay">
+                  <span className="auren-card-num">02</span>
+                  <h3 className="auren-card-name">Residential Interior</h3>
+                  <p className="auren-card-sub">Light &amp; Material</p>
+                </div>
+              </Link>
 
-              <div className="forma-left-action-row">
-                <Link to="/projects" className="forma-view-collections-btn">
-                  View All Collections
+              {/* Split Row: Philosophy + Process */}
+              <div className="auren-bento-row">
+                {/* Card 4: Design Philosophy Card */}
+                <Link to="/about" className="auren-card auren-card-phil" aria-label="Read our Design Philosophy">
+                  <h3 className="auren-phil-title">Design Philosophy</h3>
+                  <div className="auren-phil-rule" aria-hidden="true" />
+                  <p className="auren-phil-quote">
+                    Architecture is the dialogue between light, material, and human experience.
+                  </p>
+                  <div className="auren-card-arrow dark-arrow" aria-hidden="true">→</div>
+                </Link>
+
+                {/* Card 5: 03 Design Process - Architectural Scale Model */}
+                <Link
+                  to="/why-us"
+                  className="auren-card auren-card-img auren-card-process"
+                  aria-label="View Design Process: From Concept to Reality"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80"
+                    alt="Design Process"
+                    loading="eager"
+                  />
+                  <div className="auren-card-overlay">
+                    <span className="auren-card-num">03</span>
+                    <h3 className="auren-card-name">Design Process</h3>
+                    <p className="auren-card-sub">From Concept to Reality</p>
+                  </div>
                 </Link>
               </div>
-
-              <div className="forma-social-capsules" aria-label="Social Profiles">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="forma-social-circle"
-                  aria-label="Facebook"
-                >
-                  <span>f</span>
-                </a>
-                <a
-                  href={COMPANY.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="forma-social-circle"
-                  aria-label="Instagram"
-                >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
-                    <rect x="2" y="2" width="20" height="20" rx="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                  </svg>
-                </a>
-                <a
-                  href={COMPANY.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="forma-social-circle"
-                  aria-label="LinkedIn"
-                >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z" />
-                  </svg>
-                </a>
-              </div>
             </div>
 
-            {/* Right Content Column */}
-            <div className="forma-right-deck">
-              {/* Color Swatch Picker */}
-              <div className="forma-color-selector">
-                <span className="forma-color-title">Choose your color</span>
-                <div className="forma-swatch-list" role="radiogroup" aria-label="Choose upholstery color">
-                  <button
-                    type="button"
-                    role="radio"
-                    aria-checked={chairHue === "green"}
-                    className={`forma-swatch-chip swatch-chip-green${chairHue === "green" ? " is-active" : ""}`}
-                    onClick={() => setChairHue(chairHue === "green" ? "blue" : "green")}
-                    aria-label="Emerald Green velvet"
-                  >
-                    <span className="chip-color-fill" style={{ background: "#22c55e" }} />
-                  </button>
-
-                  <button
-                    type="button"
-                    role="radio"
-                    aria-checked={chairHue === "purple"}
-                    className={`forma-swatch-chip swatch-chip-purple${chairHue === "purple" ? " is-active" : ""}`}
-                    onClick={() => setChairHue(chairHue === "purple" ? "blue" : "purple")}
-                    aria-label="Royal Violet velvet"
-                  >
-                    <span className="chip-color-fill" style={{ background: "#a855f7" }} />
-                  </button>
-
-                  <button
-                    type="button"
-                    role="radio"
-                    aria-checked={chairHue === "red"}
-                    className={`forma-swatch-chip swatch-chip-red${chairHue === "red" ? " is-active" : ""}`}
-                    onClick={() => setChairHue(chairHue === "red" ? "blue" : "red")}
-                    aria-label="Coral Velvet"
-                  >
-                    <span className="chip-color-fill" style={{ background: "#ef4444" }} />
-                  </button>
+            {/* COLUMN 3: RIGHT (~33%) */}
+            <div className="auren-bento-col auren-col-3">
+              {/* Card 6: 04 Residential Architecture - Full-Height Luxury Villa with Pool */}
+              <Link
+                to="/projects/palm-jumeirah-signature-villa"
+                className="auren-card auren-card-img auren-card-villa"
+                aria-label="View Residential Architecture: Casa Horizon"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
+                  alt="Residential Architecture - Casa Horizon"
+                  loading="eager"
+                />
+                <div className="auren-card-overlay">
+                  <span className="auren-card-num">04</span>
+                  <h3 className="auren-card-name">Residential Architecture</h3>
+                  <p className="auren-card-sub">Casa Horizon</p>
                 </div>
-              </div>
-
-              {/* Consultation Card with Consultant Cutout */}
-              <div className="forma-consultation-floating-card">
-                <div className="forma-card-editorial">
-                  <h3 className="forma-card-headline">Get a Free Consultation</h3>
-                  <p className="forma-card-subcopy">
-                    Fill out the form and our specialist will contact you shortly to help with your request.
-                  </p>
-                  <Link to="/enquiry" className="forma-card-request-btn">
-                    <span>Request a Call</span>
-                    <span className="forma-pill-arrow-wrap">
-                      <ArrowUpRight size={13} strokeWidth={2.4} />
-                    </span>
-                  </Link>
-                </div>
-
-                <div className="forma-card-portrait-wrap">
-                  <img
-                    src="/static/forma-consultant.jpg"
-                    alt="Interior Fit-Out Specialist"
-                    className="forma-portrait-img"
-                  />
-                </div>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 1B. UNIFIED DESIGN-SYSTEM STATISTIC BAR */}
-      <section className="ds-stats-section" id="stats" aria-label="Company Key Figures">
-        <div className="wrap">
-          <div className="ds-stats-grid">
-            {LEDGER_STATS.map((st) => (
-              <div key={st.idx} className="ds-stat-card">
-                <div className="ds-stat-top">
-                  <span className="ds-stat-idx">{st.idx}</span>
-                  <span className="ds-stat-rule" />
-                </div>
-                <div className="ds-stat-num">
-                  <AnimatedCounter target={st.count} suffix={st.suffix} />
-                </div>
-                <h3 className="ds-stat-lbl">{st.label}</h3>
-                <p className="ds-stat-desc">{st.detail}</p>
-              </div>
-            ))}
+      {/* 1B. SUBTLE ARCHITECTURAL PROOF BAR */}
+      <section className="auren-proof-bar" aria-label="Key Studio Statistics">
+        <div className="wrap auren-proof-grid">
+          <div className="auren-proof-item">
+            <span className="auren-pi-num">10+</span>
+            <span className="auren-pi-lbl">Years Active · Est. 2016</span>
+          </div>
+          <div className="auren-proof-item">
+            <span className="auren-pi-num">640+</span>
+            <span className="auren-pi-lbl">Delivered Projects</span>
+          </div>
+          <div className="auren-proof-item">
+            <span className="auren-pi-num">35,000</span>
+            <span className="auren-pi-lbl">Sq.Ft Al Quoz 3 Factory</span>
+          </div>
+          <div className="auren-proof-item">
+            <span className="auren-pi-num">200+</span>
+            <span className="auren-pi-lbl">In-House Specialists</span>
+          </div>
+          <div className="auren-proof-item">
+            <span className="auren-pi-num">98%</span>
+            <span className="auren-pi-lbl">On-Time Handover Rate</span>
           </div>
         </div>
       </section>
