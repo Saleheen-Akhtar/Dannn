@@ -19,107 +19,104 @@ const PROJECT_FILTERS = ["All", "Commercial", "Residential", "Hospitality", "Ret
 const HERO_SHOWCASES = [
   {
     idx: "01",
-    code: "YFB // RES-25",
-    shortLabel: "Emirates Hills Residence",
-    category: "Private Villa Architecture",
-    title: "Emirates Hills Signature Villa",
-    location: "Emirates Hills, Dubai",
-    area: "11,800 SQ.FT",
-    duration: "18 WEEKS",
-    scope: "Structural Reconfiguration · Bespoke Millwork · KNX Automation",
+    eyebrow: "DUBAI · EST. 2016 · TURNKEY DESIGN & BUILD",
+    line1: "Thoughtful",
+    line2: "Interiors for",
+    line3: "a Better Tomorrow",
+    subtitle:
+      "We design, engineer, and build beautiful, functional commercial, residential, and hospitality spaces across the UAE — crafted in-house at our 35,000 sq.ft Al Quoz 3 joinery facility.",
+    projectTitle: "Emirates Hills Private Residence",
+    projectMeta: "11,800 sq.ft · Full Villa Fit-Out & Bespoke Millwork",
     slug: "emirates-hills-private-residence",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85",
-    detailThumb: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1800&q=85"
   },
   {
     idx: "02",
-    code: "YFB // COM-25",
-    shortLabel: "EDC Corporate HQ",
-    category: "Executive Workplace",
-    title: "EDC Corporate Headquarters",
-    location: "Al Maryah Island, Abu Dhabi",
-    area: "15,210 SQ.FT",
-    duration: "14 WEEKS",
-    scope: "Turnkey Design & Build · Acoustic Fluted Oak · MEP Engineering",
+    eyebrow: "EXECUTIVE WORKPLACES · DIFC & BUSINESS BAY",
+    line1: "Considered",
+    line2: "Workspaces Built",
+    line3: "for High Performance",
+    subtitle:
+      "From acoustic fluted-oak boardrooms to turnkey MEP and authority approvals, most commercial headquarters are delivered on a fixed programme within 60 to 90 days.",
+    projectTitle: "EDC Corporate Headquarters",
+    projectMeta: "15,210 sq.ft · Al Maryah Island, Abu Dhabi",
     slug: "edc-headquarters-abu-dhabi",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=85",
-    detailThumb: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=85"
   },
   {
     idx: "03",
-    code: "YFB // HOS-25",
-    shortLabel: "Ember & Oak Downtown",
-    category: "Fine Dining Hospitality",
-    title: "Ember & Oak Wood-Fired Grill",
-    location: "Downtown Boulevard, Dubai",
-    area: "6,200 SQ.FT",
-    duration: "12 WEEKS",
-    scope: "Hospitality Fit-Out · Patinated Brass Bar · Kitchen MEP",
-    slug: "ember-and-oak-grill-downtown",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=85",
-    detailThumb: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80"
+    eyebrow: "35,000 SQ.FT AL QUOZ 3 FACTORY · BESPOKE JOINERY",
+    line1: "Architectural",
+    line2: "Craftsmanship",
+    line3: "Under One Roof",
+    subtitle:
+      "200+ in-house architects, MEP engineers, and master joiners delivering custom kitchens, wardrobes, stone monoliths, and smart automation with zero subcontractor markups.",
+    projectTitle: "Palm Jumeirah Signature Villa",
+    projectMeta: "9,800 sq.ft · Architectural Extension & Interior Fit-Out",
+    slug: "palm-jumeirah-signature-villa",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85"
+  }
+];
+
+const HERO_BOTTOM_CARDS = [
+  {
+    title: "Residential
+Design",
+    meta: "150+ Luxury Villas · Turnkey Fit-Out",
+    path: "/services/architecture",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
   },
   {
-    idx: "04",
-    code: "YFB // RES-26",
-    shortLabel: "Palm Jumeirah Frond G",
-    category: "Coastal Signature Villa",
-    title: "Palm Jumeirah Beachfront Villa",
-    location: "Palm Jumeirah, Dubai",
-    area: "9,800 SQ.FT",
-    duration: "16 WEEKS",
-    scope: "Architectural Extension · Marine-Grade Teak · Infinity Pool",
-    slug: "palm-jumeirah-signature-villa",
-    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=85",
-    detailThumb: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
+    title: "Commercial
+Spaces",
+    meta: "60–90 Day Delivery · DIFC & Business Bay",
+    path: "/services/office-renovation",
+    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    title: "Bespoke
+Interiors",
+    meta: "35,000 sq.ft Al Quoz 3 Joinery Plant",
+    path: "/services/interior-design",
+    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80"
   }
 ];
 
 const LEDGER_STATS = [
   {
     idx: "01",
-    unit: "YEARS",
     count: 10,
     suffix: "+",
-    label: "Architectural Tenure",
-    detail: "Established in Dubai in 2016 as a single-source turnkey practice",
-    bgImg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=75"
+    label: "Years Active",
+    detail: "Established in Dubai in 2016"
   },
   {
     idx: "02",
-    unit: "SPACES",
     count: 640,
     suffix: "+",
-    label: "Delivered Mandates",
-    detail: "Corporate HQs, private villas, F&B concepts & DHA clinics across UAE",
-    bgImg: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=75"
+    label: "Projects Delivered",
+    detail: "Offices, villas, F&B & clinics"
   },
   {
     idx: "03",
-    unit: "SQ.FT",
     count: 35,
     suffix: "K",
-    label: "Al Quoz 3 Factory",
-    detail: "In-house CNC joinery, stone, architectural metal, glass & upholstery",
-    bgImg: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=800&q=75"
+    label: "Sq.Ft Al Quoz Factory",
+    detail: "In-house joinery, metal & glass"
   },
   {
     idx: "04",
-    unit: "EXPERTS",
     count: 200,
     suffix: "+",
     label: "In-House Specialists",
-    detail: "Architects, MEP engineers, authority leads & master craftsmen",
-    bgImg: "https://images.unsplash.com/photo-1601058268499-e52658b8bb88?auto=format&fit=crop&w=800&q=75"
+    detail: "Architects, MEP & craftsmen"
   },
   {
     idx: "05",
-    unit: "RECORD",
     count: 98,
     suffix: "%",
-    label: "On-Schedule Handover",
-    detail: "Locked itemized BOQs & ISO 9001 / 14001 / 45001 execution discipline",
-    bgImg: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=75"
+    label: "On-Time Handover",
+    detail: "ISO 9001 · 14001 · 45001 certified"
   }
 ];
 
@@ -136,13 +133,13 @@ function AnimatedCounter({ target, suffix = "" }) {
     const runAnimation = () => {
       if (started) return;
       started = true;
-      const duration = 1600;
+      const duration = 1500;
       const startTime = performance.now();
 
       const tick = (now) => {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4);
+        const eased = 1 - Math.pow(1 - progress, 3);
         setVal(Math.round(target * eased));
         if (progress < 1) {
           frameId = requestAnimationFrame(tick);
@@ -173,7 +170,7 @@ function AnimatedCounter({ target, suffix = "" }) {
   return (
     <span ref={ref}>
       {val}
-      <span className="aw-stat-suffix">{suffix}</span>
+      <span className="lm-stat-suffix">{suffix}</span>
     </span>
   );
 }
@@ -244,213 +241,137 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. AWWWARDS-STYLE ARCHITECTURAL EDITORIAL HERO & MONOLITH STAT GALLERY */}
-      <section
-        className="aw-hero"
-        id="home"
-        onMouseMove={(e) => {
-          const rect = e.currentTarget.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-          const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-          e.currentTarget.style.setProperty("--mx", x.toFixed(3));
-          e.currentTarget.style.setProperty("--my", y.toFixed(3));
-        }}
-      >
-        {/* FULL-BLEED CINEMATIC ARCHITECTURAL CANVAS WITH KEN BURNS & PARALLAX */}
-        <div className="aw-hero-canvas" aria-hidden="true">
-          {HERO_SHOWCASES.map((slide, idx) => (
-            <div
-              key={slide.slug}
-              className={`aw-hero-slide${heroSlide === idx ? " is-active" : ""}`}
-            >
-              <img
-                src={slide.image}
-                alt=""
-                width="2000"
-                height="1200"
-                fetchPriority={idx === 0 ? "high" : "auto"}
-              />
-            </div>
-          ))}
-          <div className="aw-hero-vignette" />
-        </div>
-
-        {/* SWISS ARCHITECTURAL HAIRLINE GRID LINES */}
-        <div className="aw-grid-lines" aria-hidden="true">
-          <span className="aw-g-col" />
-          <span className="aw-g-col" />
-          <span className="aw-g-col" />
-          <span className="aw-g-col" />
-        </div>
-
-        <div className="wrap aw-hero-shell">
-          {/* TOP ARCHITECTURAL METADATA STRIP */}
-          <div className="aw-topbar">
-            <div className="aw-meta-item">
-              <span className="aw-meta-label">(01) PRACTICE</span>
-              <span className="aw-meta-val">ARCHITECTURE · TURNKEY FIT-OUT · JOINERY</span>
-            </div>
-            <div className="aw-meta-item aw-hide-mobile">
-              <span className="aw-meta-label">(02) COORDINATES</span>
-              <span className="aw-meta-val">25.1856° N, 55.2634° E — DUBAI, UAE</span>
-            </div>
-            <div className="aw-meta-item">
-              <span className="aw-meta-label">(03) ACCREDITATION</span>
-              <span className="aw-meta-val">ISO 9001 · 14001 · 45001 CERTIFIED</span>
-            </div>
-          </div>
-
-          {/* CENTER MONUMENTAL ASYMMETRIC DISPLAY TYPOGRAPHY */}
-          <div className="aw-editorial-stage">
-            <div className="aw-headline-wrap">
-              <div className="aw-eyebrow-tag">
-                <span className="aw-Index-num">EST. {COMPANY.established}</span>
-                <span className="aw-eyebrow-line" />
-                <span>BUSINESS BAY STUDIO &amp; 35,000 SQ.FT AL QUOZ 3 FACTORY</span>
+      {/* 1. LUMEN-INSPIRED SCULPTURAL ARCH EDITORIAL HERO & WARM GALLERY DOCK */}
+      <section className="lm-hero" id="home">
+        {/* Decorative Architectural Arch & Sunlit Room Stage */}
+        <div className="lm-arch-stage" aria-hidden="true">
+          <div className="lm-arch-outer">
+            <div className="lm-arch-terracotta-alcove" />
+            {HERO_SHOWCASES.map((slide, idx) => (
+              <div
+                key={slide.slug}
+                className={`lm-arch-slide${heroSlide === idx ? " is-active" : ""}`}
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.projectTitle}
+                  width="1600"
+                  height="1100"
+                  fetchPriority={idx === 0 ? "high" : "auto"}
+                />
               </div>
+            ))}
+            <div className="lm-arch-blend-left" />
+            <div className="lm-arch-blend-bottom" />
+          </div>
+        </div>
 
-              <h1 className="aw-display-title">
-                <span className="aw-line aw-line-1">Architectural</span>
-                <span className="aw-line aw-line-2">
-                  <em>craftsmanship</em>
-                  <span className="aw-inline-pill">
-                    <img src={activeHero.detailThumb} alt="" />
-                  </span>
-                </span>
-                <span className="aw-line aw-line-3">built to endure.</span>
+        {/* Left-Edge Vertical Slide Index (01 | 02 03) */}
+        <div className="lm-side-pagination" role="tablist" aria-label="Hero showcase slides">
+          {HERO_SHOWCASES.map((slide, idx) => {
+            const active = heroSlide === idx;
+            return (
+              <React.Fragment key={slide.idx}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  aria-label={`Slide ${slide.idx}: ${slide.projectTitle}`}
+                  className={`lm-page-num${active ? " active" : ""}`}
+                  onClick={() => setHeroSlide(idx)}
+                >
+                  {slide.idx}
+                </button>
+                {idx === 0 && <span className="lm-page-line" aria-hidden="true" />}
+              </React.Fragment>
+            );
+          })}
+        </div>
+
+        <div className="wrap lm-hero-container">
+          <div className="lm-hero-main">
+            {/* LEFT EDITORIAL COLUMN */}
+            <div className="lm-copy-col">
+              <div className="lm-eyebrow">{activeHero.eyebrow}</div>
+
+              <h1 className="lm-headline">
+                <span>{activeHero.line1}</span>
+                <span>{activeHero.line2}</span>
+                <span>{activeHero.line3}</span>
               </h1>
-            </div>
 
-            {/* FLOATING EDITORIAL MANIFESTO & MAGNETIC CTA */}
-            <div className="aw-manifesto-col">
-              <p className="aw-manifesto-copy">
-                We conceive, engineer, manufacture, and build turnkey commercial headquarters, private signature villas, and hospitality flagships across Dubai and Abu Dhabi — with <strong>100% in-house MEP and Al Quoz millwork</strong>.
-              </p>
+              <p className="lm-subtitle">{activeHero.subtitle}</p>
 
-              <div className="aw-action-row">
-                {/* MAGNETIC CIRCULAR / PILL AWWWARDS CTA */}
-                <Link to="/enquiry" className="aw-magnetic-cta">
-                  <span className="aw-cta-text">Commission a Space</span>
-                  <span className="aw-cta-orb" aria-hidden="true">
-                    <ArrowRight size={18} />
+              {/* CIRCULAR SAGE/FOREST BUTTON + EXPLORE OUR WORK */}
+              <div className="lm-cta-group">
+                <Link to="/projects" className="lm-explore-cta">
+                  <span className="lm-circle-btn" aria-hidden="true">
+                    <ArrowRight size={20} strokeWidth={1.75} />
                   </span>
+                  <span className="lm-explore-label">Explore Our Work</span>
                 </Link>
 
-                <Link to="/projects" className="aw-ghost-link">
-                  <span>Index of 640+ Works</span>
-                  <span className="aw-ghost-arrow">↗</span>
+                <Link to="/enquiry" className="lm-secondary-link">
+                  Book a Free Site Visit →
                 </Link>
               </div>
+            </div>
+
+            {/* RIGHT FLOATING CAPTION PILL OVER ARCH */}
+            <div className="lm-arch-caption-wrap">
+              <Link to={`/projects/${activeHero.slug}`} className="lm-arch-badge">
+                <span className="lm-ab-dot" />
+                <div>
+                  <div className="lm-ab-title">{activeHero.projectTitle}</div>
+                  <div className="lm-ab-meta">{activeHero.projectMeta}</div>
+                </div>
+                <ArrowRight size={15} />
+              </Link>
             </div>
           </div>
 
-          {/* BOTTOM INTERACTIVE ARCHITECTURAL FILMSTRIP & LIVE BLUEPRINT READOUT */}
-          <div className="aw-bottom-dock">
-            {/* Active Project Live Blueprint Specification */}
-            <Link
-              to={`/projects/${activeHero.slug}`}
-              className="aw-live-blueprint"
-              aria-label={`Inspect Case Study: ${activeHero.title}`}
-            >
-              <div className="aw-bp-thumb">
-                <img src={activeHero.detailThumb} alt={activeHero.title} />
-                <span className="aw-bp-code">{activeHero.code}</span>
-              </div>
-              <div className="aw-bp-info">
-                <div className="aw-bp-kicker">
-                  {activeHero.category} · {activeHero.location}
+          {/* BOTTOM 3-CARD HORIZONTAL CATEGORY DOCK (Residential / Commercial / Bespoke) */}
+          <div className="lm-bottom-cards">
+            {HERO_BOTTOM_CARDS.map((card) => (
+              <Link key={card.title} to={card.path} className="lm-feature-card">
+                <div className="lm-fc-thumb">
+                  <img src={card.image} alt={card.title.replace("\n", " ")} loading="eager" />
                 </div>
-                <div className="aw-bp-title">{activeHero.title}</div>
-                <div className="aw-bp-specs">
-                  <span>AREA: {activeHero.area}</span>
-                  <span>·</span>
-                  <span>PROGRAMME: {activeHero.duration}</span>
+                <div className="lm-fc-body">
+                  <h2 className="lm-fc-title">
+                    {card.title.split("\n").map((line, i) => (
+                      <span key={i}>{line}</span>
+                    ))}
+                  </h2>
+                  <p className="lm-fc-meta">{card.meta}</p>
+                  <span className="lm-fc-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </div>
-              </div>
-              <span className="aw-bp-open" aria-hidden="true">↗</span>
-            </Link>
-
-            {/* 4-Project Interactive Architectural Index Switcher */}
-            <div className="aw-index-switcher" role="tablist" aria-label="Featured Architectural Works">
-              {HERO_SHOWCASES.map((item, idx) => {
-                const isActive = heroSlide === idx;
-                return (
-                  <button
-                    key={item.slug}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    className={`aw-idx-btn${isActive ? " active" : ""}`}
-                    onClick={() => setHeroSlide(idx)}
-                  >
-                    <div className="aw-idx-top">
-                      <span className="aw-idx-num">{item.idx}</span>
-                      <span className="aw-idx-area">{item.area}</span>
-                    </div>
-                    <div className="aw-idx-name">{item.shortLabel}</div>
-                    <div className="aw-idx-progress" aria-hidden="true">
-                      <span className="aw-idx-bar" />
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 1B. AWWWARDS SWISS-GRID ARCHITECTURAL MONOLITH STATISTIC GALLERY */}
-      <section className="aw-monolith-stats" aria-label="Practice Key Figures">
+      {/* 1B. COHESIVE WARM ARCHITECTURAL STATISTIC LEDGER */}
+      <section className="lm-stats-bar" aria-label="Key Company Figures">
         <div className="wrap">
-          <div className="aw-monolith-header">
-            <div className="aw-mh-left">
-              <span className="aw-mh-index">[ 01 // PRACTICE IN NUMBERS ]</span>
-              <h2 className="aw-mh-title">
-                Measured by <em>precision</em>, scale &amp; certainty.
-              </h2>
-            </div>
-            <div className="aw-mh-right">
-              <p>
-                Every contract is backed by a fixed-milestone programme, an itemized Bill of Quantities, and direct factory production in Al Quoz Industrial Area 3.
-              </p>
-              <a
-                href={`https://wa.me/${COMPANY.whatsappNumber}?text=${encodeURIComponent(COMPANY.whatsappDefaultMsg)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="aw-wa-direct"
-              >
-                <span className="aw-wa-dot" />
-                <span>Direct WhatsApp Desk: <strong>6361718607</strong> ↗</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="aw-monolith-strip">
-          {LEDGER_STATS.map((st) => (
-            <div key={st.idx} className="aw-monolith-col">
-              <div
-                className="aw-mc-bg"
-                style={{ backgroundImage: `url(${st.bgImg})` }}
-                aria-hidden="true"
-              />
-              <div className="aw-mc-content">
-                <div className="aw-mc-meta">
-                  <span className="aw-mc-idx">/{st.idx}</span>
-                  <span className="aw-mc-unit">{st.unit}</span>
+          <div className="lm-stats-grid">
+            {LEDGER_STATS.map((st) => (
+              <div key={st.idx} className="lm-stat-item">
+                <div className="lm-stat-top">
+                  <span className="lm-stat-idx">{st.idx}</span>
+                  <span className="lm-stat-line" />
                 </div>
-
-                <div className="aw-mc-figure">
+                <div className="lm-stat-value">
                   <AnimatedCounter target={st.count} suffix={st.suffix} />
                 </div>
-
-                <div className="aw-mc-footer">
-                  <h3 className="aw-mc-label">{st.label}</h3>
-                  <p className="aw-mc-desc">{st.detail}</p>
-                </div>
+                <div className="lm-stat-label">{st.label}</div>
+                <div className="lm-stat-detail">{st.detail}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
