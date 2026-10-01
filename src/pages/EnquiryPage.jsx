@@ -97,7 +97,7 @@ export default function EnquiryPage() {
                   rel="noopener noreferrer"
                   className="btn btn-primary"
                 >
-                  Fast-Track via WhatsApp (+971 54 386 2870) →
+                  Fast-Track via WhatsApp (6361718607) →
                 </a>
                 <a href={'tel:' + COMPANY.phoneRaw} className="btn btn-outline">
                   Call Estimating Desk

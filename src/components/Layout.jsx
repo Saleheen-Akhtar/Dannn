@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X, ArrowUp } from "lucide-react";
 import { COMPANY, NAV_ITEMS } from "../data/siteData";
+import { useSmoothScrollAndParallax } from "../utils/useSmoothScrollAndParallax";
 
 function WhatsAppIcon() {
   return (
@@ -20,6 +21,7 @@ export default function Layout({ children }) {
   const [mobileSub, setMobileSub] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const location = useLocation();
+  useSmoothScrollAndParallax();
 
   useEffect(() => {
     setMobileOpen(false);
@@ -38,6 +40,7 @@ export default function Layout({ children }) {
 
   return (
     <>
+      <div className="scroll-progress-bar" aria-hidden="true" />
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>

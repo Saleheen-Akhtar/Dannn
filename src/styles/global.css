@@ -1957,3 +1957,111 @@ h1, h2, h3, .serif-heading {
   object-fit: contain;
   border: 1px solid var(--border-gold);
 }
+
+/* ==========================================================================
+   PARALLAX & SMOOTH SCROLLING ENGINE STYLES
+   ========================================================================== */
+:root {
+  --scroll-y: 0px;
+  --scroll-progress: 0;
+}
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 2000;
+  background: linear-gradient(90deg, var(--brass), var(--brass-light));
+  transform-origin: 0 50%;
+  transform: scaleX(var(--scroll-progress, 0));
+  pointer-events: none;
+  transition: transform 0.08s linear;
+}
+
+/* Hardware-accelerated Hero & Subpage Hero Parallax */
+.home-hero {
+  overflow: hidden;
+}
+
+.home-hero-bg img {
+  will-change: transform;
+  transform: translate3d(0, 0, 0) scale(1.1);
+  transition: transform 0.06s linear;
+}
+
+.home-hero-blueprint {
+  will-change: transform;
+}
+
+.home-hero-visual {
+  will-change: transform;
+  transition: transform 0.12s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.subpage-hero {
+  background-attachment: scroll;
+  background-size: 112% auto;
+  background-position: center 50%;
+  will-change: background-position;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .subpage-hero {
+    background-size: cover;
+  }
+}
+
+/* Internal Image Window Parallax on Cards, Room Blocks & Portfolio Tiles */
+.room-block,
+.project-card-media {
+  overflow: hidden;
+}
+
+.room-block img,
+.project-card-media img,
+.card > img,
+.card > div > img {
+  will-change: transform;
+  transform: translate3d(0, var(--p-shift, 0px), 0) scale(1.07);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card-link:hover .project-card-media img,
+.room-block:hover img,
+.card:hover > img,
+.card:hover > div > img {
+  transform: translate3d(0, var(--p-shift, 0px), 0) scale(1.12);
+}
+
+/* Scroll-Triggered Staggered Reveal Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .home-hero-bg img,
+  .room-block img,
+  .project-card-media img,
+  .card > img {
+    transform: none !important;
+  }
+}

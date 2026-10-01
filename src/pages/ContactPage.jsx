@@ -44,11 +44,16 @@ export default function ContactPage() {
           {/* 4 UNIFIED CONTACT CARDS */}
           <div className="grid-4" style={{ marginBottom: '56px' }}>
             <div className="card">
-              <span className="eyebrow">Direct Line &amp; WhatsApp</span>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: 'var(--cream)', marginBottom: '8px' }}>
+              <span className="eyebrow">Studio Line &amp; WhatsApp</span>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--cream)', marginBottom: '6px' }}>
                 <a href={'tel:' + COMPANY.phoneRaw} style={{ color: 'var(--accent)' }}>{COMPANY.phone}</a>
               </h3>
-              <p style={{ fontSize: '0.84rem', color: 'var(--muted)' }}>
+              <div style={{ fontSize: '0.85rem', marginBottom: '6px' }}>
+                <a href={COMPANY.whatsappUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--cream)' }}>
+                  WhatsApp: <strong style={{ color: 'var(--accent)' }}>6361718607</strong>
+                </a>
+              </div>
+              <p style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>
                 Instant connection to our Senior Estimation &amp; Client Advisory desk.
               </p>
             </div>
