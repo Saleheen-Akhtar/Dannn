@@ -19,63 +19,60 @@ const PROJECT_FILTERS = ["All", "Commercial", "Residential", "Hospitality", "Ret
 const HERO_SHOWCASES = [
   {
     idx: "01",
-    eyebrow: "DUBAI · EST. 2016 · TURNKEY DESIGN & BUILD",
-    line1: "Thoughtful",
-    line2: "Interiors for",
-    line3: "a Better Tomorrow",
-    subtitle:
-      "We design, engineer, and build beautiful, functional commercial, residential, and hospitality spaces across the UAE — crafted in-house at our 35,000 sq.ft Al Quoz 3 joinery facility.",
+    sector: "Residential",
+    eyebrow: "Dubai · Est. 2016 · ISO Certified",
+    wordLeft: "Turnkey",
+    wordCenter: "design & build.",
+    wordRight: "Interiors",
+    heading: "Bespoke spaces engineered from first sketch to final handover.",
+    copy: "We design, engineer, manufacture, and install luxury residential villas, executive headquarters, and hospitality interiors across Dubai and Abu Dhabi — backed by 200+ specialists and our 35,000 sq.ft Al Quoz 3 factory.",
     projectTitle: "Emirates Hills Private Residence",
     projectMeta: "11,800 sq.ft · Full Villa Fit-Out & Bespoke Millwork",
     slug: "emirates-hills-private-residence",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1800&q=85"
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
+    hotspots: [
+      { id: 1, title: "Al Quoz 3 Joinery", text: "Custom walnut millwork, doors & wardrobes built in our 35,000 sq.ft facility." },
+      { id: 2, title: "In-House MEP & KNX", text: "Concealed linear HVAC slot diffusers & circadian smart lighting scenes." },
+      { id: 3, title: "Book-Matched Stone", text: "Hand-selected Italian Calacatta marble & travertine architectural monoliths." }
+    ]
   },
   {
     idx: "02",
-    eyebrow: "EXECUTIVE WORKPLACES · DIFC & BUSINESS BAY",
-    line1: "Considered",
-    line2: "Workspaces Built",
-    line3: "for High Performance",
-    subtitle:
-      "From acoustic fluted-oak boardrooms to turnkey MEP and authority approvals, most commercial headquarters are delivered on a fixed programme within 60 to 90 days.",
+    sector: "Commercial",
+    eyebrow: "DIFC · Business Bay · Abu Dhabi",
+    wordLeft: "Executive",
+    wordCenter: "60–90 day delivery.",
+    wordRight: "Workplaces",
+    heading: "High-performance corporate headquarters delivered on a fixed schedule.",
+    copy: "From acoustic fluted-oak boardrooms to full Dubai Municipality, DCD, DIFC, and DDA authority approvals, our resident engineers and joiners deliver commercial spaces with zero hidden variations.",
     projectTitle: "EDC Corporate Headquarters",
     projectMeta: "15,210 sq.ft · Al Maryah Island, Abu Dhabi",
     slug: "edc-headquarters-abu-dhabi",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=85"
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=85",
+    hotspots: [
+      { id: 1, title: "STC-52 Acoustic Glazing", text: "Double-glazed architectural partitions fabricated in our Metal & Glass bay." },
+      { id: 2, title: "Turnkey MEP & IT/AV", text: "Integrated VAV air-conditioning, DALI lighting & boardroom AV automation." },
+      { id: 3, title: "Bespoke Boardrooms", text: "Fluted oak acoustic wall systems & custom leather-inlaid conference tables." }
+    ]
   },
   {
     idx: "03",
-    eyebrow: "35,000 SQ.FT AL QUOZ 3 FACTORY · BESPOKE JOINERY",
-    line1: "Architectural",
-    line2: "Craftsmanship",
-    line3: "Under One Roof",
-    subtitle:
-      "200+ in-house architects, MEP engineers, and master joiners delivering custom kitchens, wardrobes, stone monoliths, and smart automation with zero subcontractor markups.",
-    projectTitle: "Palm Jumeirah Signature Villa",
-    projectMeta: "9,800 sq.ft · Architectural Extension & Interior Fit-Out",
-    slug: "palm-jumeirah-signature-villa",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85"
-  }
-];
-
-const HERO_BOTTOM_CARDS = [
-  {
-    lines: ["Residential", "Design"],
-    meta: "150+ Luxury Villas · Turnkey Fit-Out",
-    path: "/services/architecture",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    lines: ["Commercial", "Spaces"],
-    meta: "60–90 Day Delivery · DIFC & Business Bay",
-    path: "/services/office-renovation",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    lines: ["Bespoke", "Interiors"],
-    meta: "35,000 sq.ft Al Quoz 3 Joinery Plant",
-    path: "/services/interior-design",
-    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80"
+    sector: "Hospitality",
+    eyebrow: "Downtown Dubai · Palm Jumeirah",
+    wordLeft: "Bespoke",
+    wordCenter: "35,000 sq.ft factory.",
+    wordRight: "Craft",
+    heading: "Hospitality, F&B, and luxury retail crafted under one roof.",
+    copy: "Our master carpenters, metal fabricators, and MEP engineers coordinate heavy kitchen extraction, acoustic ceilings, and custom banquette upholstery in parallel to compress site timelines.",
+    projectTitle: "Ember & Oak Fine Dining Grill",
+    projectMeta: "6,200 sq.ft · Downtown Boulevard, Dubai",
+    slug: "ember-and-oak-grill-downtown",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85",
+    hotspots: [
+      { id: 1, title: "Patinated Brass Bar", text: "Hand-finished brass & stone bar counters pre-assembled in Al Quoz 3." },
+      { id: 2, title: "Kitchen MEP & Ecology", text: "Full commercial kitchen HVAC, gas interlocks & Dubai Municipality approvals." },
+      { id: 3, title: "Custom Banquettes", text: "Commercial-grade leather & bouclé seating crafted in our upholstery bay." }
+    ]
   }
 ];
 
@@ -84,36 +81,36 @@ const LEDGER_STATS = [
     idx: "01",
     count: 10,
     suffix: "+",
-    label: "Years Active",
-    detail: "Established in Dubai in 2016"
+    label: "Years Active (Est. 2016)",
+    detail: "Single-source Dubai & Abu Dhabi turnkey contractor"
   },
   {
     idx: "02",
     count: 640,
     suffix: "+",
     label: "Projects Delivered",
-    detail: "Offices, villas, F&B & clinics"
+    detail: "Offices, signature villas, F&B, retail & DHA clinics"
   },
   {
     idx: "03",
     count: 35,
     suffix: "K",
-    label: "Sq.Ft Al Quoz Factory",
-    detail: "In-house joinery, metal & glass"
+    label: "Sq.Ft Al Quoz 3 Factory",
+    detail: "In-house joinery, upholstery, metal & architectural glass"
   },
   {
     idx: "04",
     count: 200,
     suffix: "+",
     label: "In-House Specialists",
-    detail: "Architects, MEP & craftsmen"
+    detail: "Architects, MEP engineers, joiners & site managers"
   },
   {
     idx: "05",
     count: 98,
     suffix: "%",
-    label: "On-Time Handover",
-    detail: "ISO 9001 · 14001 · 45001 certified"
+    label: "On-Time Handover Rate",
+    detail: "Itemized BOQ transparency & ISO-certified execution"
   }
 ];
 
@@ -130,7 +127,7 @@ function AnimatedCounter({ target, suffix = "" }) {
     const runAnimation = () => {
       if (started) return;
       started = true;
-      const duration = 1500;
+      const duration = 1400;
       const startTime = performance.now();
 
       const tick = (now) => {
@@ -167,7 +164,7 @@ function AnimatedCounter({ target, suffix = "" }) {
   return (
     <span ref={ref}>
       {val}
-      <span className="lm-stat-suffix">{suffix}</span>
+      <span className="ds-stat-suffix">{suffix}</span>
     </span>
   );
 }
@@ -239,203 +236,189 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. FORMA-STYLE CENTERPIECE & SPLIT-TYPOGRAPHY ARCHITECTURAL HERO LAYOUT */}
-      <section className="fs-hero-outer" id="home">
-        <div className="fs-hero-frame">
-          {/* Dynamic Atmospheric Background */}
-          <div className="fs-hero-bg" aria-hidden="true">
-            {HERO_SHOWCASES.map((slide, idx) => (
-              <img
-                key={slide.slug}
-                src={slide.image}
-                alt=""
-                className={`fs-bg-img${heroSlide === idx ? " is-active" : ""}`}
-              />
-            ))}
-            <div className="fs-bg-gradient" />
+      {/* 1. FULL-SCREEN FORMA-LAYOUT HERO (100% UNIFIED DESIGN SYSTEM) */}
+      <section className="fs-fullscreen-hero" id="home">
+        {/* Atmospheric Full-Screen Background Layer */}
+        <div className="fs-hero-backdrop" aria-hidden="true">
+          {HERO_SHOWCASES.map((slide, idx) => (
+            <img
+              key={slide.slug}
+              src={slide.image}
+              alt=""
+              className={`fs-backdrop-img${heroSlide === idx ? " is-active" : ""}`}
+            />
+          ))}
+          <div className="fs-backdrop-overlay" />
+          <div className="fs-backdrop-grid" />
+        </div>
+
+        {/* Left & Right Full-Screen Carousel Edge Buttons */}
+        <button
+          type="button"
+          className="fs-screen-arrow fs-screen-prev"
+          aria-label="Previous showcase"
+          onClick={() => setHeroSlide((prev) => (prev - 1 + HERO_SHOWCASES.length) % HERO_SHOWCASES.length)}
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+        <button
+          type="button"
+          className="fs-screen-arrow fs-screen-next"
+          aria-label="Next showcase"
+          onClick={() => setHeroSlide((prev) => (prev + 1) % HERO_SHOWCASES.length)}
+        >
+          <ChevronRight size={20} />
+        </button>
+
+        <div className="wrap fs-hero-wrap">
+          {/* UPPER MONUMENTAL SPLIT SERIF TYPOGRAPHY (Fraunces Design System) */}
+          <div className="fs-split-headline" aria-hidden="true">
+            <span className="fs-sh-word fs-sh-left">{activeHero.wordLeft}</span>
+            <span className="fs-sh-center">{activeHero.wordCenter}</span>
+            <span className="fs-sh-word fs-sh-right">{activeHero.wordRight}</span>
           </div>
 
-          {/* TOP-CENTER SCULPTED NOTCH TAB */}
-          <div className="fs-top-notch">
-            <span>yashmeen studio.</span>
-          </div>
-
-          {/* LEFT & RIGHT EDGE CAROUSEL NOTCH BUTTONS */}
-          <button
-            type="button"
-            className="fs-edge-arrow fs-edge-prev"
-            aria-label="Previous showcase"
-            onClick={() => setHeroSlide((prev) => (prev - 1 + HERO_SHOWCASES.length) % HERO_SHOWCASES.length)}
-          >
-            <ChevronLeft size={18} />
-          </button>
-
-          <button
-            type="button"
-            className="fs-edge-arrow fs-edge-next"
-            aria-label="Next showcase"
-            onClick={() => setHeroSlide((prev) => (prev + 1) % HERO_SHOWCASES.length)}
-          >
-            <ChevronRight size={18} />
-          </button>
-
-          {/* GIANT SPLIT BACKGROUND TYPOGRAPHY: "yash" [studio.] "meen" */}
-          <div className="fs-giant-type" aria-hidden="true">
-            <span className="fs-giant-word fs-giant-left">yash</span>
-            <span className="fs-giant-center">fit-out.</span>
-            <span className="fs-giant-word fs-giant-right">meen</span>
-          </div>
-
-          {/* MAIN 3-COLUMN FOREGROUND STAGE */}
-          <div className="fs-stage-grid">
-            {/* LEFT COLUMN: EDITORIAL COPY + PILL CTA + SOCIAL CIRCLES */}
-            <div className="fs-left-col">
-              <div className="fs-copy-block">
-                <p>
-                  We design, engineer, and build bespoke interiors that don&apos;t just fill a floorplate — they become its architectural signature.
-                </p>
-                <p>
-                  Every project unites turnkey authority approvals, in-house MEP engineering, and our 35,000 sq.ft Al Quoz 3 joinery factory.
-                </p>
+          {/* 3-COLUMN FOREGROUND STAGE */}
+          <div className="fs-main-grid">
+            {/* LEFT COLUMN: EYEBROW + H1 + COPY + PRIMARY CTA + SOCIAL ICONS */}
+            <div className="fs-col-left">
+              <div>
+                <span className="eyebrow eyebrow-light">{activeHero.eyebrow}</span>
+                <h1 className="fs-editorial-h1">{activeHero.heading}</h1>
+                <p className="fs-editorial-copy">{activeHero.copy}</p>
               </div>
 
-              <div className="fs-left-cta-wrap">
-                <Link to="/projects" className="fs-pill-cta">
-                  Explore 640+ Projects
+              <div className="fs-left-actions">
+                <Link to="/projects" className="btn btn-brass">
+                  <span>View All {PROJECTS.length} Projects</span>
+                  <ArrowRight size={16} />
                 </Link>
               </div>
 
-              <div className="fs-social-row">
+              <div className="fs-social-links" aria-label="Studio Social & Direct Links">
                 <a
                   href={COMPANY.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="fs-social-circle"
-                  aria-label="LinkedIn"
+                  className="fs-soc-btn"
+                  aria-label="Follow Yashmeen Future Building on LinkedIn"
                 >
-                  in
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z" />
+                  </svg>
                 </a>
                 <a
                   href={COMPANY.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="fs-social-circle"
-                  aria-label="Instagram"
+                  className="fs-soc-btn"
+                  aria-label="Follow Yashmeen Future Building on Instagram"
                 >
-                  ig
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
                 </a>
                 <a
                   href={`https://wa.me/${COMPANY.whatsappNumber}?text=${encodeURIComponent(COMPANY.whatsappDefaultMsg)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="fs-social-circle"
-                  aria-label="WhatsApp 6361718607"
+                  className="fs-soc-btn"
+                  aria-label="Chat on WhatsApp 6361718607"
                 >
-                  wa
+                  <Phone size={15} />
                 </a>
+                <span className="fs-soc-caption">Est. {COMPANY.established} · Dubai, UAE</span>
               </div>
             </div>
 
-            {/* CENTER COLUMN: SCULPTURAL ARCHITECTURAL SHOWCASE + INTERACTIVE HOTSPOT PINS */}
-            <div className="fs-center-col">
-              <div className="fs-centerpiece-wrap">
+            {/* CENTER COLUMN: ARCHITECTURAL SHOWCASE CENTERPIECE + INTERACTIVE HOTSPOTS */}
+            <div className="fs-col-center">
+              <div className="fs-showcase-box">
                 <Link
                   to={`/projects/${activeHero.slug}`}
-                  className="fs-centerpiece-card"
-                  aria-label={`View Case Study: ${activeHero.projectTitle}`}
+                  className="fs-showcase-link"
+                  aria-label={`Inspect Case Study: ${activeHero.projectTitle}`}
                 >
                   <img
                     key={activeHero.image}
                     src={activeHero.image}
                     alt={activeHero.projectTitle}
                   />
-                  <div className="fs-centerpiece-badge">
-                    <span>{activeHero.projectTitle}</span>
-                    <small>{activeHero.projectMeta}</small>
+                  <span className="rb-tag">Featured {activeHero.sector}</span>
+                  <div className="fs-showcase-caption">
+                    <div>
+                      <div className="fs-sc-title">{activeHero.projectTitle}</div>
+                      <div className="fs-sc-meta">{activeHero.projectMeta}</div>
+                    </div>
+                    <span className="fs-sc-arrow" aria-hidden="true">
+                      <ArrowRight size={15} />
+                    </span>
                   </div>
                 </Link>
 
-                {/* Hotspot Pin 1 (Bottom-Left) */}
-                <button
-                  type="button"
-                  className={`fs-hotspot fs-hs-1${activeHotspot === 1 ? " active" : ""}`}
-                  onClick={() => setActiveHotspot(activeHotspot === 1 ? 0 : 1)}
-                  aria-label="Toggle In-House Joinery detail"
-                >
-                  {activeHotspot === 1 ? "×" : "+"}
-                </button>
-                {activeHotspot === 1 && (
-                  <div className="fs-hotspot-popover fs-pop-1">
-                    <strong>35,000 sq.ft Al Quoz 3 Factory</strong> — Custom walnut millwork, kitchens, and wardrobes crafted in-house.
-                  </div>
-                )}
-
-                {/* Hotspot Pin 2 (Top-Right) */}
-                <button
-                  type="button"
-                  className={`fs-hotspot fs-hs-2${activeHotspot === 2 ? " active" : ""}`}
-                  onClick={() => setActiveHotspot(activeHotspot === 2 ? 0 : 2)}
-                  aria-label="Toggle Turnkey MEP & Approvals detail"
-                >
-                  {activeHotspot === 2 ? "×" : "+"}
-                </button>
-
-                {/* Hotspot Pin 3 (Mid-Right with Glass Popover, matching reference) */}
-                <button
-                  type="button"
-                  className={`fs-hotspot fs-hs-3${activeHotspot === 3 ? " active" : ""}`}
-                  onClick={() => setActiveHotspot(activeHotspot === 3 ? 0 : 3)}
-                  aria-label="Toggle Project Specification detail"
-                >
-                  {activeHotspot === 3 ? "×" : "+"}
-                </button>
-                {(activeHotspot === 2 || activeHotspot === 3) && (
-                  <div className="fs-hotspot-popover fs-pop-3">
-                    {activeHotspot === 2
-                      ? "In-house MEP engineering & direct DM, DCD, DIFC and Trakhees authority approvals."
-                      : `${activeHero.projectTitle} — ${activeHero.projectMeta}. Delivered on a fixed BOQ.`}
-                  </div>
-                )}
+                {/* 3 Interactive Design-System Hotspot Pins */}
+                {activeHero.hotspots.map((hs, i) => {
+                  const isOpen = activeHotspot === hs.id;
+                  return (
+                    <React.Fragment key={hs.id}>
+                      <button
+                        type="button"
+                        className={`fs-pin fs-pin-${i + 1}${isOpen ? " active" : ""}`}
+                        onClick={() => setActiveHotspot(isOpen ? 0 : hs.id)}
+                        aria-label={`Toggle specification: ${hs.title}`}
+                      >
+                        {isOpen ? "×" : "+"}
+                      </button>
+                      {isOpen && (
+                        <div className={`fs-pin-card fs-pin-card-${i + 1}`}>
+                          <div className="fs-pc-title">{hs.title}</div>
+                          <p className="fs-pc-text">{hs.text}</p>
+                        </div>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
               </div>
-
-              <div className="fs-since-label">Since {COMPANY.established} · Dubai, UAE</div>
             </div>
 
-            {/* RIGHT COLUMN: SECTOR SELECTOR CIRCLES + FLOATING CONSULTATION CARD */}
-            <div className="fs-right-col">
-              {/* Mid-Right Selector ("Choose your sector" + 3 circular thumbnails) */}
-              <div className="fs-selector-row">
-                <span className="fs-selector-label">Choose sector</span>
-                <div className="fs-selector-swatches" role="tablist" aria-label="Choose project sector">
+            {/* RIGHT COLUMN: SECTOR SELECTOR SWATCHES + CONSULTATION CARD */}
+            <div className="fs-col-right">
+              <div className="fs-sector-picker">
+                <span className="fs-picker-label">Select Sector</span>
+                <div className="fs-picker-list" role="tablist" aria-label="Select project sector">
                   {HERO_SHOWCASES.map((item, idx) => (
                     <button
                       key={item.slug}
                       type="button"
                       role="tab"
                       aria-selected={heroSlide === idx}
-                      aria-label={item.projectTitle}
-                      className={`fs-swatch-btn${heroSlide === idx ? " active" : ""}`}
+                      className={`fs-picker-pill${heroSlide === idx ? " active" : ""}`}
                       onClick={() => setHeroSlide(idx)}
                     >
-                      <img src={item.image} alt={item.projectTitle} />
+                      <img src={item.image} alt={item.sector} />
+                      <span>{item.sector}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Bottom-Right Floating Consultation Card with Portrait */}
-              <div className="fs-consult-card">
-                <div className="fs-consult-copy">
-                  <h2>Get a Free Consultation</h2>
-                  <p>
-                    Share your brief and our Dubai estimation team will prepare a tailored site survey &amp; itemized BOQ.
+              {/* Bottom-Right Consultation Card Styled in Unified Design System */}
+              <div className="fs-consultation-box">
+                <div className="fs-cb-content">
+                  <span className="fs-cb-kicker">Free Site Survey &amp; BOQ</span>
+                  <h2 className="fs-cb-heading">Get a Free Consultation</h2>
+                  <p className="fs-cb-copy">
+                    Share your project brief and our Dubai engineering team will contact you within one working day.
                   </p>
-                  <Link to="/enquiry" className="fs-consult-btn">
+                  <Link to="/enquiry" className="btn btn-dark fs-cb-btn">
                     <span>Request a Call</span>
-                    <span className="fs-consult-arrow" aria-hidden="true">↗</span>
+                    <ArrowRight size={15} />
                   </Link>
                 </div>
-                <div className="fs-consult-person">
+                <div className="fs-cb-portrait">
                   <img
                     src={COMPANY.founder.portrait}
                     alt={COMPANY.founder.name}
@@ -444,48 +427,29 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
-          {/* BOTTOM-CENTER SCULPTED SCROLL NOTCH */}
-          <a href="#about" className="fs-bottom-notch" aria-label="Scroll down">
-            <span>↓</span>
-          </a>
         </div>
+
+        {/* Bottom-Center Scroll Down Indicator */}
+        <a href="#stats" className="fs-scroll-down" aria-label="Scroll to statistics">
+          <span>↓</span>
+        </a>
       </section>
 
-      {/* 1B. EYE-CATCHING ARCHITECTURAL COUNTER SHOWCASE BAR */}
-      <section className="lm-stats-bar" aria-label="Key Company Figures">
+      {/* 1B. UNIFIED DESIGN-SYSTEM STATISTIC BAR */}
+      <section className="ds-stats-section" id="stats" aria-label="Company Key Figures">
         <div className="wrap">
-          <div className="lm-stats-header">
-            <div className="lm-sh-left">
-              <span className="lm-sh-tag">VERIFIED UAE DELIVERY LEDGER (2016 — 2026)</span>
-              <span className="lm-sh-rule" aria-hidden="true" />
-            </div>
-            <a
-              href={`https://wa.me/${COMPANY.whatsappNumber}?text=${encodeURIComponent(COMPANY.whatsappDefaultMsg)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lm-sh-whatsapp"
-            >
-              <span className="lm-sh-wa-dot" />
-              <span>Instant WhatsApp Desk: <strong>6361718607</strong> →</span>
-            </a>
-          </div>
-
-          <div className="lm-stats-grid">
+          <div className="ds-stats-grid">
             {LEDGER_STATS.map((st) => (
-              <div key={st.idx} className="lm-stat-item">
-                <div className="lm-stat-top">
-                  <span className="lm-stat-idx">/{st.idx}</span>
-                  <span className="lm-stat-line" />
+              <div key={st.idx} className="ds-stat-card">
+                <div className="ds-stat-top">
+                  <span className="ds-stat-idx">{st.idx}</span>
+                  <span className="ds-stat-rule" />
                 </div>
-                <div className="lm-stat-value">
+                <div className="ds-stat-num">
                   <AnimatedCounter target={st.count} suffix={st.suffix} />
                 </div>
-                <div className="lm-stat-label">{st.label}</div>
-                <div className="lm-stat-detail">{st.detail}</div>
-                <div className="lm-stat-bar" aria-hidden="true">
-                  <span />
-                </div>
+                <h3 className="ds-stat-lbl">{st.label}</h3>
+                <p className="ds-stat-desc">{st.detail}</p>
               </div>
             ))}
           </div>
