@@ -60,22 +60,19 @@ const HERO_SHOWCASES = [
 
 const HERO_BOTTOM_CARDS = [
   {
-    title: "Residential
-Design",
+    lines: ["Residential", "Design"],
     meta: "150+ Luxury Villas · Turnkey Fit-Out",
     path: "/services/architecture",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
   },
   {
-    title: "Commercial
-Spaces",
+    lines: ["Commercial", "Spaces"],
     meta: "60–90 Day Delivery · DIFC & Business Bay",
     path: "/services/office-renovation",
     image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=80"
   },
   {
-    title: "Bespoke
-Interiors",
+    lines: ["Bespoke", "Interiors"],
     meta: "35,000 sq.ft Al Quoz 3 Joinery Plant",
     path: "/services/interior-design",
     image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80"
@@ -333,15 +330,23 @@ export default function HomePage() {
           {/* BOTTOM 3-CARD HORIZONTAL CATEGORY DOCK (Residential / Commercial / Bespoke) */}
           <div className="lm-bottom-cards">
             {HERO_BOTTOM_CARDS.map((card) => (
-              <Link key={card.title} to={card.path} className="lm-feature-card">
+              <Link key={card.path} to={card.path} className="lm-feature-card">
                 <div className="lm-fc-thumb">
-                  <img src={card.image} alt={card.title.replace("\n", " ")} loading="eager" />
+                  <img src={card.image} alt={card.lines.join(" ")} loading="eager" />
                 </div>
                 <div className="lm-fc-body">
                   <h2 className="lm-fc-title">
-                    {card.title.split("\n").map((line, i) => (
+                    {card.lines.map((line, i) => (
                       <span key={i}>{line}</span>
                     ))}
+                  </h2>
+                  <p className="lm-fc-meta">{card.meta}</p>
+                  <span className="lm-fc-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </div>
+              </Link>
+            ))}
                   </h2>
                   <p className="lm-fc-meta">{card.meta}</p>
                   <span className="lm-fc-arrow" aria-hidden="true">
