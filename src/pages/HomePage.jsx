@@ -16,6 +16,148 @@ import { submitLeadEnquiry, buildWhatsAppEnquiryUrl } from "../utils/leadService
 
 const PROJECT_FILTERS = ["All", "Commercial", "Residential", "Hospitality", "Retail", "Healthcare"];
 
+const HERO_SHOWCASES = [
+  {
+    idx: "01",
+    shortLabel: "Emirates Hills Villa",
+    tag: "Signature Residential",
+    title: "Emirates Hills Private Residence",
+    location: "Emirates Hills, Dubai",
+    metrics: "11,800 sq.ft · 18 Weeks",
+    scope: "Full Villa Renovation, Custom Millwork & Smart Home",
+    slug: "emirates-hills-private-residence",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85",
+    bgImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1900&q=80"
+  },
+  {
+    idx: "02",
+    shortLabel: "EDC Corporate HQ",
+    tag: "Commercial Workplace",
+    title: "EDC Corporate Headquarters",
+    location: "Al Maryah Island, Abu Dhabi",
+    metrics: "15,210 sq.ft · 14 Weeks",
+    scope: "Turnkey Design & Build, Acoustic Joinery & MEP",
+    slug: "edc-headquarters-abu-dhabi",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=85",
+    bgImage: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=80"
+  },
+  {
+    idx: "03",
+    shortLabel: "Ember & Oak Grill",
+    tag: "Hospitality & F&B",
+    title: "Ember & Oak Fine Dining Grill",
+    location: "Downtown Dubai",
+    metrics: "6,200 sq.ft · 12 Weeks",
+    scope: "Hospitality Fit-Out, Kitchen MEP & Custom Seating",
+    slug: "ember-and-oak-grill-downtown",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85",
+    bgImage: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1900&q=80"
+  }
+];
+
+const LEDGER_STATS = [
+  {
+    idx: "01",
+    badge: "EST. 2016",
+    count: 10,
+    suffix: "+",
+    label: "Years of Excellence",
+    detail: "Single-source Dubai & Abu Dhabi turnkey contractor",
+    meter: "100%"
+  },
+  {
+    idx: "02",
+    badge: "UAE PORTFOLIO",
+    count: 640,
+    suffix: "+",
+    label: "Projects Delivered",
+    detail: "Offices, signature villas, F&B, retail & DHA clinics",
+    meter: "94%"
+  },
+  {
+    idx: "03",
+    badge: "100% IN-HOUSE",
+    count: 200,
+    suffix: "+",
+    label: "In-House Specialists",
+    detail: "Architects, MEP engineers, joiners & site managers",
+    meter: "88%"
+  },
+  {
+    idx: "04",
+    badge: "RESIDENTIAL",
+    count: 150,
+    suffix: "+",
+    label: "Luxury Villas Built",
+    detail: "Emirates Hills, Palm Jumeirah, Dubai Hills & Al Barari",
+    meter: "85%"
+  },
+  {
+    idx: "05",
+    badge: "ISO CERTIFIED",
+    count: 98,
+    suffix: "%",
+    label: "On-Time Handover",
+    detail: "Fixed-milestone programme & itemized BOQ certainty",
+    meter: "98%"
+  }
+];
+
+function AnimatedCounter({ target, suffix = "" }) {
+  const [val, setVal] = useState(0);
+  const ref = React.useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let frameId = null;
+    let started = false;
+
+    const runAnimation = () => {
+      if (started) return;
+      started = true;
+      const duration = 1450;
+      const startTime = performance.now();
+
+      const tick = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setVal(Math.round(target * eased));
+        if (progress < 1) {
+          frameId = requestAnimationFrame(tick);
+        } else {
+          setVal(target);
+        }
+      };
+      frameId = requestAnimationFrame(tick);
+    };
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          runAnimation();
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+
+    return () => {
+      obs.disconnect();
+      if (frameId) cancelAnimationFrame(frameId);
+    };
+  }, [target]);
+
+  return (
+    <span ref={ref}>
+      {val}
+      <span className="stat-ledger-suffix">{suffix}</span>
+    </span>
+  );
+}
+
 export default function HomePage() {
   usePageMeta({
     title: "Turnkey Interior Fit-Out & Architecture Studio in Dubai",
@@ -26,6 +168,8 @@ export default function HomePage() {
   const [projectFilter, setProjectFilter] = useState("All");
   const [activeOfferTab, setActiveOfferTab] = useState(OFFER_TABS[0].id);
   const [testiIdx, setTestiIdx] = useState(0);
+  const [heroSlide, setHeroSlide] = useState(0);
+  const activeHero = HERO_SHOWCASES[heroSlide] || HERO_SHOWCASES[0];
 
   // Home Contact Form State
   const [form, setForm] = useState({
@@ -42,7 +186,13 @@ export default function HomePage() {
     const timer = setInterval(() => {
       setTestiIdx((prev) => (prev + 1) % TESTIMONIALS.length);
     }, 6000);
-    return () => clearInterval(timer);
+    const heroTimer = setInterval(() => {
+      setHeroSlide((prev) => (prev + 1) % HERO_SHOWCASES.length);
+    }, 6500);
+    return () => {
+      clearInterval(timer);
+      clearInterval(heroTimer);
+    };
   }, []);
 
   const filteredProjects =
@@ -74,82 +224,184 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. HERO SECTION */}
+      {/* 1. PREMIUM EDITORIAL HERO & ARCHITECTURAL LEDGER STAT BAR */}
       <section className="home-hero" id="home">
         <div className="home-hero-bg" aria-hidden="true">
           <img
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80"
+            key={activeHero.bgImage}
+            src={activeHero.bgImage}
             alt=""
-            width="1800"
-            height="1100"
+            width="1900"
+            height="1150"
             fetchPriority="high"
           />
         </div>
         <div className="home-hero-overlay" />
         <div className="home-hero-blueprint" />
+        <div className="home-hero-glow" aria-hidden="true" />
 
         <div className="wrap home-hero-inner">
+          {/* LEFT COLUMN: STRICT 1 -> 2 -> 3 FOCAL HIERARCHY */}
           <div className="home-hero-copy">
-            <span className="eyebrow eyebrow-light">Dubai · Est. {COMPANY.established}</span>
-            <h1>
-              Dubai&apos;s fit-out
+            {/* FOCAL STEP 1A: CREDENTIAL TRUST PILL */}
+            <div className="hero-credential-bar">
+              <span className="hero-cred-pill">
+                <span className="hero-cred-dot" />
+                Dubai &amp; Abu Dhabi · Est. {COMPANY.established}
+              </span>
+              <span className="hero-cred-divider" aria-hidden="true" />
+              <span className="hero-cred-iso">ISO 9001 · 14001 · 45001 Certified</span>
+            </div>
+
+            {/* FOCAL STEP 1B: MONUMENTAL ARCHITECTURAL HEADLINE */}
+            <h1 className="hero-monumental-title">
+              Spaces engineered
               <br />
-              partner for <span className="em">considered</span>
+              for <span className="em">considered</span>
               <br />
-              interiors.
+              living &amp; work.
             </h1>
+
+            {/* CONCISE EDITORIAL LEDE */}
             <p className="home-hero-lede">
-              {COMPANY.shortName} designs, engineers, manufactures, and installs turnkey commercial, hospitality, and residential spaces — one accountable in-house team from first sketch to final handover.
+              One accountable Dubai design-and-build studio uniting architecture, authority approvals, in-house MEP engineering, and a <strong>35,000 sq.ft Al Quoz 3 joinery factory</strong> under one contract.
             </p>
-            <ul className="home-hero-points">
-              <li>
-                <Check size={18} />
-                <span>35,000 sq.ft in-house production facility in Al Quoz 3 — joinery, upholstery, metal &amp; glass.</span>
-              </li>
-              <li>
-                <Check size={18} />
-                <span>200+ in-house architects, interior designers, MEP engineers, and site managers.</span>
-              </li>
-              <li>
-                <Check size={18} />
-                <span>Most commercial projects delivered in 60–90 days · ISO 9001 · 14001 · 45001 certified.</span>
-              </li>
-            </ul>
+
+            {/* FOCAL STEP 2: HIGH-PROMINENCE PRIMARY CTA CLUSTER */}
             <div className="home-hero-ctas">
-              <Link to="/enquiry" className="btn btn-brass">
-                Book a Consultation
+              <Link to="/enquiry" className="btn-hero-primary">
+                <span>Book a Free Site Visit</span>
+                <span className="btn-hero-arrow" aria-hidden="true">
+                  <ArrowRight size={17} />
+                </span>
               </Link>
-              <Link to="/projects" className="btn btn-light">
-                View Our Projects
+              <Link to="/projects" className="btn-hero-secondary">
+                <span>Explore 640+ Projects</span>
               </Link>
+            </div>
+
+            {/* DIRECT WHATSAPP & STUDIO FAST-TRACK STRIP */}
+            <div className="hero-fast-strip">
+              <div className="hero-spec-pills">
+                <span className="hero-spec-chip">
+                  <Check size={14} /> 35,000 sq.ft Al Quoz Factory
+                </span>
+                <span className="hero-spec-chip">
+                  <Check size={14} /> 60–90 Day Commercial Delivery
+                </span>
+                <span className="hero-spec-chip">
+                  <Check size={14} /> Fixed Itemized BOQ
+                </span>
+              </div>
             </div>
           </div>
 
-          <Link
-            to="/projects/emirates-hills-private-residence"
-            className="home-hero-visual"
-            aria-label="View Featured Project: Emirates Hills Private Residence"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-              alt="Emirates Hills Private Residence turnkey fit-out by Yashmeen Future Building"
-              width="800"
-              height="920"
-            />
-            <span className="rb-tag">Featured Project</span>
-            <span className="rb-label">Private Residence — Emirates Hills</span>
-            <span className="frame-tag">Design &amp; Build</span>
-          </Link>
+          {/* RIGHT COLUMN: INTERACTIVE ARCHITECTURAL SHOWCASE STACK */}
+          <div className="hero-showcase-stage">
+            <div className="hero-showcase-frame">
+              {/* Top Architectural Coordinate Bar */}
+              <div className="hero-frame-topbar">
+                <span className="hero-frame-index">
+                  CASE STUDY {activeHero.idx} / 0{HERO_SHOWCASES.length}
+                </span>
+                <span className="hero-frame-metrics">{activeHero.metrics}</span>
+              </div>
+
+              {/* Main Clickable Case Study Viewport */}
+              <Link
+                to={`/projects/${activeHero.slug}`}
+                className="home-hero-visual"
+                aria-label={`Inspect Case Study: ${activeHero.title}`}
+              >
+                <img
+                  key={activeHero.image}
+                  src={activeHero.image}
+                  alt={`${activeHero.title} — Turnkey Fit-Out by ${COMPANY.shortName}`}
+                  width="860"
+                  height="960"
+                />
+                <span className="rb-tag">{activeHero.tag}</span>
+
+                <div className="hero-visual-caption">
+                  <div>
+                    <div className="hero-visual-loc">{activeHero.location}</div>
+                    <div className="hero-visual-name">{activeHero.title}</div>
+                    <div className="hero-visual-scope">{activeHero.scope}</div>
+                  </div>
+                  <span className="hero-visual-cta">
+                    View Case Study <ArrowRight size={15} />
+                  </span>
+                </div>
+              </Link>
+
+              {/* Interactive 3-Project Switcher Tabs */}
+              <div className="hero-Stage-tabs" role="tablist" aria-label="Featured project showcase">
+                {HERO_SHOWCASES.map((item, idx) => (
+                  <button
+                    key={item.slug}
+                    type="button"
+                    role="tab"
+                    aria-selected={heroSlide === idx}
+                    className={`hero-stage-tab${heroSlide === idx ? " active" : ""}`}
+                    onClick={() => setHeroSlide(idx)}
+                  >
+                    <span className="hst-num">{item.idx}</span>
+                    <span className="hst-lbl">{item.shortLabel}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Floating Glassmorphic Factory Guarantee Card */}
+            <div className="hero-floating-badge" data-parallax="0.08">
+              <div className="hfb-icon">
+                <ShieldCheck size={22} />
+              </div>
+              <div>
+                <div className="hfb-kicker">In-House Al Quoz 3 Manufacturing</div>
+                <div className="hfb-title">Zero Subcontractor Markups</div>
+                <div className="hfb-sub">Joinery · Marble · Acoustic Glazing · MEP</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="stat-band">
-          <div className="wrap stat-band-grid">
-            {COMPANY.stats.map((st) => (
-              <div key={st.label} className="stat-cell">
-                <div className="stat-num">{st.value}</div>
-                <div className="stat-lbl">{st.label}</div>
-              </div>
-            ))}
+        {/* FOCAL STEP 3: ELEVATED ARCHITECTURAL LEDGER STATISTIC BAR */}
+        <div className="stat-ledger-wrap">
+          <div className="wrap">
+            <div className="stat-ledger-header">
+              <span className="stat-ledger-kicker">
+                Verified Delivery Ledger (2016 — 2026)
+              </span>
+              <span className="stat-ledger-line" aria-hidden="true" />
+              <a
+                href={`https://wa.me/${COMPANY.whatsappNumber}?text=${encodeURIComponent(COMPANY.whatsappDefaultMsg)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="stat-ledger-wa"
+              >
+                Instant WhatsApp Desk: <strong>6361718607</strong> →
+              </a>
+            </div>
+
+            <div className="stat-ledger-grid">
+              {LEDGER_STATS.map((st) => (
+                <div key={st.idx} className="stat-ledger-card">
+                  <div className="slc-top">
+                    <span className="slc-idx">{st.idx}</span>
+                    <span className="slc-badge">{st.badge}</span>
+                  </div>
+                  <div className="slc-number">
+                    <AnimatedCounter target={st.count} suffix={st.suffix} />
+                  </div>
+                  <div className="slc-label">{st.label}</div>
+                  <p className="slc-detail">{st.detail}</p>
+                  <div className="slc-bar-track" aria-hidden="true">
+                    <div className="slc-bar-fill" style={{ width: st.meter }} />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
