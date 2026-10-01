@@ -4414,3 +4414,180 @@ h1, h2, h3, .serif-heading {
     opacity: 0.26 !important;
   }
 }
+
+/* ==========================================================================
+   100VH VIEWPORT FIT FIX FOR HERO & 3-CARD BOTTOM DOCK (NO VERTICAL OVERFLOW)
+   ========================================================================== */
+.main-logo {
+  height: 50px !important;
+}
+
+.header-inner {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.lm-hero {
+  min-height: calc(100vh - 68px) !important;
+  padding: clamp(18px, 2.4vh, 34px) 0 clamp(16px, 2.2vh, 26px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+@media (min-width: 1025px) {
+  .lm-hero {
+    height: calc(100vh - 68px) !important;
+    max-height: 920px;
+  }
+}
+
+/* Remove muddy multiply blob over the arch photography */
+.lm-arch-terracotta-alcove {
+  display: none !important;
+}
+
+.lm-arch-stage {
+  width: 55% !important;
+}
+
+.lm-arch-outer {
+  border-top-left-radius: clamp(240px, 31vw, 440px) !important;
+  border-left: 6px solid #e6ddd0 !important;
+}
+
+.lm-arch-blend-bottom {
+  height: 120px !important;
+}
+
+.lm-hero-container {
+  gap: clamp(14px, 2.2vh, 28px) !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+.lm-hero-main {
+  padding-top: clamp(4px, 1vh, 16px) !important;
+  align-items: flex-end !important;
+}
+
+.lm-copy-col {
+  max-width: 620px !important;
+}
+
+.lm-eyebrow {
+  margin-bottom: 10px !important;
+  font-size: 10.5px !important;
+}
+
+/* Guarantee 3 lines (never 4 lines) so "a Better Tomorrow" stays on one line */
+.lm-headline {
+  font-size: clamp(38px, 4.2vw, 62px) !important;
+  line-height: 1.03 !important;
+  margin: 0 0 14px !important;
+}
+
+.lm-headline span {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .lm-headline span {
+    white-space: normal;
+  }
+}
+
+.lm-subtitle {
+  font-size: 14px !important;
+  line-height: 1.58 !important;
+  max-width: 48ch !important;
+  margin-bottom: 20px !important;
+}
+
+.lm-cta-group {
+  gap: 16px !important;
+}
+
+.lm-primary-cta {
+  padding: 6px 22px 6px 6px !important;
+}
+
+.lm-primary-circle {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.lm-primary-text strong {
+  font-size: 13px !important;
+}
+
+.lm-primary-text small {
+  font-size: 10.5px !important;
+}
+
+.lm-explore-cta {
+  padding: 5px 14px 5px 5px !important;
+}
+
+.lm-circle-btn {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.lm-explore-label {
+  font-size: 12.5px !important;
+}
+
+.lm-arch-caption-wrap {
+  padding-bottom: 4px !important;
+}
+
+.lm-arch-badge {
+  padding: 9px 15px !important;
+}
+
+/* Compact Bottom 3-Card Dock so 100% of all 3 cards sit inside the 1st screen */
+.lm-bottom-cards {
+  gap: 20px !important;
+  padding-top: 4px !important;
+  margin-top: auto !important;
+}
+
+.lm-feature-card {
+  grid-template-columns: 126px 1fr !important;
+  gap: 15px !important;
+  padding: 9px 14px 9px 9px !important;
+  border-radius: 10px !important;
+}
+
+.lm-fc-thumb {
+  width: 126px !important;
+  height: 82px !important;
+  border-radius: 7px !important;
+}
+
+.lm-fc-index {
+  font-size: 9.5px !important;
+  margin-bottom: 2px !important;
+}
+
+.lm-fc-title {
+  font-size: 19px !important;
+  line-height: 1.1 !important;
+  margin-bottom: 2px !important;
+}
+
+.lm-fc-meta {
+  font-size: 11px !important;
+  margin-bottom: 3px !important;
+}
+
+.lm-fc-arrow {
+  font-size: 14px !important;
+  line-height: 1 !important;
+}
+
+.lm-side-pagination {
+  bottom: 140px !important;
+  left: 18px !important;
+}
