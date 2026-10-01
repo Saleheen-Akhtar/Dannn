@@ -236,123 +236,137 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. AUREN-INSPIRED ARCHITECTURAL BENTO HERO */}
-      <section className="auren-hero" id="home">
-        <div className="wrap auren-hero-wrap">
-          {/* CENTERED EDITORIAL HEADLINE BLOCK */}
-          <div className="auren-head-block">
-            <h1 className="auren-hero-title">
-              Building timeless spaces<br />that inspire better ways of living
+      {/* 1. YFB CANONICAL BENTO HERO — EXACT MATCH TO MOCKUP */}
+      <section className="yfb-hero" id="home">
+        <div className="wrap yfb-hero-wrap">
+          {/* CENTERED EDITORIAL HEADER BLOCK */}
+          <div className="yfb-hero-head">
+            <span className="yfb-hero-eyebrow">INTERIOR FIT-OUT &amp; CONTRACTING</span>
+            <h1 className="yfb-hero-title">
+              Crafting spaces<br />that are built to last
             </h1>
-            <div className="auren-title-rule" aria-hidden="true" />
-            <p className="auren-hero-sub">
-              From concept to completion, we design &amp; build architecture that<br className="auren-sub-br" />
-              balances beauty, functionality, and sustainability.
+            <div className="yfb-title-arc-wrap" aria-hidden="true">
+              <svg width="170" height="12" viewBox="0 0 170 12" fill="none">
+                <path d="M4 8C50 2, 120 2, 166 8" stroke="#a9832e" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
+            </div>
+            <p className="yfb-hero-sub">
+              End-to-end interior fit-out, contracting and turnkey delivery <br className="yfb-sub-br" />
+              for commercial, residential and hospitality spaces across the UAE.
             </p>
           </div>
 
-          {/* 3-COLUMN ARCHITECTURAL BENTO GRID */}
-          <div className="auren-bento-grid">
-            {/* COLUMN 1: LEFT (~25%) */}
-            <div className="auren-bento-col auren-col-1">
-              {/* Card 1: Cognac/Caramel Stat Card */}
-              <Link to="/projects" className="auren-card auren-card-stat" aria-label="Explore 640+ Completed Projects">
-                <div className="auren-stat-num">640+</div>
-                <div className="auren-stat-text">
-                  <h3>Completed Projects</h3>
-                  <p>Since 2016</p>
-                </div>
-                <div className="auren-card-arrow" aria-hidden="true">→</div>
-              </Link>
-
-              {/* Card 2: 01 Cultural & Commercial Architecture */}
+          {/* 3-COLUMN ASYMMETRIC BENTO GRID */}
+          <div className="yfb-bento-grid">
+            {/* COLUMN 1: LEFT FULL-HEIGHT CARD (01 Commercial Spaces) */}
+            <div className="yfb-bento-col yfb-col-left">
               <Link
-                to="/projects/edc-headquarters-abu-dhabi"
-                className="auren-card auren-card-img auren-card-arch"
-                aria-label="View Cultural Architecture: Beyond Form"
+                to="/services/office-renovation"
+                className="yfb-card yfb-card-img yfb-card-commercial"
+                aria-label="View 01 Commercial Spaces: Workplaces that perform"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80"
-                  alt="Cultural & Commercial Architecture"
+                  src="/static/hero/commercial.jpg"
+                  alt="Commercial Spaces — Workplaces that perform"
                   loading="eager"
                 />
-                <div className="auren-card-overlay">
-                  <span className="auren-card-num">01</span>
-                  <h3 className="auren-card-name">Cultural Architecture</h3>
-                  <p className="auren-card-sub">Beyond Form</p>
+                <div className="yfb-card-top-info">
+                  <span className="yfb-card-tag">01</span>
+                  <h3 className="yfb-card-heading">Commercial Spaces</h3>
+                  <p className="yfb-card-sub">Workplaces that perform</p>
+                </div>
+                <div className="yfb-circle-arrow yfb-arrow-bottom-left" aria-hidden="true">
+                  <span>→</span>
                 </div>
               </Link>
             </div>
 
-            {/* COLUMN 2: CENTER (~42%) */}
-            <div className="auren-bento-col auren-col-2">
-              {/* Card 3: 02 Residential Interior - Wide Cantilevered Staircase */}
+            {/* COLUMN 2: CENTER (Card 02 Hospitality + Split Row) */}
+            <div className="yfb-bento-col yfb-col-center">
+              {/* Card 02: Hospitality Spaces (Wide) */}
               <Link
-                to="/projects/emirates-hills-private-residence"
-                className="auren-card auren-card-img auren-card-interior"
-                aria-label="View Residential Interior: Light & Material"
+                to="/projects/ember-and-oak-grill-downtown"
+                className="yfb-card yfb-card-img yfb-card-hospitality"
+                aria-label="View 02 Hospitality Spaces: Experiences that stay"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
-                  alt="Residential Interior"
+                  src="/static/hero/hospitality.jpg"
+                  alt="Hospitality Spaces — Experiences that stay"
                   loading="eager"
                 />
-                <div className="auren-card-overlay">
-                  <span className="auren-card-num">02</span>
-                  <h3 className="auren-card-name">Residential Interior</h3>
-                  <p className="auren-card-sub">Light &amp; Material</p>
+                <div className="yfb-card-top-info">
+                  <span className="yfb-card-tag">02</span>
+                  <h3 className="yfb-card-heading">Hospitality Spaces</h3>
+                  <p className="yfb-card-sub">Experiences that stay</p>
+                </div>
+                <div className="yfb-circle-arrow yfb-arrow-bottom-right" aria-hidden="true">
+                  <span>→</span>
                 </div>
               </Link>
 
-              {/* Split Row: Philosophy + Process */}
-              <div className="auren-bento-row">
-                {/* Card 4: Design Philosophy Card */}
-                <Link to="/about" className="auren-card auren-card-phil" aria-label="Read our Design Philosophy">
-                  <h3 className="auren-phil-title">Design Philosophy</h3>
-                  <div className="auren-phil-rule" aria-hidden="true" />
-                  <p className="auren-phil-quote">
-                    Architecture is the dialogue between light, material, and human experience.
-                  </p>
-                  <div className="auren-card-arrow dark-arrow" aria-hidden="true">→</div>
+              {/* Split Row: 200+ Projects Stat + 03 Our Approach */}
+              <div className="yfb-split-row">
+                {/* 200+ Projects Delivered Stat Card */}
+                <Link
+                  to="/projects"
+                  className="yfb-card yfb-card-stat"
+                  aria-label="Explore 200+ Projects Delivered Across the UAE"
+                >
+                  <div className="yfb-stat-arc-bg" aria-hidden="true" />
+                  <div className="yfb-stat-number">200+</div>
+                  <div className="yfb-stat-info">
+                    <h3 className="yfb-stat-title">Projects Delivered</h3>
+                    <p className="yfb-stat-sub">Across the UAE</p>
+                  </div>
+                  <div className="yfb-stat-arrow" aria-hidden="true">→</div>
                 </Link>
 
-                {/* Card 5: 03 Design Process - Architectural Scale Model */}
+                {/* 03 Our Approach Card */}
                 <Link
-                  to="/why-us"
-                  className="auren-card auren-card-img auren-card-process"
-                  aria-label="View Design Process: From Concept to Reality"
+                  to="/about"
+                  className="yfb-card yfb-card-approach"
+                  aria-label="Learn about Our Approach: Thoughtful design, precise execution"
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80"
-                    alt="Design Process"
+                    className="yfb-approach-bg-img"
+                    src="/static/hero/approach.jpg"
+                    alt="Italian travertine marble and natural olive branch"
                     loading="eager"
                   />
-                  <div className="auren-card-overlay">
-                    <span className="auren-card-num">03</span>
-                    <h3 className="auren-card-name">Design Process</h3>
-                    <p className="auren-card-sub">From Concept to Reality</p>
+                  <div className="yfb-approach-content">
+                    <div className="yfb-approach-top">
+                      <span className="yfb-approach-dash" />
+                      <span className="yfb-card-tag">03</span>
+                    </div>
+                    <h3 className="yfb-card-heading dark-text">Our Approach</h3>
+                    <p className="yfb-approach-desc">
+                      Thoughtful design, precise execution and turnkey delivery from concept to completion.
+                    </p>
+                    <div className="yfb-approach-arrow" aria-hidden="true">→</div>
                   </div>
                 </Link>
               </div>
             </div>
 
-            {/* COLUMN 3: RIGHT (~33%) */}
-            <div className="auren-bento-col auren-col-3">
-              {/* Card 6: 04 Residential Architecture - Full-Height Luxury Villa with Pool */}
+            {/* COLUMN 3: RIGHT FULL-HEIGHT CARD (04 Residential Spaces) */}
+            <div className="yfb-bento-col yfb-col-right">
               <Link
-                to="/projects/palm-jumeirah-signature-villa"
-                className="auren-card auren-card-img auren-card-villa"
-                aria-label="View Residential Architecture: Casa Horizon"
+                to="/services/architecture"
+                className="yfb-card yfb-card-img yfb-card-residential"
+                aria-label="View 04 Residential Spaces: Homes with character"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
-                  alt="Residential Architecture - Casa Horizon"
+                  src="/static/hero/residential.jpg"
+                  alt="Residential Spaces — Homes with character"
                   loading="eager"
                 />
-                <div className="auren-card-overlay">
-                  <span className="auren-card-num">04</span>
-                  <h3 className="auren-card-name">Residential Architecture</h3>
-                  <p className="auren-card-sub">Casa Horizon</p>
+                <div className="yfb-card-top-info">
+                  <span className="yfb-card-tag">04</span>
+                  <h3 className="yfb-card-heading">Residential Spaces</h3>
+                  <p className="yfb-card-sub">Homes with character</p>
+                </div>
+                <div className="yfb-circle-arrow yfb-arrow-bottom-right" aria-hidden="true">
+                  <span>→</span>
                 </div>
               </Link>
             </div>
@@ -360,28 +374,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 1B. SUBTLE ARCHITECTURAL PROOF BAR */}
-      <section className="auren-proof-bar" aria-label="Key Studio Statistics">
-        <div className="wrap auren-proof-grid">
-          <div className="auren-proof-item">
-            <span className="auren-pi-num">10+</span>
-            <span className="auren-pi-lbl">Years Active · Est. 2016</span>
+      {/* 1B. ELEGANT PROOF BAND (EST. 2016 · 640+ DELIVERED · 35,000 SQ.FT FACTORY) */}
+      <section className="yfb-proof-band" aria-label="Key Studio Statistics">
+        <div className="wrap yfb-proof-inner">
+          <div className="yfb-proof-stat">
+            <span className="yfb-ps-num">10+</span>
+            <span className="yfb-ps-label">Years Active (Est. 2016)</span>
           </div>
-          <div className="auren-proof-item">
-            <span className="auren-pi-num">640+</span>
-            <span className="auren-pi-lbl">Delivered Projects</span>
+          <div className="yfb-proof-stat">
+            <span className="yfb-ps-num">640+</span>
+            <span className="yfb-ps-label">Delivered Projects Across UAE</span>
           </div>
-          <div className="auren-proof-item">
-            <span className="auren-pi-num">35,000</span>
-            <span className="auren-pi-lbl">Sq.Ft Al Quoz 3 Factory</span>
+          <div className="yfb-proof-stat">
+            <span className="yfb-ps-num">35,000</span>
+            <span className="yfb-ps-label">Sq.Ft Al Quoz 3 Factory</span>
           </div>
-          <div className="auren-proof-item">
-            <span className="auren-pi-num">200+</span>
-            <span className="auren-pi-lbl">In-House Specialists</span>
+          <div className="yfb-proof-stat">
+            <span className="yfb-ps-num">200+</span>
+            <span className="yfb-ps-label">In-House Architects &amp; Engineers</span>
           </div>
-          <div className="auren-proof-item">
-            <span className="auren-pi-num">98%</span>
-            <span className="auren-pi-lbl">On-Time Handover Rate</span>
+          <div className="yfb-proof-stat">
+            <span className="yfb-ps-num">98%</span>
+            <span className="yfb-ps-label">On-Time Handover Rate</span>
           </div>
         </div>
       </section>

@@ -3106,3 +3106,465 @@ h1, h2, h3, .serif-heading {
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 16px rgba(110, 72, 35, 0.28) !important;
 }
+
+
+/* ==========================================================================
+   YFB CANONICAL BENTO HERO — EXACT MATCH TO USER MOCKUP
+   Strictly uses var(--serif) / Fraunces for all Headings & h1 tags!
+   Engineered to fit gracefully in viewport on standard desktop screens.
+   ========================================================================== */
+.yfb-hero {
+  background-color: #f7f4ee;
+  color: #1a1714;
+  padding: clamp(14px, 1.8vh, 26px) 0 clamp(16px, 2vh, 28px);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1025px) {
+  .yfb-hero {
+    min-height: calc(100vh - 74px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.yfb-hero-wrap {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1200px) {
+  .yfb-hero-wrap {
+    padding: 0 36px;
+  }
+}
+
+/* Centered Header Block */
+.yfb-hero-head {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto clamp(16px, 2.2vh, 26px);
+}
+
+.yfb-hero-eyebrow {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7b7163;
+  margin-bottom: clamp(6px, 0.8vh, 10px);
+}
+
+.yfb-hero-title {
+  font-family: var(--serif) !important;
+  font-size: clamp(32px, 3.8vw, 54px) !important;
+  font-weight: 400 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.025em !important;
+  color: #171410 !important;
+  margin: 0 0 4px !important;
+}
+
+.yfb-title-arc-wrap {
+  margin: 0 auto clamp(6px, 1vh, 10px);
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.yfb-title-arc-wrap svg {
+  width: clamp(140px, 14vw, 190px);
+  height: auto;
+}
+
+.yfb-hero-sub {
+  font-family: var(--sans);
+  font-size: clamp(13px, 1.05vw, 14.5px);
+  line-height: 1.5;
+  color: #554e42;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .yfb-sub-br {
+    display: none;
+  }
+}
+
+/* 3-Column Asymmetric Bento Grid */
+.yfb-bento-grid {
+  display: grid;
+  grid-template-columns: 28fr 44fr 28fr;
+  gap: 14px;
+  width: 100%;
+}
+
+.yfb-bento-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Base Card Styling */
+.yfb-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  box-shadow: 0 4px 18px rgba(23, 20, 16, 0.05);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.yfb-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(23, 20, 16, 0.12);
+}
+
+/* Image Card Styling */
+.yfb-card-img {
+  background: #171512;
+}
+
+.yfb-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.yfb-card-img:hover img {
+  transform: scale(1.04);
+}
+
+/* Card Top Overlay Metadata */
+.yfb-card-top-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 20px 28px;
+  background: linear-gradient(180deg, rgba(20, 18, 14, 0.72) 0%, rgba(20, 18, 14, 0.3) 65%, rgba(20, 18, 14, 0) 100%);
+  color: #ffffff;
+  z-index: 2;
+}
+
+.yfb-card-tag {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.92);
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+.yfb-card-heading {
+  font-family: var(--serif) !important;
+  font-size: clamp(18px, 1.5vw, 22px) !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  color: #ffffff !important;
+  margin: 0 0 2px !important;
+}
+
+.yfb-card-heading.dark-text {
+  color: #171410 !important;
+}
+
+.yfb-card-sub {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+/* Frosted Glass Circular Arrow Button */
+.yfb-circle-arrow {
+  position: absolute;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  transition: all 0.28s ease;
+}
+
+.yfb-card:hover .yfb-circle-arrow {
+  background: #ffffff;
+  color: #171410;
+  transform: scale(1.08);
+}
+
+.yfb-arrow-bottom-left {
+  bottom: 18px;
+  left: 18px;
+}
+
+.yfb-arrow-bottom-right {
+  bottom: 18px;
+  right: 18px;
+}
+
+/* Card Heights & Dimensions for Desktop Viewport Optimization */
+@media (min-width: 1025px) {
+  /* Columns 1 & 3: Full-Height Commercial & Residential Cards */
+  .yfb-card-commercial,
+  .yfb-card-residential {
+    height: clamp(380px, 48vh, 500px);
+  }
+
+  /* Column 2: Center Layout */
+  .yfb-card-hospitality {
+    height: calc((clamp(380px, 48vh, 500px) - 14px) * 0.58);
+  }
+
+  .yfb-split-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    height: calc((clamp(380px, 48vh, 500px) - 14px) * 0.42);
+  }
+}
+
+/* Solid Stat Card (200+ Projects) */
+.yfb-card-stat {
+  background: #524a37;
+  color: #ffffff;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.yfb-stat-arc-bg {
+  position: absolute;
+  top: -36px;
+  right: -36px;
+  width: 130px;
+  height: 130px;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.yfb-stat-number {
+  font-family: var(--serif) !important;
+  font-size: clamp(32px, 2.8vw, 44px);
+  font-weight: 400;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.yfb-stat-title {
+  font-family: var(--serif) !important;
+  font-size: clamp(15px, 1.2vw, 17px) !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  margin: 0 0 2px !important;
+}
+
+.yfb-stat-sub {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+.yfb-stat-arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  font-size: 19px;
+  color: rgba(255, 255, 255, 0.85);
+  transition: transform 0.25s ease;
+}
+
+.yfb-card-stat:hover .yfb-stat-arrow {
+  transform: translateX(4px);
+  color: #ffffff;
+}
+
+/* Card 03: Our Approach (Warm Italian Travertine Marble with Olive Branch) */
+.yfb-card-approach {
+  background: #ebe4d8;
+  color: #171410;
+  padding: 18px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.yfb-approach-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  pointer-events: none;
+  opacity: 0.95;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.yfb-card-approach:hover .yfb-approach-bg-img {
+  transform: scale(1.03);
+}
+
+.yfb-approach-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 58%;
+}
+
+.yfb-approach-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.yfb-approach-top .yfb-card-tag {
+  color: #6a6152;
+  font-size: 11px;
+}
+
+.yfb-approach-dash {
+  width: 16px;
+  height: 1.5px;
+  background: #a9832e;
+}
+
+.yfb-approach-desc {
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.5;
+  color: #3b352b;
+  margin: 4px 0 0;
+  max-width: 20ch;
+  font-weight: 500;
+}
+
+.yfb-approach-arrow {
+  font-size: 18px;
+  color: #171410;
+  margin-top: 6px;
+  transition: transform 0.25s ease;
+  width: fit-content;
+}
+
+.yfb-card-approach:hover .yfb-approach-arrow {
+  transform: translateX(4px);
+  color: #a9832e;
+}
+
+/* Subtle Proof Band below Hero */
+.yfb-proof-band {
+  background: #f0ece3;
+  border-top: 1px solid rgba(20, 18, 15, 0.08);
+  border-bottom: 1px solid rgba(20, 18, 15, 0.08);
+  padding: 18px 0;
+}
+
+.yfb-proof-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.yfb-proof-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.yfb-ps-num {
+  font-family: var(--serif) !important;
+  font-size: 22px;
+  font-weight: 500;
+  color: #524a37;
+}
+
+.yfb-ps-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: #6a6254;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .yfb-bento-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .yfb-col-right {
+    grid-column: 1 / -1;
+  }
+  .yfb-card-commercial,
+  .yfb-card-residential {
+    height: 380px;
+  }
+  .yfb-card-hospitality {
+    height: 240px;
+  }
+  .yfb-split-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 720px) {
+  .yfb-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .yfb-split-row {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .yfb-card-stat,
+  .yfb-card-approach {
+    height: 180px;
+  }
+  .yfb-card-commercial,
+  .yfb-card-hospitality,
+  .yfb-card-residential {
+    height: 320px;
+  }
+  .yfb-proof-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
