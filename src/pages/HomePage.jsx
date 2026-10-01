@@ -183,6 +183,7 @@ export default function HomePage() {
   const [activeOfferTab, setActiveOfferTab] = useState(OFFER_TABS[0].id);
   const [testiIdx, setTestiIdx] = useState(0);
   const [heroSlide, setHeroSlide] = useState(0);
+  const [activeHotspot, setActiveHotspot] = useState(2);
   const activeHero = HERO_SHOWCASES[heroSlide] || HERO_SHOWCASES[0];
 
   // Home Contact Form State
@@ -238,130 +239,216 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. LUMEN-INSPIRED SCULPTURAL ARCH EDITORIAL HERO & WARM GALLERY DOCK */}
-      <section className="lm-hero" id="home">
-        {/* Right Sculptural Architectural Plaster Arch & Terracotta Alcove Stage */}
-        <div className="lm-arch-stage" aria-hidden="true">
-          <div className="lm-arch-outer">
-            <div className="lm-arch-terracotta-alcove" />
+      {/* 1. FORMA-STYLE CENTERPIECE & SPLIT-TYPOGRAPHY ARCHITECTURAL HERO LAYOUT */}
+      <section className="fs-hero-outer" id="home">
+        <div className="fs-hero-frame">
+          {/* Dynamic Atmospheric Background */}
+          <div className="fs-hero-bg" aria-hidden="true">
             {HERO_SHOWCASES.map((slide, idx) => (
-              <div
+              <img
                 key={slide.slug}
-                className={`lm-arch-slide${heroSlide === idx ? " is-active" : ""}`}
-              >
-                <img
-                  src={slide.image}
-                  alt={slide.projectTitle}
-                  width="1600"
-                  height="1100"
-                  fetchPriority={idx === 0 ? "high" : "auto"}
-                />
-              </div>
+                src={slide.image}
+                alt=""
+                className={`fs-bg-img${heroSlide === idx ? " is-active" : ""}`}
+              />
             ))}
-            <div className="lm-arch-blend-bottom" />
+            <div className="fs-bg-gradient" />
           </div>
-        </div>
 
-        {/* Left-Edge Vertical Slide Index (01 | 02 03) */}
-        <div className="lm-side-pagination" role="tablist" aria-label="Hero showcase slides">
-          {HERO_SHOWCASES.map((slide, idx) => {
-            const active = heroSlide === idx;
-            return (
-              <React.Fragment key={slide.idx}>
+          {/* TOP-CENTER SCULPTED NOTCH TAB */}
+          <div className="fs-top-notch">
+            <span>yashmeen studio.</span>
+          </div>
+
+          {/* LEFT & RIGHT EDGE CAROUSEL NOTCH BUTTONS */}
+          <button
+            type="button"
+            className="fs-edge-arrow fs-edge-prev"
+            aria-label="Previous showcase"
+            onClick={() => setHeroSlide((prev) => (prev - 1 + HERO_SHOWCASES.length) % HERO_SHOWCASES.length)}
+          >
+            <ChevronLeft size={18} />
+          </button>
+
+          <button
+            type="button"
+            className="fs-edge-arrow fs-edge-next"
+            aria-label="Next showcase"
+            onClick={() => setHeroSlide((prev) => (prev + 1) % HERO_SHOWCASES.length)}
+          >
+            <ChevronRight size={18} />
+          </button>
+
+          {/* GIANT SPLIT BACKGROUND TYPOGRAPHY: "yash" [studio.] "meen" */}
+          <div className="fs-giant-type" aria-hidden="true">
+            <span className="fs-giant-word fs-giant-left">yash</span>
+            <span className="fs-giant-center">fit-out.</span>
+            <span className="fs-giant-word fs-giant-right">meen</span>
+          </div>
+
+          {/* MAIN 3-COLUMN FOREGROUND STAGE */}
+          <div className="fs-stage-grid">
+            {/* LEFT COLUMN: EDITORIAL COPY + PILL CTA + SOCIAL CIRCLES */}
+            <div className="fs-left-col">
+              <div className="fs-copy-block">
+                <p>
+                  We design, engineer, and build bespoke interiors that don&apos;t just fill a floorplate — they become its architectural signature.
+                </p>
+                <p>
+                  Every project unites turnkey authority approvals, in-house MEP engineering, and our 35,000 sq.ft Al Quoz 3 joinery factory.
+                </p>
+              </div>
+
+              <div className="fs-left-cta-wrap">
+                <Link to="/projects" className="fs-pill-cta">
+                  Explore 640+ Projects
+                </Link>
+              </div>
+
+              <div className="fs-social-row">
+                <a
+                  href={COMPANY.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fs-social-circle"
+                  aria-label="LinkedIn"
+                >
+                  in
+                </a>
+                <a
+                  href={COMPANY.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fs-social-circle"
+                  aria-label="Instagram"
+                >
+                  ig
+                </a>
+                <a
+                  href={`https://wa.me/${COMPANY.whatsappNumber}?text=${encodeURIComponent(COMPANY.whatsappDefaultMsg)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fs-social-circle"
+                  aria-label="WhatsApp 6361718607"
+                >
+                  wa
+                </a>
+              </div>
+            </div>
+
+            {/* CENTER COLUMN: SCULPTURAL ARCHITECTURAL SHOWCASE + INTERACTIVE HOTSPOT PINS */}
+            <div className="fs-center-col">
+              <div className="fs-centerpiece-wrap">
+                <Link
+                  to={`/projects/${activeHero.slug}`}
+                  className="fs-centerpiece-card"
+                  aria-label={`View Case Study: ${activeHero.projectTitle}`}
+                >
+                  <img
+                    key={activeHero.image}
+                    src={activeHero.image}
+                    alt={activeHero.projectTitle}
+                  />
+                  <div className="fs-centerpiece-badge">
+                    <span>{activeHero.projectTitle}</span>
+                    <small>{activeHero.projectMeta}</small>
+                  </div>
+                </Link>
+
+                {/* Hotspot Pin 1 (Bottom-Left) */}
                 <button
                   type="button"
-                  role="tab"
-                  aria-selected={active}
-                  aria-label={`Slide ${slide.idx}: ${slide.projectTitle}`}
-                  className={`lm-page-num${active ? " active" : ""}`}
-                  onClick={() => setHeroSlide(idx)}
+                  className={`fs-hotspot fs-hs-1${activeHotspot === 1 ? " active" : ""}`}
+                  onClick={() => setActiveHotspot(activeHotspot === 1 ? 0 : 1)}
+                  aria-label="Toggle In-House Joinery detail"
                 >
-                  {slide.idx}
+                  {activeHotspot === 1 ? "×" : "+"}
                 </button>
-                {idx === 0 && <span className="lm-page-line" aria-hidden="true" />}
-              </React.Fragment>
-            );
-          })}
-        </div>
+                {activeHotspot === 1 && (
+                  <div className="fs-hotspot-popover fs-pop-1">
+                    <strong>35,000 sq.ft Al Quoz 3 Factory</strong> — Custom walnut millwork, kitchens, and wardrobes crafted in-house.
+                  </div>
+                )}
 
-        <div className="wrap lm-hero-container">
-          <div className="lm-hero-main">
-            {/* LEFT EDITORIAL COLUMN — STRICT 1 -> 2 -> 3 FOCAL FLOW */}
-            <div className="lm-copy-col">
-              {/* 1A: Spaced Micro-Eyebrow */}
-              <div className="lm-eyebrow">
-                <span className="lm-eyebrow-dot" />
-                <span>{activeHero.eyebrow}</span>
+                {/* Hotspot Pin 2 (Top-Right) */}
+                <button
+                  type="button"
+                  className={`fs-hotspot fs-hs-2${activeHotspot === 2 ? " active" : ""}`}
+                  onClick={() => setActiveHotspot(activeHotspot === 2 ? 0 : 2)}
+                  aria-label="Toggle Turnkey MEP & Approvals detail"
+                >
+                  {activeHotspot === 2 ? "×" : "+"}
+                </button>
+
+                {/* Hotspot Pin 3 (Mid-Right with Glass Popover, matching reference) */}
+                <button
+                  type="button"
+                  className={`fs-hotspot fs-hs-3${activeHotspot === 3 ? " active" : ""}`}
+                  onClick={() => setActiveHotspot(activeHotspot === 3 ? 0 : 3)}
+                  aria-label="Toggle Project Specification detail"
+                >
+                  {activeHotspot === 3 ? "×" : "+"}
+                </button>
+                {(activeHotspot === 2 || activeHotspot === 3) && (
+                  <div className="fs-hotspot-popover fs-pop-3">
+                    {activeHotspot === 2
+                      ? "In-house MEP engineering & direct DM, DCD, DIFC and Trakhees authority approvals."
+                      : `${activeHero.projectTitle} — ${activeHero.projectMeta}. Delivered on a fixed BOQ.`}
+                  </div>
+                )}
               </div>
 
-              {/* 1B: #1 FOCAL POINT — Tall Sculptural Editorial Headline */}
-              <h1 className="lm-headline">
-                <span>{activeHero.line1}</span>
-                <span className="lm-headline-accent">{activeHero.line2}</span>
-                <span>{activeHero.line3}</span>
-              </h1>
-
-              {/* Concise, Scannable Lead Paragraph */}
-              <p className="lm-subtitle">{activeHero.subtitle}</p>
-
-              {/* #2 FOCAL POINT — High-Prominence Dual CTA Cluster */}
-              <div className="lm-cta-group">
-                <Link to="/enquiry" className="lm-primary-cta">
-                  <span className="lm-primary-circle" aria-hidden="true">
-                    <ArrowRight size={19} strokeWidth={2} />
-                  </span>
-                  <span className="lm-primary-text">
-                    <strong>Book a Consultation</strong>
-                    <small>Free Site Visit &amp; Itemized BOQ</small>
-                  </span>
-                </Link>
-
-                <Link to="/projects" className="lm-explore-cta">
-                  <span className="lm-circle-btn" aria-hidden="true">
-                    <ArrowRight size={18} strokeWidth={1.8} />
-                  </span>
-                  <span className="lm-explore-label">Explore 640+ Projects</span>
-                </Link>
-              </div>
+              <div className="fs-since-label">Since {COMPANY.established} · Dubai, UAE</div>
             </div>
 
-            {/* RIGHT FLOATING CASE STUDY PILL ANCHORED INSIDE ARCH */}
-            <div className="lm-arch-caption-wrap">
-              <Link to={`/projects/${activeHero.slug}`} className="lm-arch-badge">
-                <span className="lm-ab-dot" />
-                <div>
-                  <div className="lm-ab-title">{activeHero.projectTitle}</div>
-                  <div className="lm-ab-meta">{activeHero.projectMeta}</div>
+            {/* RIGHT COLUMN: SECTOR SELECTOR CIRCLES + FLOATING CONSULTATION CARD */}
+            <div className="fs-right-col">
+              {/* Mid-Right Selector ("Choose your sector" + 3 circular thumbnails) */}
+              <div className="fs-selector-row">
+                <span className="fs-selector-label">Choose sector</span>
+                <div className="fs-selector-swatches" role="tablist" aria-label="Choose project sector">
+                  {HERO_SHOWCASES.map((item, idx) => (
+                    <button
+                      key={item.slug}
+                      type="button"
+                      role="tab"
+                      aria-selected={heroSlide === idx}
+                      aria-label={item.projectTitle}
+                      className={`fs-swatch-btn${heroSlide === idx ? " active" : ""}`}
+                      onClick={() => setHeroSlide(idx)}
+                    >
+                      <img src={item.image} alt={item.projectTitle} />
+                    </button>
+                  ))}
                 </div>
-                <span className="lm-ab-arrow" aria-hidden="true">
-                  <ArrowRight size={14} />
-                </span>
-              </Link>
+              </div>
+
+              {/* Bottom-Right Floating Consultation Card with Portrait */}
+              <div className="fs-consult-card">
+                <div className="fs-consult-copy">
+                  <h2>Get a Free Consultation</h2>
+                  <p>
+                    Share your brief and our Dubai estimation team will prepare a tailored site survey &amp; itemized BOQ.
+                  </p>
+                  <Link to="/enquiry" className="fs-consult-btn">
+                    <span>Request a Call</span>
+                    <span className="fs-consult-arrow" aria-hidden="true">↗</span>
+                  </Link>
+                </div>
+                <div className="fs-consult-person">
+                  <img
+                    src={COMPANY.founder.portrait}
+                    alt={COMPANY.founder.name}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* #3 FOCAL POINT — BOTTOM 3-CARD HORIZONTAL CATEGORY DOCK */}
-          <div className="lm-bottom-cards">
-            {HERO_BOTTOM_CARDS.map((card, i) => (
-              <Link key={card.path} to={card.path} className="lm-feature-card">
-                <div className="lm-fc-thumb">
-                  <img src={card.image} alt={card.lines.join(" ")} loading="eager" />
-                </div>
-                <div className="lm-fc-body">
-                  <span className="lm-fc-index">0{i + 1} // DIVISION</span>
-                  <h2 className="lm-fc-title">
-                    {card.lines.map((line, idx) => (
-                      <span key={idx}>{line}</span>
-                    ))}
-                  </h2>
-                  <p className="lm-fc-meta">{card.meta}</p>
-                  <span className="lm-fc-arrow" aria-hidden="true">
-                    →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {/* BOTTOM-CENTER SCULPTED SCROLL NOTCH */}
+          <a href="#about" className="fs-bottom-notch" aria-label="Scroll down">
+            <span>↓</span>
+          </a>
         </div>
       </section>
 

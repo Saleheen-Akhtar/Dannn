@@ -4591,3 +4591,582 @@ h1, h2, h3, .serif-heading {
   bottom: 140px !important;
   left: 18px !important;
 }
+
+/* ==========================================================================
+   FORMA STUDIO REFERENCE HERO LAYOUT (WITH YFB INK, CREAM & BRASS PALETTE)
+   ========================================================================== */
+.fs-hero-outer {
+  background: var(--paper);
+  padding: 12px 24px 24px;
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: stretch;
+}
+
+.fs-hero-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 104px);
+  background: radial-gradient(circle at 52% 42%, #2c2419 0%, #17140f 65%, #100e0a 100%);
+  border-radius: 34px;
+  padding: 44px 56px 36px;
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 28px 68px rgba(23, 20, 15, 0.22);
+}
+
+/* Subtle Atmospheric Background Image Inside Frame */
+.fs-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.fs-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  filter: brightness(0.28) contrast(1.1) saturate(0.85);
+  transition: opacity 0.9s ease, transform 5s ease;
+}
+
+.fs-bg-img.is-active {
+  opacity: 0.42;
+  transform: scale(1);
+}
+
+.fs-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 54%, rgba(212, 175, 87, 0.16) 0%, rgba(23, 20, 15, 0.72) 55%, rgba(16, 14, 10, 0.95) 100%);
+}
+
+/* Top-Center Sculpted Notch Tab (Matches "forma studio." top notch) */
+.fs-top-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 8px 38px 12px;
+  border-bottom-left-radius: 26px;
+  border-bottom-right-radius: 26px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  z-index: 6;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Left & Right Edge Sculpted Carousel Notches */
+.fs-edge-arrow {
+  position: absolute;
+  top: 52%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 68px;
+  background: var(--paper);
+  color: var(--ink);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 6;
+  transition: all 0.25s ease;
+}
+
+.fs-edge-prev {
+  left: 0;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  padding-right: 4px;
+}
+
+.fs-edge-next {
+  right: 0;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  padding-left: 4px;
+}
+
+.fs-edge-arrow:hover {
+  background: var(--brass-light);
+  width: 40px;
+}
+
+/* Giant Split Background Typography: "yash" [fit-out.] "meen" */
+.fs-giant-type {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  margin-top: 8px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fs-giant-word {
+  font-family: var(--sans);
+  font-size: clamp(72px, 12.2vw, 184px);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+  color: #faf7f0;
+}
+
+.fs-giant-left {
+  text-align: left;
+}
+
+.fs-giant-right {
+  text-align: right;
+}
+
+.fs-giant-center {
+  font-family: var(--sans);
+  font-size: clamp(22px, 2.8vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--brass-light);
+  padding: 0 clamp(16px, 2.5vw, 40px);
+  transform: translateY(-18px);
+}
+
+/* Main 3-Column Stage Overlapping the Giant Typography */
+.fs-stage-grid {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 28px;
+  align-items: end;
+  flex: 1;
+  margin-top: -42px;
+}
+
+/* Left Column: Copy + White Pill CTA + Social Circles */
+.fs-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  height: 100%;
+  padding-top: 48px;
+}
+
+.fs-copy-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 310px;
+}
+
+.fs-copy-block p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(250, 247, 240, 0.82);
+}
+
+.fs-pill-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 34px;
+  background: #faf7f0;
+  color: #17140f;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.fs-pill-cta:hover {
+  background: var(--brass-light);
+  transform: translateY(-2px);
+}
+
+.fs-social-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.fs-social-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #faf7f0;
+  color: #17140f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.fs-social-circle:hover {
+  background: var(--brass-light);
+  transform: translateY(-2px);
+}
+
+/* Center Column: Sculptural Centerpiece + Interactive Hotspots */
+.fs-center-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.fs-centerpiece-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+  aspect-ratio: 1 / 0.96;
+}
+
+.fs-centerpiece-card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 2px solid rgba(212, 175, 87, 0.5);
+  box-shadow:
+    0 34px 64px rgba(0, 0, 0, 0.65),
+    0 0 40px rgba(212, 175, 87, 0.14);
+  position: relative;
+}
+
+.fs-centerpiece-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.fs-centerpiece-card:hover img {
+  transform: scale(1.05);
+}
+
+.fs-centerpiece-badge {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  padding: 10px 14px;
+  background: rgba(16, 14, 10, 0.84);
+  border: 1px solid rgba(212, 175, 87, 0.35);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+}
+
+.fs-centerpiece-badge span {
+  font-family: var(--serif-editorial);
+  font-size: 17px;
+  font-weight: 600;
+  color: #faf7f0;
+  line-height: 1.15;
+}
+
+.fs-centerpiece-badge small {
+  font-size: 10.5px;
+  color: var(--brass-light);
+}
+
+/* Interactive Hotspot Pins (+ / ×) */
+.fs-hotspot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(250, 247, 240, 0.22);
+  border: 1px solid rgba(250, 247, 240, 0.65);
+  color: #faf7f0;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  z-index: 5;
+  transition: all 0.2s ease;
+}
+
+.fs-hotspot:hover,
+.fs-hotspot.active {
+  background: var(--brass-light);
+  color: #17140f;
+  border-color: var(--brass-light);
+  transform: scale(1.1);
+}
+
+.fs-hs-1 {
+  bottom: 24%;
+  left: -14px;
+}
+
+.fs-hs-2 {
+  top: 18%;
+  right: -14px;
+}
+
+.fs-hs-3 {
+  bottom: 34%;
+  right: -14px;
+}
+
+.fs-hotspot-popover {
+  position: absolute;
+  z-index: 6;
+  width: 210px;
+  padding: 12px 14px;
+  background: rgba(250, 247, 240, 0.16);
+  border: 1px solid rgba(250, 247, 240, 0.38);
+  border-radius: 14px;
+  backdrop-filter: blur(14px);
+  font-size: 11px;
+  line-height: 1.45;
+  color: #faf7f0;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.fs-pop-1 {
+  bottom: 18%;
+  left: 24px;
+}
+
+.fs-pop-3 {
+  bottom: 28%;
+  right: -175px;
+}
+
+.fs-since-label {
+  margin-top: 14px;
+  font-size: 11px;
+  color: rgba(250, 247, 240, 0.55);
+  letter-spacing: 0.08em;
+}
+
+/* Right Column: Sector Swatches + Floating Consultation Card */
+.fs-right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  height: 100%;
+  padding-top: 48px;
+}
+
+.fs-selector-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fs-selector-label {
+  font-size: 12.5px;
+  color: rgba(250, 247, 240, 0.85);
+}
+
+.fs-selector-swatches {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fs-swatch-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  padding: 3px;
+  background: rgba(250, 247, 240, 0.12);
+  border: 1.5px solid rgba(250, 247, 240, 0.3);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.fs-swatch-btn.active,
+.fs-swatch-btn:hover {
+  border-color: var(--brass-light);
+  transform: scale(1.12);
+  box-shadow: 0 0 14px rgba(212, 175, 87, 0.5);
+}
+
+.fs-swatch-btn img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Bottom-Right White Consultation Card with Founder/Specialist Cutout */
+.fs-consult-card {
+  position: relative;
+  width: 100%;
+  max-width: 330px;
+  background: #faf7f0;
+  color: #17140f;
+  border-radius: 22px;
+  padding: 20px 115px 20px 22px;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.38);
+  margin-top: auto;
+}
+
+.fs-consult-copy h2 {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 800;
+  color: #17140f;
+  margin-bottom: 6px;
+}
+
+.fs-consult-copy p {
+  font-size: 11px;
+  line-height: 1.45;
+  color: #544d41;
+  margin-bottom: 14px;
+}
+
+.fs-consult-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 6px 6px 16px;
+  background: #17140f;
+  color: #faf7f0;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  transition: all 0.22s ease;
+}
+
+.fs-consult-btn:hover {
+  background: var(--brass-deep);
+}
+
+.fs-consult-arrow {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #faf7f0;
+  color: #17140f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.fs-consult-person {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  width: 98px;
+  height: 132px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--brass-light);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.fs-consult-person img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Bottom-Center Downward Scroll Notch */
+.fs-bottom-notch {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76px;
+  height: 30px;
+  background: var(--paper);
+  color: var(--ink);
+  border-top-left-radius: 36px;
+  border-top-right-radius: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  z-index: 6;
+  transition: all 0.2s ease;
+}
+
+.fs-bottom-notch:hover {
+  height: 34px;
+  color: var(--brass-deep);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1100px) {
+  .fs-stage-grid {
+    grid-template-columns: 1fr;
+    margin-top: 12px;
+    gap: 28px;
+  }
+  .fs-left-col,
+  .fs-right-col {
+    padding-top: 0;
+    align-items: center;
+    text-align: center;
+  }
+  .fs-copy-block {
+    max-width: 520px;
+  }
+  .fs-pop-3 {
+    right: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fs-hero-outer {
+    padding: 8px 12px 16px;
+  }
+  .fs-hero-frame {
+    padding: 44px 20px 44px;
+    border-radius: 24px;
+  }
+  .fs-giant-type {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 4px;
+  }
+  .fs-giant-left,
+  .fs-giant-right {
+    text-align: center;
+  }
+  .fs-giant-center {
+    transform: none;
+  }
+}
