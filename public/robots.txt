@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /login
+Disallow: /forgot-password
+
+Sitemap: https://www.yfbfitoutcontracting.com/sitemap.xml
