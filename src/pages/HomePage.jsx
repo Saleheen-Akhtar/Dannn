@@ -347,14 +347,6 @@ export default function HomePage() {
                 </div>
               </Link>
             ))}
-                  </h2>
-                  <p className="lm-fc-meta">{card.meta}</p>
-                  <span className="lm-fc-arrow" aria-hidden="true">
-                    →
-                  </span>
-                </div>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
