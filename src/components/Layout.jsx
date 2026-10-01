@@ -121,7 +121,7 @@ export default function Layout({ children }) {
               </a>
             </div>
             <Link to="/enquiry" className="header-enquire-btn">
-              Enquire Now
+              Start a Project &rarr;
             </Link>
           </div>
 

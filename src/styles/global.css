@@ -3076,3 +3076,33 @@ h1, h2, h3, .serif-heading {
     gap: 16px;
   }
 }
+
+
+/* ==========================================================================
+   AUREN-STYLE HEADER REFINEMENT
+   ========================================================================== */
+.site-header {
+  background: #f8f6f0 !important;
+  border-bottom: 1px solid rgba(20, 18, 15, 0.08) !important;
+}
+
+.header-enquire-btn {
+  background: #14120f !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 12px 22px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  box-shadow: 0 4px 12px rgba(20, 18, 15, 0.12) !important;
+}
+
+.header-enquire-btn:hover {
+  background: #6e4823 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(110, 72, 35, 0.28) !important;
+}
