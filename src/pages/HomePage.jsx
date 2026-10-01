@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, ChevronLeft, ChevronRight, Phone, Mail, MapPin, ShieldCheck, Award, Sparkles } from "lucide-react";
+import { ArrowRight, Check, ChevronLeft, ChevronRight, Phone, Mail, MapPin, ShieldCheck, Award, Sparkles, Search, User, ArrowUpRight, ArrowDown } from "lucide-react";
 import { toast } from "sonner";
 import {
   COMPANY,
@@ -179,9 +179,15 @@ export default function HomePage() {
   const [projectFilter, setProjectFilter] = useState("All");
   const [activeOfferTab, setActiveOfferTab] = useState(OFFER_TABS[0].id);
   const [testiIdx, setTestiIdx] = useState(0);
-  const [heroSlide, setHeroSlide] = useState(0);
-  const [activeHotspot, setActiveHotspot] = useState(2);
-  const activeHero = HERO_SHOWCASES[heroSlide] || HERO_SHOWCASES[0];
+  const [formaHotspot, setFormaHotspot] = useState(2);
+  const [chairHue, setChairHue] = useState("blue");
+
+  const chairFilters = {
+    blue: "none",
+    green: "hue-rotate(240deg) saturate(1.2)",
+    purple: "hue-rotate(50deg) saturate(1.2)",
+    red: "hue-rotate(120deg) saturate(1.4)"
+  };
 
   // Home Contact Form State
   const [form, setForm] = useState({
@@ -198,13 +204,7 @@ export default function HomePage() {
     const timer = setInterval(() => {
       setTestiIdx((prev) => (prev + 1) % TESTIMONIALS.length);
     }, 6000);
-    const heroTimer = setInterval(() => {
-      setHeroSlide((prev) => (prev + 1) % HERO_SHOWCASES.length);
-    }, 6500);
-    return () => {
-      clearInterval(timer);
-      clearInterval(heroTimer);
-    };
+    return () => clearInterval(timer);
   }, []);
 
   const filteredProjects =
@@ -236,203 +236,278 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. FULL-SCREEN FORMA-LAYOUT HERO (100% UNIFIED DESIGN SYSTEM) */}
-      <section className="fs-fullscreen-hero" id="home">
-        {/* Atmospheric Full-Screen Background Layer */}
-        <div className="fs-hero-backdrop" aria-hidden="true">
-          {HERO_SHOWCASES.map((slide, idx) => (
-            <img
-              key={slide.slug}
-              src={slide.image}
-              alt=""
-              className={`fs-backdrop-img${heroSlide === idx ? " is-active" : ""}`}
-            />
-          ))}
-          <div className="fs-backdrop-overlay" />
-          <div className="fs-backdrop-grid" />
-        </div>
-
-        {/* Left & Right Full-Screen Carousel Edge Buttons */}
-        <button
-          type="button"
-          className="fs-screen-arrow fs-screen-prev"
-          aria-label="Previous showcase"
-          onClick={() => setHeroSlide((prev) => (prev - 1 + HERO_SHOWCASES.length) % HERO_SHOWCASES.length)}
-        >
-          <ChevronLeft size={20} />
-        </button>
-
-        <button
-          type="button"
-          className="fs-screen-arrow fs-screen-next"
-          aria-label="Next showcase"
-          onClick={() => setHeroSlide((prev) => (prev + 1) % HERO_SHOWCASES.length)}
-        >
-          <ChevronRight size={20} />
-        </button>
-
-        <div className="wrap fs-hero-wrap">
-          {/* UPPER MONUMENTAL SPLIT SERIF TYPOGRAPHY (Fraunces Design System) */}
-          <div className="fs-split-headline" aria-hidden="true">
-            <span className="fs-sh-word fs-sh-left">{activeHero.wordLeft}</span>
-            <span className="fs-sh-center">{activeHero.wordCenter}</span>
-            <span className="fs-sh-word fs-sh-right">{activeHero.wordRight}</span>
+      {/* 1. FORMA STUDIO SIGNATURE HERO SECTION */}
+      <section className="forma-hero" id="home">
+        {/* Outer White Frame Container */}
+        <div className="forma-outer-frame">
+          {/* Top Center Logo Tab */}
+          <div className="forma-top-tab" aria-label="Forma Studio">
+            <span className="forma-tab-text">forma studio.</span>
           </div>
 
-          {/* 3-COLUMN FOREGROUND STAGE */}
-          <div className="fs-main-grid">
-            {/* LEFT COLUMN: EYEBROW + H1 + COPY + PRIMARY CTA + SOCIAL ICONS */}
-            <div className="fs-col-left">
-              <div>
-                <span className="eyebrow eyebrow-light">{activeHero.eyebrow}</span>
-                <h1 className="fs-editorial-h1">{activeHero.heading}</h1>
-                <p className="fs-editorial-copy">{activeHero.copy}</p>
+          {/* Left Notch Chevron */}
+          <button
+            type="button"
+            className="forma-side-notch notch-left"
+            aria-label="Previous showcase"
+            onClick={() => {
+              const hues = ["blue", "red", "purple", "green"];
+              const curIdx = hues.indexOf(chairHue);
+              setChairHue(hues[(curIdx - 1 + hues.length) % hues.length]);
+            }}
+          >
+            <ChevronLeft size={16} strokeWidth={2.5} />
+          </button>
+
+          {/* Right Notch Chevron */}
+          <button
+            type="button"
+            className="forma-side-notch notch-right"
+            aria-label="Next showcase"
+            onClick={() => {
+              const hues = ["blue", "green", "purple", "red"];
+              const curIdx = hues.indexOf(chairHue);
+              setChairHue(hues[(curIdx + 1) % hues.length]);
+            }}
+          >
+            <ChevronRight size={16} strokeWidth={2.5} />
+          </button>
+
+          {/* Bottom Center Notch Arrow */}
+          <a href="#stats" className="forma-bottom-notch" aria-label="Scroll to company statistics">
+            <ArrowDown size={15} strokeWidth={2.5} />
+          </a>
+
+          {/* Inner Cobalt Blue Studio Canvas */}
+          <div className="forma-inner-canvas">
+            {/* Top Navigation Inside Canvas */}
+            <header className="forma-studio-nav" aria-label="Studio Navigation">
+              <nav className="forma-nav-group forma-nav-left" aria-label="Left Links">
+                <Link to="/" className="forma-pill-nav is-active">home</Link>
+                <Link to="/about" className="forma-text-nav">about us</Link>
+                <Link to="/faq" className="forma-text-nav">faqs</Link>
+              </nav>
+
+              <div className="forma-nav-center-spacer" aria-hidden="true" />
+
+              <nav className="forma-nav-group forma-nav-right" aria-label="Right Links">
+                <Link to="/projects" className="forma-text-nav">products</Link>
+                <Link to="/why-us" className="forma-text-nav">team</Link>
+                <button
+                  type="button"
+                  className="forma-icon-circle-btn"
+                  aria-label="Search portfolio"
+                  onClick={() => {
+                    const el = document.getElementById("projects");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                    else window.location.href = "/projects";
+                  }}
+                >
+                  <Search size={14} strokeWidth={2.4} />
+                </button>
+                <Link to="/login" className="forma-icon-circle-btn" aria-label="Client portal login">
+                  <User size={14} strokeWidth={2.4} />
+                </Link>
+                <Link to="/enquiry" className="forma-contact-pill-btn">
+                  <span>Contact</span>
+                  <span className="forma-phone-bubble">
+                    <Phone size={12} fill="currentColor" strokeWidth={0} />
+                  </span>
+                </Link>
+              </nav>
+            </header>
+
+            {/* Giant Monumental Rounded Background Typography (Fredoka 700) */}
+            <div className="forma-monumental-bg" aria-hidden="true">
+              <span className="forma-bg-word forma-word-for">for</span>
+              <span className="forma-bg-word forma-word-studio">studio.</span>
+              <span className="forma-bg-word forma-word-ma">ma</span>
+            </div>
+
+            {/* Central 3D Sculptural Armchair & Interactive Stage */}
+            <div className="forma-center-stage">
+              <div className="forma-chair-holder">
+                <img
+                  src="/static/forma-chair-cutout.png"
+                  alt="Forma Studio Sculptural Velvet Armchair"
+                  className="forma-chair-hero-img"
+                  style={{ filter: chairFilters[chairHue] || "none" }}
+                />
+
+                {/* Hotspot 1: Backrest Shell */}
+                <button
+                  type="button"
+                  className={`forma-hotspot-pin pin-backrest${formaHotspot === 1 ? " is-open" : ""}`}
+                  onClick={() => setFormaHotspot(formaHotspot === 1 ? 0 : 1)}
+                  aria-label="Toggle backrest specification"
+                  style={{ top: "27%", left: "73%" }}
+                >
+                  {formaHotspot === 1 ? "×" : "+"}
+                </button>
+                {formaHotspot === 1 && (
+                  <div className="forma-frosted-tooltip tooltip-backrest" style={{ top: "22%", left: "79%" }}>
+                    <p>Curved ergonomic shell - cold-cured high resilience foam &amp; tailored velvet.</p>
+                  </div>
+                )}
+
+                {/* Hotspot 2: Seat Cushion (Active by Default matching reference) */}
+                <button
+                  type="button"
+                  className={`forma-hotspot-pin pin-cushion${formaHotspot === 2 ? " is-open" : ""}`}
+                  onClick={() => setFormaHotspot(formaHotspot === 2 ? 0 : 2)}
+                  aria-label="Toggle upholstery specification"
+                  style={{ top: "60%", left: "75%" }}
+                >
+                  {formaHotspot === 2 ? "×" : "+"}
+                </button>
+                {formaHotspot === 2 && (
+                  <div className="forma-frosted-tooltip tooltip-cushion" style={{ top: "61%", left: "81%" }}>
+                    <p>Premium microfiber upholstery - soft, durable, and easy to care for.</p>
+                  </div>
+                )}
+
+                {/* Hotspot 3: Monolithic Leg */}
+                <button
+                  type="button"
+                  className={`forma-hotspot-pin pin-leg${formaHotspot === 3 ? " is-open" : ""}`}
+                  onClick={() => setFormaHotspot(formaHotspot === 3 ? 0 : 3)}
+                  aria-label="Toggle structural base specification"
+                  style={{ top: "74%", left: "13%" }}
+                >
+                  {formaHotspot === 3 ? "×" : "+"}
+                </button>
+                {formaHotspot === 3 && (
+                  <div className="forma-frosted-tooltip tooltip-leg" style={{ top: "68%", left: "19%" }}>
+                    <p>Architectural monolithic frame - continuous structural steel &amp; velvet wrap.</p>
+                  </div>
+                )}
+
+                {/* Floor Meta */}
+                <span className="forma-floor-established">Since 2015</span>
+              </div>
+            </div>
+
+            {/* Left Content Column */}
+            <div className="forma-left-deck">
+              <div className="forma-left-editorial">
+                <p className="forma-paragraph-primary">
+                  We create designer chairs that don't just complement an interior - they become its accent.
+                </p>
+                <p className="forma-paragraph-secondary">
+                  Each product is a combination of architectural form, tactile pleasure and visual harmony.
+                </p>
               </div>
 
-              <div className="fs-left-actions">
-                <Link to="/projects" className="btn btn-brass">
-                  <span>View All {PROJECTS.length} Projects</span>
-                  <ArrowRight size={16} />
+              <div className="forma-left-action-row">
+                <Link to="/projects" className="forma-view-collections-btn">
+                  View All Collections
                 </Link>
               </div>
 
-              <div className="fs-social-links" aria-label="Studio Social & Direct Links">
+              <div className="forma-social-capsules" aria-label="Social Profiles">
                 <a
-                  href={COMPANY.social.linkedin}
+                  href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="fs-soc-btn"
-                  aria-label="Follow Yashmeen Future Building on LinkedIn"
+                  className="forma-social-circle"
+                  aria-label="Facebook"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z" />
-                  </svg>
+                  <span>f</span>
                 </a>
                 <a
                   href={COMPANY.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="fs-soc-btn"
-                  aria-label="Follow Yashmeen Future Building on Instagram"
+                  className="forma-social-circle"
+                  aria-label="Instagram"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
                     <circle cx="12" cy="12" r="4" />
                     <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
                   </svg>
                 </a>
                 <a
-                  href={`https://wa.me/${COMPANY.whatsappNumber}?text=${encodeURIComponent(COMPANY.whatsappDefaultMsg)}`}
+                  href={COMPANY.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="fs-soc-btn"
-                  aria-label="Chat on WhatsApp 6361718607"
+                  className="forma-social-circle"
+                  aria-label="LinkedIn"
                 >
-                  <Phone size={15} />
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z" />
+                  </svg>
                 </a>
-                <span className="fs-soc-caption">Est. {COMPANY.established} · Dubai, UAE</span>
               </div>
             </div>
 
-            {/* CENTER COLUMN: ARCHITECTURAL SHOWCASE CENTERPIECE + INTERACTIVE HOTSPOTS */}
-            <div className="fs-col-center">
-              <div className="fs-showcase-box">
-                <Link
-                  to={`/projects/${activeHero.slug}`}
-                  className="fs-showcase-link"
-                  aria-label={`Inspect Case Study: ${activeHero.projectTitle}`}
-                >
-                  <img
-                    key={activeHero.image}
-                    src={activeHero.image}
-                    alt={activeHero.projectTitle}
-                  />
-                  <span className="rb-tag">Featured {activeHero.sector}</span>
-                  <div className="fs-showcase-caption">
-                    <div>
-                      <div className="fs-sc-title">{activeHero.projectTitle}</div>
-                      <div className="fs-sc-meta">{activeHero.projectMeta}</div>
-                    </div>
-                    <span className="fs-sc-arrow" aria-hidden="true">
-                      <ArrowRight size={15} />
-                    </span>
-                  </div>
-                </Link>
+            {/* Right Content Column */}
+            <div className="forma-right-deck">
+              {/* Color Swatch Picker */}
+              <div className="forma-color-selector">
+                <span className="forma-color-title">Choose your color</span>
+                <div className="forma-swatch-list" role="radiogroup" aria-label="Choose upholstery color">
+                  <button
+                    type="button"
+                    role="radio"
+                    aria-checked={chairHue === "green"}
+                    className={`forma-swatch-chip swatch-chip-green${chairHue === "green" ? " is-active" : ""}`}
+                    onClick={() => setChairHue(chairHue === "green" ? "blue" : "green")}
+                    aria-label="Emerald Green velvet"
+                  >
+                    <span className="chip-color-fill" style={{ background: "#22c55e" }} />
+                  </button>
 
-                {/* 3 Interactive Design-System Hotspot Pins */}
-                {activeHero.hotspots.map((hs, i) => {
-                  const isOpen = activeHotspot === hs.id;
-                  return (
-                    <React.Fragment key={hs.id}>
-                      <button
-                        type="button"
-                        className={`fs-pin fs-pin-${i + 1}${isOpen ? " active" : ""}`}
-                        onClick={() => setActiveHotspot(isOpen ? 0 : hs.id)}
-                        aria-label={`Toggle specification: ${hs.title}`}
-                      >
-                        {isOpen ? "×" : "+"}
-                      </button>
-                      {isOpen && (
-                        <div className={`fs-pin-card fs-pin-card-${i + 1}`}>
-                          <div className="fs-pc-title">{hs.title}</div>
-                          <p className="fs-pc-text">{hs.text}</p>
-                        </div>
-                      )}
-                    </React.Fragment>
-                  );
-                })}
-              </div>
-            </div>
+                  <button
+                    type="button"
+                    role="radio"
+                    aria-checked={chairHue === "purple"}
+                    className={`forma-swatch-chip swatch-chip-purple${chairHue === "purple" ? " is-active" : ""}`}
+                    onClick={() => setChairHue(chairHue === "purple" ? "blue" : "purple")}
+                    aria-label="Royal Violet velvet"
+                  >
+                    <span className="chip-color-fill" style={{ background: "#a855f7" }} />
+                  </button>
 
-            {/* RIGHT COLUMN: SECTOR SELECTOR SWATCHES + CONSULTATION CARD */}
-            <div className="fs-col-right">
-              <div className="fs-sector-picker">
-                <span className="fs-picker-label">Select Sector</span>
-                <div className="fs-picker-list" role="tablist" aria-label="Select project sector">
-                  {HERO_SHOWCASES.map((item, idx) => (
-                    <button
-                      key={item.slug}
-                      type="button"
-                      role="tab"
-                      aria-selected={heroSlide === idx}
-                      className={`fs-picker-pill${heroSlide === idx ? " active" : ""}`}
-                      onClick={() => setHeroSlide(idx)}
-                    >
-                      <img src={item.image} alt={item.sector} />
-                      <span>{item.sector}</span>
-                    </button>
-                  ))}
+                  <button
+                    type="button"
+                    role="radio"
+                    aria-checked={chairHue === "red"}
+                    className={`forma-swatch-chip swatch-chip-red${chairHue === "red" ? " is-active" : ""}`}
+                    onClick={() => setChairHue(chairHue === "red" ? "blue" : "red")}
+                    aria-label="Coral Velvet"
+                  >
+                    <span className="chip-color-fill" style={{ background: "#ef4444" }} />
+                  </button>
                 </div>
               </div>
 
-              {/* Bottom-Right Consultation Card Styled in Unified Design System */}
-              <div className="fs-consultation-box">
-                <div className="fs-cb-content">
-                  <span className="fs-cb-kicker">Free Site Survey &amp; BOQ</span>
-                  <h2 className="fs-cb-heading">Get a Free Consultation</h2>
-                  <p className="fs-cb-copy">
-                    Share your project brief and our Dubai engineering team will contact you within one working day.
+              {/* Consultation Card with Consultant Cutout */}
+              <div className="forma-consultation-floating-card">
+                <div className="forma-card-editorial">
+                  <h3 className="forma-card-headline">Get a Free Consultation</h3>
+                  <p className="forma-card-subcopy">
+                    Fill out the form and our specialist will contact you shortly to help with your request.
                   </p>
-                  <Link to="/enquiry" className="btn btn-dark fs-cb-btn">
+                  <Link to="/enquiry" className="forma-card-request-btn">
                     <span>Request a Call</span>
-                    <ArrowRight size={15} />
+                    <span className="forma-pill-arrow-wrap">
+                      <ArrowUpRight size={13} strokeWidth={2.4} />
+                    </span>
                   </Link>
                 </div>
-                <div className="fs-cb-portrait">
+
+                <div className="forma-card-portrait-wrap">
                   <img
-                    src={COMPANY.founder.portrait}
-                    alt={COMPANY.founder.name}
+                    src="/static/forma-consultant.jpg"
+                    alt="Interior Fit-Out Specialist"
+                    className="forma-portrait-img"
                   />
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Bottom-Center Scroll Down Indicator */}
-        <a href="#stats" className="fs-scroll-down" aria-label="Scroll to statistics">
-          <span>↓</span>
-        </a>
       </section>
 
       {/* 1B. UNIFIED DESIGN-SYSTEM STATISTIC BAR */}
