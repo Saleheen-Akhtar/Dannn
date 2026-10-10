@@ -1,3 +1,7 @@
+DirectoryIndex index.html
+DirectorySlash Off
+ErrorDocument 404 /404.html
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -8,16 +12,20 @@
   RewriteCond %{HTTP_HOST} ^(?:www\.)?yfbfitoutcontracting\.com$ [NC]
   RewriteRule ^(.*)$ https://www.yfbfitoutcontracting.com/$1 [R=301,L]
 
-  # Serve existing files (robots.txt, sitemap.xml, llms.txt, /static/*, /assets/*) directly
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
+  # 1. Serve pre-rendered route/index.html directly (e.g., /projects -> /projects/index.html)
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.+?)/?$ $1/index.html [L]
+
+  # 2. Serve existing static files (robots.txt, sitemap.xml, llms.txt, /static/*, /assets/*) directly
+  RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
-  # Return 404 for missing static assets instead of index.html soft-404
+  # 3. Return 404 for missing static assets instead of HTML fallback
   RewriteRule ^(assets|static)/ - [R=404,L]
 
-  # SPA Fallback for client-side routes
-  RewriteRule ^ index.html [L]
+  # 4. Unknown routes serve the pre-rendered 404 page with 404 status
+  RewriteRule ^ /404.html [R=404,L]
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -38,8 +46,8 @@
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
 
-  # Ensure index.html, robots.txt, and sitemap.xml are always fresh
-  <FilesMatch "^(index\.html|robots\.txt|sitemap\.xml|llms\.txt)$">
+  # Ensure HTML documents, robots.txt, and sitemap.xml are always fresh
+  <FilesMatch "\.(html|txt|xml)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
   </FilesMatch>
 </IfModule>

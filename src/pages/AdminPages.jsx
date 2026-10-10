@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { COMPANY } from '../data/siteData';
 import {
@@ -151,17 +151,53 @@ export function DashboardPage({ initialTab = 'enquiries' }) {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const user = getAuthUser() || { name: COMPANY.founder.name, email: COMPANY.email };
+  const [user, setUser] = useState({ name: COMPANY.founder.name, email: COMPANY.email });
 
   const defaultTab = location.pathname.includes('categories') ? 'categories' : initialTab;
   const [activeTab, setActiveTab] = useState(defaultTab);
-  const [enquiries, setEnquiries] = useState(() => getStoredEnquiries());
-  const [applications] = useState(() => getStoredApplications());
-  const [categories, setCategories] = useState(() => getStoredCategories());
+  const [enquiries, setEnquiries] = useState([]);
+  const [applications, setApplications] = useState([]);
+  const [categories, setCategories] = useState([
+    { id: 'cat-1', name: 'Commercial Fit-Out', slug: 'commercial-fit-out', active: true },
+    { id: 'cat-2', name: 'Residential Villa Fit-Out', slug: 'residential-villa-fit-out', active: true },
+    { id: 'cat-3', name: 'Hospitality & F&B', slug: 'hospitality-f-b', active: true },
+    { id: 'cat-4', name: 'Luxury Retail', slug: 'luxury-retail', active: true },
+    { id: 'cat-5', name: 'Healthcare & Clinics', slug: 'healthcare-clinics', active: true },
+    { id: 'cat-6', name: 'Bespoke Joinery & Furniture', slug: 'bespoke-joinery-furniture', active: true }
+  ]);
   const [newCatName, setNewCatName] = useState('');
   const [newCatSlug, setNewCatSlug] = useState('');
-  const [webDetails, setWebDetails] = useState(() => getStoredWebDetails());
+  const [webDetails, setWebDetails] = useState({
+    address: {
+      street: 'Bay Square, Building 12 - Office G01, Marasi Dr',
+      area: 'Business Bay',
+      city: 'Dubai',
+      country: 'United Arab Emirates',
+      factory: '35,000 sq.ft Production Facility — Al Quoz Industrial Area 3, Dubai'
+    },
+    companyName: COMPANY.legalName,
+    founderName: COMPANY.founder.name,
+    phone: COMPANY.phone,
+    studioAddress: COMPANY.studioAddress,
+    factoryAddress: COMPANY.factoryAddress,
+    email: COMPANY.email,
+    mobile: COMPANY.phone,
+    whatsapp: COMPANY.phone,
+    socialLinks: [
+      { platform: 'linkedin', url: COMPANY.social.linkedin },
+      { platform: 'instagram', url: COMPANY.social.instagram }
+    ]
+  });
   const [savedNotice, setSavedNotice] = useState('');
+
+  useEffect(() => {
+    const storedUser = getAuthUser();
+    if (storedUser) setUser(storedUser);
+    setEnquiries(getStoredEnquiries());
+    setApplications(getStoredApplications());
+    setCategories(getStoredCategories());
+    setWebDetails(getStoredWebDetails());
+  }, []);
 
   const handleDeleteEnquiry = (id) => {
     const next = deleteStoredEnquiry(id);
