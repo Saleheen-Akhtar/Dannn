@@ -3,16 +3,18 @@ import { useLocation } from "react-router-dom";
 
 /**
  * Whole-Website Smooth Scrolling, Scroll Progress & Multi-Depth Parallax Engine
- * - Active across all modern desktop, laptop, tablet, and mobile devices
+ * - Scopes scroll progress transform directly to .scroll-progress-bar (zero root style invalidation)
  * - Drives 60fps hardware-accelerated parallax across Bento Hero, PageHero, Room Blocks, and Project Cards
  * - Interactive cursor-depth micro-parallax for Bento Hero on desktop/laptop
- * - Triggers staggered scroll-reveal animations across all pages on route change
+ * - Triggers staggered scroll-reveal animations ONLY on below-the-fold elements (zero hydration flicker)
+ * - Properly disconnects IntersectionObserver on route change cleanup
  */
 export function useSmoothScrollAndParallax() {
   const location = useLocation();
 
   useEffect(() => {
     let rafId = null;
+    const progressBar = document.querySelector(".scroll-progress-bar");
 
     // 1. Scroll-driven Multi-Depth Parallax Engine
     const updateParallaxScene = () => {
@@ -21,8 +23,10 @@ export function useSmoothScrollAndParallax() {
       const docHeight = Math.max(document.documentElement.scrollHeight - viewportH, 1);
       const progress = Math.min(Math.max(scrollY / docHeight, 0), 1);
 
-      document.documentElement.style.setProperty("--scroll-y", `${scrollY.toFixed(1)}px`);
-      document.documentElement.style.setProperty("--scroll-progress", progress.toFixed(4));
+      // Scope progress directly to the bar element instead of <html> root variables
+      if (progressBar) {
+        progressBar.style.transform = `scaleX(${progress.toFixed(4)})`;
+      }
 
       // Bento Hero Scroll Parallax (Desktop / Laptop)
       const hero = document.querySelector(".yfb-hero");
@@ -159,14 +163,18 @@ export function useSmoothScrollAndParallax() {
     };
   }, [location.pathname]);
 
-  // Route-aware Scroll Reveal Observer for sections, cards, and headings
+  // Route-aware Scroll Reveal Observer (skips elements already in view to prevent hydration flicker)
   useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return;
+
+    let observer = null;
     const timer = setTimeout(() => {
+      const viewportH = window.innerHeight || 800;
       const revealTargets = document.querySelectorAll(
         ".section-head, .card, .project-card-link, .service-card, .blog-card, .why-row-item, .fdiv-item, .stat-cell, .grid-2 > div, .grid-3 > div, .grid-4 > div, .yfb-proof-stat, .clients-head"
       );
 
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -175,18 +183,26 @@ export function useSmoothScrollAndParallax() {
             }
           });
         },
-        { threshold: 0.06, rootMargin: "0px 0px -30px 0px" }
+        { threshold: 0.06, rootMargin: "0px 0px -24px 0px" }
       );
 
       revealTargets.forEach((el, idx) => {
+        const rect = el.getBoundingClientRect();
+        // Skip elements already visible in or above the viewport on initial load — prevents content flicker!
+        if (rect.top < viewportH * 0.92) {
+          el.classList.remove("reveal-on-scroll");
+          el.classList.add("is-revealed");
+          return;
+        }
         el.classList.add("reveal-on-scroll");
-        el.style.setProperty("--reveal-delay", `${(idx % 4) * 75}ms`);
+        el.style.setProperty("--reveal-delay", `${(idx % 4) * 65}ms`);
         observer.observe(el);
       });
+    }, 30);
 
-      return () => observer.disconnect();
-    }, 60);
-
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (observer) observer.disconnect();
+    };
   }, [location.pathname]);
 }

@@ -16,159 +16,6 @@ import { submitLeadEnquiry, buildWhatsAppEnquiryUrl } from "../utils/leadService
 
 const PROJECT_FILTERS = ["All", "Commercial", "Residential", "Hospitality", "Retail", "Healthcare"];
 
-const HERO_SHOWCASES = [
-  {
-    idx: "01",
-    sector: "Residential",
-    eyebrow: "Dubai · Est. 2016 · ISO Certified",
-    wordLeft: "Turnkey",
-    wordCenter: "design & build.",
-    wordRight: "Interiors",
-    heading: "Bespoke spaces engineered from first sketch to final handover.",
-    copy: "We design, engineer, manufacture, and install luxury residential villas, executive headquarters, and hospitality interiors across Dubai and Abu Dhabi — backed by 200+ specialists and our 35,000 sq.ft Al Quoz 3 factory.",
-    projectTitle: "Emirates Hills Private Residence",
-    projectMeta: "11,800 sq.ft · Full Villa Fit-Out & Bespoke Millwork",
-    slug: "emirates-hills-private-residence",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
-    hotspots: [
-      { id: 1, title: "Al Quoz 3 Joinery", text: "Custom walnut millwork, doors & wardrobes built in our 35,000 sq.ft facility." },
-      { id: 2, title: "In-House MEP & KNX", text: "Concealed linear HVAC slot diffusers & circadian smart lighting scenes." },
-      { id: 3, title: "Book-Matched Stone", text: "Hand-selected Italian Calacatta marble & travertine architectural monoliths." }
-    ]
-  },
-  {
-    idx: "02",
-    sector: "Commercial",
-    eyebrow: "DIFC · Business Bay · Abu Dhabi",
-    wordLeft: "Executive",
-    wordCenter: "60–90 day delivery.",
-    wordRight: "Workplaces",
-    heading: "High-performance corporate headquarters delivered on a fixed schedule.",
-    copy: "From acoustic fluted-oak boardrooms to full Dubai Municipality, DCD, DIFC, and DDA authority approvals, our resident engineers and joiners deliver commercial spaces with zero hidden variations.",
-    projectTitle: "EDC Corporate Headquarters",
-    projectMeta: "15,210 sq.ft · Al Maryah Island, Abu Dhabi",
-    slug: "edc-headquarters-abu-dhabi",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=85",
-    hotspots: [
-      { id: 1, title: "STC-52 Acoustic Glazing", text: "Double-glazed architectural partitions fabricated in our Metal & Glass bay." },
-      { id: 2, title: "Turnkey MEP & IT/AV", text: "Integrated VAV air-conditioning, DALI lighting & boardroom AV automation." },
-      { id: 3, title: "Bespoke Boardrooms", text: "Fluted oak acoustic wall systems & custom leather-inlaid conference tables." }
-    ]
-  },
-  {
-    idx: "03",
-    sector: "Hospitality",
-    eyebrow: "Downtown Dubai · Palm Jumeirah",
-    wordLeft: "Bespoke",
-    wordCenter: "35,000 sq.ft factory.",
-    wordRight: "Craft",
-    heading: "Hospitality, F&B, and luxury retail crafted under one roof.",
-    copy: "Our master carpenters, metal fabricators, and MEP engineers coordinate heavy kitchen extraction, acoustic ceilings, and custom banquette upholstery in parallel to compress site timelines.",
-    projectTitle: "Ember & Oak Fine Dining Grill",
-    projectMeta: "6,200 sq.ft · Downtown Boulevard, Dubai",
-    slug: "ember-and-oak-grill-downtown",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85",
-    hotspots: [
-      { id: 1, title: "Patinated Brass Bar", text: "Hand-finished brass & stone bar counters pre-assembled in Al Quoz 3." },
-      { id: 2, title: "Kitchen MEP & Ecology", text: "Full commercial kitchen HVAC, gas interlocks & Dubai Municipality approvals." },
-      { id: 3, title: "Custom Banquettes", text: "Commercial-grade leather & bouclé seating crafted in our upholstery bay." }
-    ]
-  }
-];
-
-const LEDGER_STATS = [
-  {
-    idx: "01",
-    count: 10,
-    suffix: "+",
-    label: "Years Active (Est. 2016)",
-    detail: "Single-source Dubai & Abu Dhabi turnkey contractor"
-  },
-  {
-    idx: "02",
-    count: 640,
-    suffix: "+",
-    label: "Projects Delivered",
-    detail: "Offices, signature villas, F&B, retail & DHA clinics"
-  },
-  {
-    idx: "03",
-    count: 35,
-    suffix: "K",
-    label: "Sq.Ft Al Quoz 3 Factory",
-    detail: "In-house joinery, upholstery, metal & architectural glass"
-  },
-  {
-    idx: "04",
-    count: 200,
-    suffix: "+",
-    label: "In-House Specialists",
-    detail: "Architects, MEP engineers, joiners & site managers"
-  },
-  {
-    idx: "05",
-    count: 98,
-    suffix: "%",
-    label: "On-Time Handover Rate",
-    detail: "Itemized BOQ transparency & ISO-certified execution"
-  }
-];
-
-function AnimatedCounter({ target, suffix = "" }) {
-  const [val, setVal] = useState(0);
-  const ref = React.useRef(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let frameId = null;
-    let started = false;
-
-    const runAnimation = () => {
-      if (started) return;
-      started = true;
-      const duration = 1400;
-      const startTime = performance.now();
-
-      const tick = (now) => {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setVal(Math.round(target * eased));
-        if (progress < 1) {
-          frameId = requestAnimationFrame(tick);
-        } else {
-          setVal(target);
-        }
-      };
-      frameId = requestAnimationFrame(tick);
-    };
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          runAnimation();
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-
-    return () => {
-      obs.disconnect();
-      if (frameId) cancelAnimationFrame(frameId);
-    };
-  }, [target]);
-
-  return (
-    <span ref={ref}>
-      {val}
-      <span className="ds-stat-suffix">{suffix}</span>
-    </span>
-  );
-}
-
 export default function HomePage() {
   usePageMeta({
     title: "Turnkey Interior Fit-Out & Architecture Studio in Dubai",
@@ -179,9 +26,6 @@ export default function HomePage() {
   const [projectFilter, setProjectFilter] = useState("All");
   const [activeOfferTab, setActiveOfferTab] = useState(OFFER_TABS[0].id);
   const [testiIdx, setTestiIdx] = useState(0);
-  const [heroSlide, setHeroSlide] = useState(0);
-  const [activeHotspot, setActiveHotspot] = useState(2);
-  const activeHero = HERO_SHOWCASES[heroSlide] || HERO_SHOWCASES[0];
 
   // Home Contact Form State
   const [form, setForm] = useState({
@@ -198,12 +42,8 @@ export default function HomePage() {
     const timer = setInterval(() => {
       setTestiIdx((prev) => (prev + 1) % TESTIMONIALS.length);
     }, 6000);
-    const heroTimer = setInterval(() => {
-      setHeroSlide((prev) => (prev + 1) % HERO_SHOWCASES.length);
-    }, 6500);
     return () => {
       clearInterval(timer);
-      clearInterval(heroTimer);
     };
   }, []);
 
@@ -269,6 +109,9 @@ export default function HomePage() {
                   src="/static/hero/commercial.jpg"
                   alt="Commercial Spaces — Workplaces that perform"
                   loading="eager"
+                  fetchPriority="high"
+                  width="600"
+                  height="900"
                 />
                 <div className="yfb-card-top-info">
                   <span className="yfb-card-tag">01</span>
@@ -293,6 +136,9 @@ export default function HomePage() {
                   src="/static/hero/hospitality.jpg"
                   alt="Hospitality Spaces — Experiences that stay"
                   loading="eager"
+                  fetchPriority="high"
+                  width="900"
+                  height="600"
                 />
                 <div className="yfb-card-top-info">
                   <span className="yfb-card-tag">02</span>
@@ -332,6 +178,8 @@ export default function HomePage() {
                     src="/static/hero/approach.jpg"
                     alt="Italian travertine marble and natural olive branch"
                     loading="eager"
+                    width="450"
+                    height="600"
                   />
                   <div className="yfb-approach-content">
                     <div className="yfb-approach-top">
@@ -359,6 +207,9 @@ export default function HomePage() {
                   src="/static/hero/residential.jpg"
                   alt="Residential Spaces — Homes with character"
                   loading="eager"
+                  fetchPriority="high"
+                  width="600"
+                  height="900"
                 />
                 <div className="yfb-card-top-info">
                   <span className="yfb-card-tag">04</span>

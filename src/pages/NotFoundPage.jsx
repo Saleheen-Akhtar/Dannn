@@ -5,7 +5,8 @@ import { usePageMeta } from '../utils/usePageMeta';
 export default function NotFoundPage() {
   usePageMeta({
     title: '404 Page Not Found — YFB Fit-Out Contracting',
-    description: 'The requested page could not be found. Explore our turnkey interior fit-out services and 640+ delivered projects across Dubai.'
+    description: 'The requested page could not be found. Explore our turnkey interior fit-out services and 640+ delivered projects across Dubai.',
+    robots: 'noindex, nofollow'
   });
 
   return (

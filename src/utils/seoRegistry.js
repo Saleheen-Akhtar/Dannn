@@ -6,7 +6,12 @@ import {
   FAQ_CATEGORIES
 } from "../data/siteData";
 
-export const SITE_ORIGIN = "https://www.yfbfitoutcontracting.com";
+const rawSiteOrigin =
+  (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_SITE_URL) ||
+  (typeof process !== "undefined" && process.env && process.env.VITE_SITE_URL) ||
+  "https://www.yfbfitoutcontracting.com";
+
+export const SITE_ORIGIN = String(rawSiteOrigin).replace(/\/$/, "");
 
 export const HOSTED_OG_IMAGES = {
   default: `${SITE_ORIGIN}/static/hero/hospitality.jpg`,
@@ -19,7 +24,7 @@ export const HOSTED_OG_IMAGES = {
   logo: `${SITE_ORIGIN}/static/logo.jpg`
 };
 
-// Complete list of all static + dynamic routes to pre-render at build time
+// Complete list of all static + dynamic public routes to pre-render at build time
 export const PRERENDER_ROUTES = [
   "/",
   "/about",
@@ -42,40 +47,38 @@ export const PRERENDER_ROUTES = [
   "/enquiry",
   ...BLOG_POSTS.map((b) => `/blog/${b.slug}`),
   "/login",
-  "/forgot-password",
-  "/dashboard",
-  "/dashboard/categories",
   "/404"
 ];
 
-// Canonical indexable routes for sitemap.xml (excludes admin, legacy alias, and 404)
+// Canonical indexable routes for sitemap.xml (excludes admin, duplicate aliases, and 404)
 export const SITEMAP_ROUTES = [
-  { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/about", changefreq: "monthly", priority: "0.9" },
-  { path: "/founders-message", changefreq: "monthly", priority: "0.7" },
-  { path: "/why-us", changefreq: "monthly", priority: "0.8" },
-  { path: "/services", changefreq: "monthly", priority: "0.9" },
-  { path: "/services/architecture", changefreq: "monthly", priority: "0.85" },
-  { path: "/services/interior-design", changefreq: "monthly", priority: "0.85" },
-  { path: "/services/construction", changefreq: "monthly", priority: "0.85" },
-  { path: "/services/office-renovation", changefreq: "monthly", priority: "0.85" },
-  { path: "/projects", changefreq: "weekly", priority: "0.9" },
-  ...PROJECTS.map((p) => ({
+  { path: "/", changefreq: "weekly", priority: "1.0", lastmod: "2026-10-10" },
+  { path: "/about", changefreq: "monthly", priority: "0.9", lastmod: "2026-09-18" },
+  { path: "/founders-message", changefreq: "monthly", priority: "0.7", lastmod: "2026-08-24" },
+  { path: "/why-us", changefreq: "monthly", priority: "0.8", lastmod: "2026-09-12" },
+  { path: "/services", changefreq: "monthly", priority: "0.9", lastmod: "2026-09-28" },
+  { path: "/services/architecture", changefreq: "monthly", priority: "0.85", lastmod: "2026-09-15" },
+  { path: "/services/interior-design", changefreq: "monthly", priority: "0.85", lastmod: "2026-09-20" },
+  { path: "/services/construction", changefreq: "monthly", priority: "0.85", lastmod: "2026-09-14" },
+  { path: "/services/office-renovation", changefreq: "monthly", priority: "0.85", lastmod: "2026-09-25" },
+  { path: "/projects", changefreq: "weekly", priority: "0.9", lastmod: "2026-10-08" },
+  ...PROJECTS.map((p, idx) => ({
     path: `/projects/${p.slug}`,
     changefreq: "monthly",
-    priority: "0.8"
+    priority: "0.8",
+    lastmod: `2026-0${Math.min(9, (idx % 8) + 2)}-${String(10 + idx).padStart(2, "0")}`
   })),
-  { path: "/gallery", changefreq: "monthly", priority: "0.75" },
-  { path: "/photo-gallery", changefreq: "monthly", priority: "0.8" },
-  { path: "/video-gallery", changefreq: "monthly", priority: "0.75" },
-  { path: "/faq", changefreq: "monthly", priority: "0.75" },
-  { path: "/careers", changefreq: "weekly", priority: "0.7" },
-  { path: "/contact", changefreq: "monthly", priority: "0.9" },
-  { path: "/enquiry", changefreq: "monthly", priority: "0.9" },
-  ...BLOG_POSTS.map((b) => ({
+  { path: "/photo-gallery", changefreq: "monthly", priority: "0.8", lastmod: "2026-09-30" },
+  { path: "/video-gallery", changefreq: "monthly", priority: "0.75", lastmod: "2026-09-22" },
+  { path: "/faq", changefreq: "monthly", priority: "0.75", lastmod: "2026-09-05" },
+  { path: "/careers", changefreq: "weekly", priority: "0.7", lastmod: "2026-10-04" },
+  { path: "/contact", changefreq: "monthly", priority: "0.9", lastmod: "2026-09-19" },
+  { path: "/enquiry", changefreq: "monthly", priority: "0.9", lastmod: "2026-10-02" },
+  ...BLOG_POSTS.map((b, idx) => ({
     path: `/blog/${b.slug}`,
     changefreq: "monthly",
-    priority: "0.75"
+    priority: "0.75",
+    lastmod: `2026-0${8 - idx}-${String(14 + idx * 4).padStart(2, "0")}`
   }))
 ];
 
@@ -196,10 +199,10 @@ const STATIC_ROUTE_META = {
     title: "Architectural & Interior Fit-Out Photo Gallery — 18 Curated Spaces | Yashmeen Future Building",
     description:
       "Browse 18 unique high-resolution interior fit-out, custom joinery, villa architecture, and hospitality photographs delivered across Dubai.",
-    canonicalPath: "/gallery",
+    canonicalPath: "/photo-gallery",
     ogImage: HOSTED_OG_IMAGES.residential,
     ogType: "website",
-    robots: "index, follow"
+    robots: "noindex, follow"
   },
   "/photo-gallery": {
     title: "Architectural & Interior Fit-Out Photo Gallery — 18 Curated Spaces | Yashmeen Future Building",
@@ -620,29 +623,33 @@ export function getRouteSeoMeta(pathname = "/", overrides = {}) {
   // Dynamic /projects/:slug or /project/details
   if (!resolved && (cleanPath.startsWith("/projects/") || cleanPath === "/project/details")) {
     const slug = cleanPath === "/project/details" ? PROJECTS[0].slug : cleanPath.replace("/projects/", "");
-    const project = PROJECTS.find((p) => p.slug === slug) || PROJECTS[0];
-    resolved = {
-      title: `${project.title} — ${project.location} Case Study | ${COMPANY.shortName}`,
-      description: `${project.summary} Delivered by YFB Fit-Out Contracting (${project.area}, ${project.duration}).`,
-      canonicalPath: `/projects/${project.slug}`,
-      ogImage: getSectorOgImage(project.category),
-      ogType: "article",
-      robots: cleanPath === "/project/details" ? "noindex, follow" : "index, follow"
-    };
+    const project = PROJECTS.find((p) => p.slug === slug);
+    if (project) {
+      resolved = {
+        title: `${project.title} — ${project.location} Case Study | ${COMPANY.shortName}`,
+        description: `${project.summary} Delivered by YFB Fit-Out Contracting (${project.area}, ${project.duration}).`,
+        canonicalPath: `/projects/${project.slug}`,
+        ogImage: getSectorOgImage(project.category),
+        ogType: "article",
+        robots: cleanPath === "/project/details" ? "noindex, follow" : "index, follow"
+      };
+    }
   }
 
   // Dynamic /blog/:slug
   if (!resolved && cleanPath.startsWith("/blog/")) {
     const slug = cleanPath.replace("/blog/", "");
-    const post = BLOG_POSTS.find((b) => b.slug === slug) || BLOG_POSTS[0];
-    resolved = {
-      title: `${post.title} | ${COMPANY.shortName}`,
-      description: post.excerpt,
-      canonicalPath: `/blog/${post.slug}`,
-      ogImage: getSectorOgImage(post.category),
-      ogType: "article",
-      robots: "index, follow"
-    };
+    const post = BLOG_POSTS.find((b) => b.slug === slug);
+    if (post) {
+      resolved = {
+        title: `${post.title} | ${COMPANY.shortName}`,
+        description: post.excerpt,
+        canonicalPath: `/blog/${post.slug}`,
+        ogImage: getSectorOgImage(post.category),
+        ogType: "article",
+        robots: "index, follow"
+      };
+    }
   }
 
   // Fallback for unknown route -> 404

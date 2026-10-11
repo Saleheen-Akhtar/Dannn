@@ -29,7 +29,7 @@ export function LoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const res = loginAdmin(email, password || 'demo');
+    const res = loginAdmin(email, password);
     if (res.ok) {
       navigate('/dashboard');
     } else {
@@ -68,7 +68,7 @@ export function LoginPage() {
                 type="password"
                 required
                 className="form-input"
-                placeholder="Enter passkey (any non-empty key for demo)"
+                placeholder="Enter studio security passkey"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -146,12 +146,13 @@ export function DashboardPage({ initialTab = 'enquiries' }) {
   usePageMeta({
     title: 'Executive CRM & Content Dashboard — YFB Fit-Out Contracting',
     description: 'Manage enquiries, job applications, categories, and company contact details.',
-    canonicalPath: '/dashboard'
+    canonicalPath: '/dashboard',
+    robots: 'noindex, nofollow'
   });
 
   const navigate = useNavigate();
   const location = useLocation();
-  const [user, setUser] = useState({ name: COMPANY.founder.name, email: COMPANY.email });
+  const [user, setUser] = useState(null);
 
   const defaultTab = location.pathname.includes('categories') ? 'categories' : initialTab;
   const [activeTab, setActiveTab] = useState(defaultTab);
@@ -192,12 +193,33 @@ export function DashboardPage({ initialTab = 'enquiries' }) {
 
   useEffect(() => {
     const storedUser = getAuthUser();
-    if (storedUser) setUser(storedUser);
+    if (!storedUser || !storedUser.token) {
+      navigate('/login', { replace: true });
+      return;
+    }
+    setUser(storedUser);
     setEnquiries(getStoredEnquiries());
     setApplications(getStoredApplications());
     setCategories(getStoredCategories());
     setWebDetails(getStoredWebDetails());
-  }, []);
+  }, [navigate]);
+
+  if (!user) {
+    return (
+      <section className="section" style={{ minHeight: '75vh', display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: '460px' }}>
+          <span className="eyebrow">Restricted Portal</span>
+          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--cream)', marginBottom: '12px' }}>
+            Administrator Authentication Required
+          </h1>
+          <p style={{ color: 'var(--muted)', fontSize: '0.9rem', marginBottom: '24px' }}>
+            Please sign in with your corporate credentials to access the YFB Executive Dashboard.
+          </p>
+          <Link to="/login" className="btn btn-primary">Sign In to Portal</Link>
+        </div>
+      </section>
+    );
+  }
 
   const handleDeleteEnquiry = (id) => {
     const next = deleteStoredEnquiry(id);

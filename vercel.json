@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/gallery",
+      "destination": "/photo-gallery",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -19,12 +26,6 @@
           "value": "public, max-age=2592000"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/((?!assets/|static/|robots\\.txt|sitemap\\.xml|llms\\.txt).*)",
-      "destination": "/404.html"
     }
   ]
 }

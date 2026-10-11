@@ -12,6 +12,9 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP_HOST} ^(?:www\.)?yfbfitoutcontracting\.com$ [NC]
   RewriteRule ^(.*)$ https://www.yfbfitoutcontracting.com/$1 [R=301,L]
 
+  # Redirect duplicate /gallery alias to canonical /photo-gallery
+  RewriteRule ^gallery/?$ /photo-gallery [R=301,L]
+
   # 1. Serve pre-rendered route/index.html directly (e.g., /projects -> /projects/index.html)
   RewriteCond %{REQUEST_URI} !^/$
   RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f

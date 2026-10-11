@@ -10,8 +10,8 @@ export const COMPANY = {
   yearsActive: "10+",
   phone: "+971 54 386 2870",
   phoneHref: "tel:+971543862870",
-  whatsappNumber: "916361718607",
-  whatsappDisplay: "+91 63617 18607",
+  whatsappNumber: "971543862870",
+  whatsappDisplay: "+971 54 386 2870",
   whatsappDefaultMsg: "Hello Yashmeen Future Building team, I would like to book a consultation for an interior fit-out project.",
   email: "info@yfbfitoutcontracting.com",
   emailHref: "mailto:info@yfbfitoutcontracting.com",
@@ -71,7 +71,7 @@ export const NAV_ITEMS = [
   },
   {
     label: "Gallery",
-    path: "/gallery",
+    path: "/photo-gallery",
     dropdown: [
       { label: "Photo Gallery", path: "/photo-gallery" },
       { label: "Video Walkthroughs", path: "/video-gallery" }

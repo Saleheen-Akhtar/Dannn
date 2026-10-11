@@ -1,12 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { getRouteSeoMeta } from "./seoRegistry";
 
-export function usePageMeta({ title, description, canonicalPath, ogImage } = {}) {
+export function usePageMeta({ title, description, canonicalPath, ogImage, robots } = {}) {
   const { pathname, hash } = useLocation();
+  const prevPathRef = useRef(pathname);
 
   useEffect(() => {
-    const meta = getRouteSeoMeta(pathname, { title, description, canonicalPath, ogImage });
+    const meta = getRouteSeoMeta(pathname, {
+      title,
+      description,
+      canonicalPath,
+      ogImage,
+      robots
+    });
 
     document.title = meta.title;
 
@@ -31,9 +38,12 @@ export function usePageMeta({ title, description, canonicalPath, ogImage } = {})
     if (jsonLdEl && meta.jsonLd) {
       jsonLdEl.textContent = JSON.stringify(meta.jsonLd);
     }
-  }, [title, description, canonicalPath, ogImage, pathname]);
+  }, [title, description, canonicalPath, ogImage, robots, pathname]);
 
   useEffect(() => {
+    const isRouteChange = prevPathRef.current !== pathname;
+    prevPathRef.current = pathname;
+
     if (hash) {
       const id = hash.replace("#", "");
       setTimeout(() => {
@@ -42,7 +52,8 @@ export function usePageMeta({ title, description, canonicalPath, ogImage } = {})
           target.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }, 80);
-    } else {
+    } else if (isRouteChange) {
+      // Only scroll to top on client-side route navigation, preserving browser scroll restoration on refresh
       window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [pathname, hash]);

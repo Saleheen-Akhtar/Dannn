@@ -3,15 +3,18 @@ import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { PROJECTS, COMPANY } from '../data/siteData';
 import { usePageMeta } from '../utils/usePageMeta';
 import { PageHero } from '../components/Layout';
+import NotFoundPage from './NotFoundPage';
 
 export default function ProjectDetailPage() {
   const { slug } = useParams();
   const [searchParams] = useSearchParams();
   const querySlug = searchParams.get('slug') || searchParams.get('id');
 
-  const project =
-    PROJECTS.find((p) => p.slug === slug || p.id === slug || p.slug === querySlug || p.id === querySlug) ||
-    PROJECTS[0];
+  const matchedProject = PROJECTS.find(
+    (p) => p.slug === slug || p.id === slug || p.slug === querySlug || p.id === querySlug
+  );
+  // Only fall back to PROJECTS[0] on the legacy /project/details route when no slug/querySlug was provided
+  const project = matchedProject || (!slug && !querySlug ? PROJECTS[0] : null);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -19,16 +22,24 @@ export default function ProjectDetailPage() {
   useEffect(() => {
     setActiveImageIndex(0);
     setLightboxOpen(false);
-  }, [project.id]);
+  }, [project?.id]);
 
-  usePageMeta({
-    title: project.title + ' — ' + project.location + ' Case Study',
-    description: project.summary + ' Delivered by YFB Fit-Out Contracting (' + project.area + ', ' + project.duration + ').',
-    canonicalPath: '/projects/' + project.slug
-  });
+  usePageMeta(
+    project
+      ? {
+          title: project.title + ' — ' + project.location + ' Case Study',
+          description: project.summary + ' Delivered by YFB Fit-Out Contracting (' + project.area + ', ' + project.duration + ').',
+          canonicalPath: '/projects/' + project.slug
+        }
+      : {
+          title: '404 Page Not Found — YFB Fit-Out Contracting',
+          description: 'The requested project case study could not be found.',
+          robots: 'noindex, nofollow'
+        }
+  );
 
   useEffect(() => {
-    if (!lightboxOpen) return;
+    if (!lightboxOpen || !project) return;
     const onKey = (e) => {
       if (e.key === 'Escape') setLightboxOpen(false);
       if (e.key === 'ArrowRight') setActiveImageIndex((prev) => (prev + 1) % project.gallery.length);
@@ -36,7 +47,11 @@ export default function ProjectDetailPage() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [lightboxOpen, project.gallery.length]);
+  }, [lightboxOpen, project]);
+
+  if (!project) {
+    return <NotFoundPage />;
+  }
 
   const relatedProjects = PROJECTS.filter((p) => p.id !== project.id).slice(0, 3);
   const currentImg = project.gallery[activeImageIndex] || project.heroImage;

@@ -3,17 +3,31 @@ import { useParams, Link } from 'react-router-dom';
 import { BLOG_POSTS, COMPANY } from '../data/siteData';
 import { usePageMeta } from '../utils/usePageMeta';
 import { PageHero } from '../components/Layout';
+import NotFoundPage from './NotFoundPage';
 
 export default function BlogPostPage() {
   const { slug } = useParams();
-  const post = BLOG_POSTS.find((b) => b.slug === slug) || BLOG_POSTS[0];
-  const otherPosts = BLOG_POSTS.filter((b) => b.id !== post.id);
+  const post = BLOG_POSTS.find((b) => b.slug === slug) || null;
 
-  usePageMeta({
-    title: post.title,
-    description: post.excerpt,
-    canonicalPath: '/blog/' + post.slug
-  });
+  usePageMeta(
+    post
+      ? {
+          title: post.title,
+          description: post.excerpt,
+          canonicalPath: '/blog/' + post.slug
+        }
+      : {
+          title: '404 Page Not Found — YFB Fit-Out Contracting',
+          description: 'The requested article could not be found.',
+          robots: 'noindex, nofollow'
+        }
+  );
+
+  if (!post) {
+    return <NotFoundPage />;
+  }
+
+  const otherPosts = BLOG_POSTS.filter((b) => b.id !== post.id);
 
   return (
     <>

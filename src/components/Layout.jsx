@@ -26,7 +26,6 @@ export default function Layout({ children }) {
   useEffect(() => {
     setMobileOpen(false);
     setOpenDropdown(null);
-    if (!location.hash) window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location.pathname, location.hash]);
 
   useEffect(() => {

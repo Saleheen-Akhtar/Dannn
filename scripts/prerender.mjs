@@ -102,10 +102,11 @@ function injectRouteHead(templateHtml, meta) {
 }
 
 function buildSitemapXml(siteOrigin, sitemapRoutes) {
-  const lastmod = "2026-10-11";
+  const defaultLastmod = new Date().toISOString().split("T")[0];
   const urlEntries = sitemapRoutes
     .map((item) => {
       const loc = `${siteOrigin}${item.path === "/" ? "/" : item.path}`;
+      const lastmod = item.lastmod || defaultLastmod;
       return [
         "  <url>",
         `    <loc>${loc}</loc>`,
@@ -160,19 +161,24 @@ async function runPrerender() {
       fs.writeFileSync(path.join(dir404, "index.html"), routeHtml, "utf-8");
     } else {
       const cleanRel = route.replace(/^\//, "");
+      // 1. Write dist/<route>/index.html (for Apache/cPanel DirectoryIndex)
       const outDir = path.join(distDir, cleanRel);
       fs.mkdirSync(outDir, { recursive: true });
       fs.writeFileSync(path.join(outDir, "index.html"), routeHtml, "utf-8");
+
+      // 2. Write dist/<route>.html (for Vercel cleanUrls: true + trailingSlash: false)
+      const flatHtmlPath = path.join(distDir, `${cleanRel}.html`);
+      fs.mkdirSync(path.dirname(flatHtmlPath), { recursive: true });
+      fs.writeFileSync(flatHtmlPath, routeHtml, "utf-8");
     }
 
     console.log(`  ✓ ${route.padEnd(44)} -> <title>${meta.title.slice(0, 56)}...</title>`);
   }
 
-  // Generate comprehensive sitemap.xml in both public/ and dist/
+  // Write sitemap.xml ONLY to dist/ so builds never dirty the git working tree
   const sitemapXml = buildSitemapXml(SITE_ORIGIN, SITEMAP_ROUTES);
-  fs.writeFileSync(path.join(publicDir, "sitemap.xml"), sitemapXml, "utf-8");
   fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemapXml, "utf-8");
-  console.log(`\n[Sitemap] Generated sitemap.xml with ${SITEMAP_ROUTES.length} canonical URLs.`);
+  console.log(`\n[Sitemap] Generated dist/sitemap.xml with ${SITEMAP_ROUTES.length} canonical URLs.`);
 
   // Clean up temporary dist-ssr build folder
   fs.rmSync(ssrDir, { recursive: true, force: true });

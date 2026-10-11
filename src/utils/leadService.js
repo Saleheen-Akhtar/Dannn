@@ -60,28 +60,29 @@ export async function submitLeadEnquiry(payload) {
   const existing = safeRead(ENQUIRIES_KEY, []);
   safeWrite(ENQUIRIES_KEY, [entry, ...existing]);
 
-  // 2. If a production API endpoint is configured via VITE_API_URL, send it & verify JSON response
-  const apiUrl = import.meta.env.VITE_API_URL;
-  if (apiUrl) {
-    try {
-      const res = await fetch(`${apiUrl.replace(/\/$/, "")}/enquiry/create`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(entry)
-      });
-      const contentType = res.headers.get("content-type") || "";
-      if (!res.ok || !contentType.includes("application/json")) {
-        console.warn("API returned non-JSON or non-200 response; lead safely stored locally.");
-      }
-    } catch (err) {
-      console.warn("Remote API unreachable; lead safely stored locally.", err);
+  // 2. Send to production API endpoint (VITE_API_URL/enquiry/create or built-in /api/enquiry serverless endpoint)
+  const rawApiUrl = import.meta.env.VITE_API_URL;
+  const endpoint = rawApiUrl
+    ? `${rawApiUrl.replace(/\/$/, "")}/enquiry/create`
+    : "/api/enquiry";
+
+  let deliveredRemotely = false;
+  try {
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(entry)
+    });
+    const contentType = res.headers.get("content-type") || "";
+    if (res.ok && contentType.includes("application/json")) {
+      deliveredRemotely = true;
     }
-  } else {
-    // Simulate brief network latency for smooth UX feedback
-    await new Promise((r) => setTimeout(r, 450));
+  } catch {
+    // Fallback to local persistence + WhatsApp dispatch when offline
   }
 
   entry.ok = true;
+  entry.deliveredRemotely = deliveredRemotely;
   entry.record = entry;
   return entry;
 }
@@ -201,14 +202,25 @@ export function getAuthUser() {
 }
 
 export function loginAdmin(arg1, arg2) {
-  const email = typeof arg1 === "object" ? arg1.email : arg1;
-  const password = typeof arg1 === "object" ? arg1.password : arg2;
-  if (!email || !password || password.length < 4) {
-    throw new Error("Please enter a valid work email and password.");
+  const rawEmail = typeof arg1 === "object" ? arg1.email : arg1;
+  const rawPassword = typeof arg1 === "object" ? arg1.password : arg2;
+  const email = String(rawEmail || "").trim().toLowerCase();
+  const password = String(rawPassword || "");
+
+  const expectedPasskey = import.meta.env.VITE_ADMIN_PASSKEY || "YFB@Dubai2026!";
+  const isAuthorizedDomain =
+    email === COMPANY.email.toLowerCase() || email.endsWith("@yfbfitoutcontracting.com");
+
+  if (!email || !password || !isAuthorizedDomain || password !== expectedPasskey) {
+    return {
+      ok: false,
+      message: "Invalid corporate email or security passkey. Access restricted to authorized YFB administrators."
+    };
   }
+
   const user = {
-    name: "Studio Administrator",
-    email: email.trim(),
+    name: COMPANY.founder.name,
+    email,
     role: "admin",
     token: "yfb-session-" + Date.now()
   };
