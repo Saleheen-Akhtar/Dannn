@@ -67,6 +67,10 @@ export function LoginPage() {
             </button>
           </form>
 
+          <div style={{ marginTop: '16px', padding: '10px 14px', background: 'var(--ink-3, #151515)', border: '1px solid var(--border)', borderRadius: '6px', fontSize: '0.75rem', color: 'var(--muted)' }}>
+            <span style={{ color: 'var(--cream)' }}>Default Studio Passkey:</span> <code style={{ color: 'var(--accent)' }}>YFB@Dubai2026!</code> or <code style={{ color: 'var(--accent)' }}>demo</code>
+          </div>
+
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px', fontSize: '0.8rem' }}>
             <Link to="/forgot-password" style={{ color: 'var(--accent)' }}>Forgot Passkey?</Link>
             <Link to="/" style={{ color: 'var(--muted)' }}>← Return to Public Website</Link>
