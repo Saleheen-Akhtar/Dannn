@@ -44,7 +44,7 @@ function prerenderPreviewPlugin() {
 }
 
 export default defineConfig(({ isSsrBuild }) => ({
-  plugins: [react(), tailwindcss(), prerenderPreviewPlugin()],
+  plugins: [tailwindcss(), react(), prerenderPreviewPlugin()],
   resolve: {
     alias: {
       '@': path.resolve(process.cwd(), './src')
