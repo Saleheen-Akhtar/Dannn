@@ -39,7 +39,7 @@ export default function Layout({ children }) {
   const isDashboard = location.pathname.startsWith("/dashboard");
 
   if (isDashboard) {
-    return <main id="main-content" className="w-full h-screen overflow-hidden">{children}</main>;
+    return <div id="main-content" className="w-full h-screen overflow-hidden">{children}</div>;
   }
 
   return (

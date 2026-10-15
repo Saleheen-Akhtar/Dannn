@@ -45,9 +45,9 @@ export function DashboardSidebar({ onLogout }) {
   const [selectedCompany, setSelectedCompany] = useState(companies[0]);
 
   return (
-    <Sidebar collapsible="icon" className="demostack-dashboard border-none p-1.5">
+    <Sidebar collapsible="icon" className="border-r border-border p-2">
       <SidebarHeader className="p-0">
-        <div className="border rounded-2xl p-3 pt-3.5 group-data-[state=collapsed]:p-2.5">
+        <div className="border border-border/80 bg-card rounded-2xl p-3 pt-3.5 group-data-[state=collapsed]:p-2.5 shadow-xs">
           <div className="flex items-center justify-between mb-4 group-data-[state=collapsed]:mb-2 group-data-[state=collapsed]:justify-center">
             <DemostackLogo className="h-6 w-auto group-data-[state=collapsed]:hidden" />
             <SidebarTrigger className="size-9 group-data-[state=collapsed]:size-10" />

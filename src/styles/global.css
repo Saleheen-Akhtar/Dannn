@@ -3,6 +3,9 @@
    WCAG 2.1 AA Contrast Compliant · Zero Inline Style Duplication
    ========================================================================== */
 
+@layer site, utilities;
+
+@layer site {
 :root {
   --ink: #17140f;
   --ink-2: #221d15;
@@ -32,7 +35,9 @@
   --shadow-lg: 0 28px 64px rgba(23, 20, 15, 0.22);
 }
 
-*, *::before, *::after {
+*:not(.demostack-dashboard, .demostack-dashboard *),
+*::before:not(.demostack-dashboard, .demostack-dashboard *),
+*::after:not(.demostack-dashboard, .demostack-dashboard *) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -43,7 +48,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-body {
+body:not(:has(.demostack-dashboard)) {
   font-family: var(--sans);
   background: var(--paper);
   color: var(--ink);
@@ -53,7 +58,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, svg, video {
+img:not(.demostack-dashboard *),
+svg:not(.demostack-dashboard *),
+video:not(.demostack-dashboard *) {
   display: block;
   max-width: 100%;
 }
@@ -1797,7 +1804,7 @@ h1, h2, h3, .serif-heading {
   }
 }
 
-.card {
+.card:not(.demostack-dashboard *) {
   background: var(--ink-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -1805,7 +1812,7 @@ h1, h2, h3, .serif-heading {
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card:hover {
+.card:not(.demostack-dashboard *):hover {
   border-color: rgba(201, 168, 76, 0.4);
 }
 
@@ -3651,3 +3658,5 @@ h1, h2, h3, .serif-heading {
 .yfb-card-approach:hover .yfb-approach-bg-img {
   transform: translate3d(0, var(--p-shift, 0px), 0) scale(1.12);
 }
+}
+
