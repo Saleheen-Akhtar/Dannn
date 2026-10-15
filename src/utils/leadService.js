@@ -205,6 +205,7 @@ export function loginAdmin(arg1, arg2) {
   const rawEmail = typeof arg1 === "object" ? arg1.email : arg1;
   const rawPassword = typeof arg1 === "object" ? arg1.password : arg2;
   const email = String(rawEmail || "").trim().toLowerCase();
+  const password = String(rawPassword || "");
   const expectedPasskey = import.meta.env.VITE_ADMIN_PASSKEY || "YFB@Dubai2026!";
   const isAuthorizedDomain =
     email === COMPANY.email.toLowerCase() ||
