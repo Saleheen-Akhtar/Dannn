@@ -36,6 +36,11 @@ export default function Layout({ children }) {
   }, []);
 
   const whatsappUrl = `https://wa.me/${COMPANY.whatsappNumber}?text=${encodeURIComponent(COMPANY.whatsappDefaultMsg)}`;
+  const isDashboard = location.pathname.startsWith("/dashboard");
+
+  if (isDashboard) {
+    return <main id="main-content" className="w-full h-screen overflow-hidden">{children}</main>;
+  }
 
   return (
     <>

@@ -55,8 +55,8 @@ export default function App() {
         {/* Executive Portal & Dashboard */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/dashboard" element={<DashboardPage initialTab="enquiries" />} />
-        <Route path="/dashboard/categories" element={<DashboardPage initialTab="categories" />} />
+        <Route path="/dashboard" element={<DashboardPage initialTab="/dashboard" />} />
+        <Route path="/dashboard/*" element={<DashboardPage initialTab="/dashboard" />} />
 
         {/* 404 Catch-All */}
         <Route path="*" element={<NotFoundPage />} />
