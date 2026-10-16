@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="800" height="240" fill="none">
+  <!-- Yashmeen Future Building - Option 1: The Monolithic Monogram -->
+  <rect width="800" height="240" rx="16" fill="#0D0E12" />
+  
+  <!-- Subtle Blueprint Grid Accent -->
+  <defs>
+    <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C79E" />
+      <stop offset="50%" stop-color="#C5A880" />
+      <stop offset="100%" stop-color="#9C7E54" />
+    </linearGradient>
+    <linearGradient id="charcoalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A2D35" />
+      <stop offset="100%" stop-color="#181A20" />
+    </linearGradient>
+  </defs>
+
+  <!-- Architectural 'Y' Emblem -->
+  <g transform="translate(60, 40)">
+    <!-- Outer Blueprint Reference Box (Subtle) -->
+    <rect x="0" y="0" width="160" height="160" rx="4" stroke="#252830" stroke-width="1.5" stroke-dasharray="4 4" fill="none" />
+    
+    <!-- Monolith Left Pillar & Cantilever -->
+    <polygon points="32,28 68,28 80,72 80,132 52,132 52,82" fill="url(#bronzeGrad)" />
+    
+    <!-- Monolith Right Cantilever with Precision Negative Space -->
+    <polygon points="128,28 92,28 80,72 80,132 108,132 108,82" fill="#FFFFFF" fill-opacity="0.92" />
+    
+    <!-- Center Foundation Keystone / Ground Anchor -->
+    <rect x="74" y="112" width="12" height="20" fill="url(#bronzeGrad)" />
+    <circle cx="80" cy="142" r="3" fill="#C5A880" />
+  </g>
+
+  <!-- Typography Lockup -->
+  <g transform="translate(260, 85)">
+    <!-- Main Logotype -->
+    <text x="0" y="32" font-family="'Cinzel', 'Playfair Display', 'Trajan Pro', 'Didot', 'Cinzel Decorative', serif, system-ui" font-size="34" font-weight="600" letter-spacing="4.5" fill="#FFFFFF">YASHMEEN</text>
+    <text x="325" y="32" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="200" letter-spacing="7" fill="#C5A880">FUTURE</text>
+    
+    <!-- Secondary Descriptor Line -->
+    <text x="2" y="68" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="5.5" fill="#8C93A0">BUILDING &amp; FIT-OUT CONTRACTING</text>
+    
+    <!-- Location & Authority Micro-Tag -->
+    <text x="2" y="92" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="9.5" font-weight="500" letter-spacing="3" fill="#586070">DUBAI, UAE  ·  EST. 2016  ·  BAY SQUARE</text>
+  </g>
+</svg>

@@ -53,10 +53,10 @@ export default function Layout({ children }) {
         <div className="header-inner">
           <Link to="/" className="brand-logo-link" aria-label={`${COMPANY.shortName} Home`}>
             <img
-              src="/static/logo.jpg"
+              src="/static/brand/logo-header.svg"
               alt={`${COMPANY.shortName} Logo`}
               className="main-logo"
-              width="150"
+              width="240"
               height="64"
             />
           </Link>
@@ -218,10 +218,10 @@ export default function Layout({ children }) {
             <div className="footer-brand">
               <Link to="/" aria-label={`${COMPANY.shortName} Home`}>
                 <img
-                  src="/static/logo.jpg"
+                  src="/static/brand/logo-header.svg"
                   alt={`${COMPANY.shortName} Logo`}
-                  style={{ height: 58, width: "auto", borderRadius: 4, background: "#fff", padding: 4 }}
-                  width="136"
+                  style={{ height: 58, width: "auto" }}
+                  width="225"
                   height="58"
                   loading="lazy"
                 />

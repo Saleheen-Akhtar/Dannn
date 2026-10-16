@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 68" width="380" height="68" fill="none">
+  <!-- Yashmeen Future Building - Architectural Header Logo Lockup -->
+  <defs>
+    <linearGradient id="bronzeHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C79E" />
+      <stop offset="50%" stop-color="#C5A880" />
+      <stop offset="100%" stop-color="#9C7E54" />
+    </linearGradient>
+  </defs>
+
+  <!-- Architectural 'Y' Emblem -->
+  <g transform="translate(6, 4)">
+    <!-- Blueprint Reference Square (Hairline) -->
+    <rect x="0" y="0" width="60" height="60" rx="3" stroke="#252830" stroke-width="1" stroke-dasharray="2 2" fill="none" />
+    
+    <!-- Left Pillar (Champagne Bronze) -->
+    <polygon points="12,11 25.5,11 30,27 30,49 19.5,49 19.5,31" fill="url(#bronzeHeader)" />
+    
+    <!-- Right Cantilever (Crisp White) -->
+    <polygon points="48,11 34.5,11 30,27 30,49 40.5,49 40.5,31" fill="#FFFFFF" fill-opacity="0.95" />
+    
+    <!-- Keystone Anchor -->
+    <rect x="27.5" y="41.5" width="5" height="7.5" fill="url(#bronzeHeader)" />
+    <circle cx="30" cy="53" r="1.5" fill="#C5A880" />
+  </g>
+
+  <!-- Typographic Identity -->
+  <g transform="translate(80, 0)">
+    <!-- Primary Brand Wordmark -->
+    <text x="0" y="32" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="21" font-weight="600" letter-spacing="3.2" fill="#FFFFFF">YASHMEEN</text>
+    <text x="145" y="32" font-family="'Inter', -apple-system, sans-serif" font-size="16.5" font-weight="300" letter-spacing="4.5" fill="#C5A880">FUTURE</text>
+    
+    <!-- Secondary Division Line -->
+    <text x="1" y="49" font-family="'Inter', -apple-system, sans-serif" font-size="7.8" font-weight="500" letter-spacing="3" fill="#9BA2B0">BUILDING &amp; FIT-OUT CONTRACTING</text>
+    
+    <!-- Authority / Geographic Stamp -->
+    <text x="1" y="61" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="6.5" font-weight="400" letter-spacing="1.8" fill="#586070">DUBAI, UAE  ·  EST. 2016  ·  BAY SQUARE</text>
+  </g>
+</svg>
