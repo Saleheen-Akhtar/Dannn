@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="1600" height="1200" fill="none">
+  <!-- Master Brand Identity Sheet - 8 Architectural Logo Concepts for Yashmeen Future Building -->
+  <rect width="1600" height="1200" fill="#0E0F12" />
+  
+  <defs>
+    <linearGradient id="bronze" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2C59D" />
+      <stop offset="50%" stop-color="#C5A880" />
+      <stop offset="100%" stop-color="#9C7D54" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#16181E" />
+      <stop offset="100%" stop-color="#121317" />
+    </linearGradient>
+    <pattern id="dotGrid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.75" fill="#252934" />
+    </pattern>
+  </defs>
+
+  <!-- Background Micro-Dot Grid -->
+  <rect width="1600" height="1200" fill="url(#dotGrid)" opacity="0.6" />
+
+  <!-- Sheet Header -->
+  <g transform="translate(80, 70)">
+    <text x="0" y="24" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="4" fill="#C5A880">YASHMEEN FUTURE BUILDING &amp; FIT-OUT CONTRACTING</text>
+    <text x="0" y="60" font-family="'Cinzel', 'Playfair Display', serif" font-size="32" font-weight="600" letter-spacing="2" fill="#FFFFFF">Brand Identity &amp; Logo Exploration Board</text>
+    <text x="0" y="86" font-family="'Inter', sans-serif" font-size="14" fill="#7E8798">8 Vector Directions Designed for Turnkey Architectural Scale · Business Bay &amp; Al Quoz, Dubai</text>
+    <line x1="0" y1="108" x2="1440" y2="108" stroke="#252934" stroke-width="1" />
+  </g>
+
+  <!-- ================= ROW 1 (Cards 1 to 4) ================= -->
+
+  <!-- CARD 1: The Architectural Monolith (Primary Recommendation) -->
+  <g transform="translate(80, 210)">
+    <rect width="335" height="420" rx="8" fill="url(#cardGrad)" stroke="#C5A880" stroke-width="1.5" />
+    <!-- Recommended Badge -->
+    <rect x="18" y="18" width="118" height="22" rx="3" fill="#C5A880" fill-opacity="0.18" />
+    <text x="26" y="33" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600" letter-spacing="1.5" fill="#E2C59D">★ RECOMMENDED</text>
+    
+    <!-- Concept Symbol -->
+    <g transform="translate(117, 85)">
+      <!-- Blueprint circle guide -->
+      <circle cx="50" cy="50" r="48" stroke="#2A3040" stroke-width="1" stroke-dasharray="3 3" fill="none" />
+      <polygon points="18,18 42,18 50,48 50,86 32,86 32,54" fill="url(#bronze)" />
+      <polygon points="82,18 58,18 50,48 50,86 68,86 68,54" fill="#FFFFFF" />
+      <rect x="46" y="70" width="8" height="16" fill="url(#bronze)" />
+    </g>
+
+    <!-- Wordmark & Typography -->
+    <text x="167" y="240" text-anchor="middle" font-family="'Cinzel', serif" font-size="18" font-weight="600" letter-spacing="3" fill="#FFFFFF">YASHMEEN</text>
+    <text x="167" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9.5" letter-spacing="4.5" fill="#C5A880">FUTURE BUILDING</text>
+    
+    <line x1="24" y1="285" x2="311" y2="285" stroke="#252934" stroke-width="1" />
+    
+    <!-- Meta Details -->
+    <text x="24" y="315" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#E0E4EC">Option 01: The Monolith</text>
+    <text x="24" y="336" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">Cantilevered dual-pillar structure</text>
+    <text x="24" y="354" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">representing architectural strength,</text>
+    <text x="24" y="372" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">precision engineering &amp; stability.</text>
+    
+    <text x="24" y="400" font-family="'JetBrains Mono', monospace" font-size="9" fill="#505869">TOUCHPOINTS: Facade, Fleet, Hi-Vis</text>
+  </g>
+
+  <!-- CARD 2: The Golden Ratio Chevron / Ascendancy -->
+  <g transform="translate(445, 210)">
+    <rect width="335" height="420" rx="8" fill="url(#cardGrad)" stroke="#232732" stroke-width="1" />
+    
+    <!-- Concept Symbol -->
+    <g transform="translate(117, 85)">
+      <polygon points="50,15 88,40 50,65 12,40" fill="url(#bronze)" opacity="0.9" />
+      <polygon points="50,42 88,67 50,92 12,67" fill="#FFFFFF" opacity="0.95" />
+      <polygon points="50,68 76,85 50,102 24,85" fill="#3A4050" />
+    </g>
+
+    <text x="167" y="240" text-anchor="middle" font-family="'Inter', sans-serif" font-size="17" font-weight="700" letter-spacing="5" fill="#FFFFFF">YASHMEEN</text>
+    <text x="167" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" letter-spacing="5" fill="#A0A8B8">DUBAI FIT-OUT</text>
+    
+    <line x1="24" y1="285" x2="311" y2="285" stroke="#252934" stroke-width="1" />
+    
+    <text x="24" y="315" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#E0E4EC">Option 02: Ascendancy Chevron</text>
+    <text x="24" y="336" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">Layered architectural cantilever</text>
+    <text x="24" y="354" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">signifying multi-story momentum,</text>
+    <text x="24" y="372" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">future vision and forward building.</text>
+    
+    <text x="24" y="400" font-family="'JetBrains Mono', monospace" font-size="9" fill="#505869">TOUCHPOINTS: Presentation Decks, App</text>
+  </g>
+
+  <!-- CARD 3: The Spatial Grid / Blueprint Crosshair -->
+  <g transform="translate(810, 210)">
+    <rect width="335" height="420" rx="8" fill="url(#cardGrad)" stroke="#232732" stroke-width="1" />
+    
+    <!-- Concept Symbol -->
+    <g transform="translate(117, 85)">
+      <rect x="15" y="15" width="70" height="70" stroke="#3D4556" stroke-width="1.5" fill="none" />
+      <line x1="10" y1="50" x2="90" y2="50" stroke="#C5A880" stroke-width="1" stroke-dasharray="2 2" />
+      <line x1="50" y1="10" x2="50" y2="90" stroke="#C5A880" stroke-width="1" stroke-dasharray="2 2" />
+      <!-- Minimalist 'Y' in center -->
+      <path d="M 28 28 L 50 50 L 72 28 M 50 50 L 50 78" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="square" />
+      <rect x="47" y="47" width="6" height="6" fill="#C5A880" />
+    </g>
+
+    <text x="167" y="240" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="600" letter-spacing="4" fill="#FFFFFF">YFB CONTRACTING</text>
+    <text x="167" y="260" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" letter-spacing="3" fill="#C5A880">BAY SQUARE · DUBAI</text>
+    
+    <line x1="24" y1="285" x2="311" y2="285" stroke="#252934" stroke-width="1" />
+    
+    <text x="24" y="315" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#E0E4EC">Option 03: The Blueprint Frame</text>
+    <text x="24" y="336" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">Technical architectural crosshair</text>
+    <text x="24" y="354" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">communicating millimeter-grade MEP,</text>
+    <text x="24" y="372" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">survey precision and ISO excellence.</text>
+    
+    <text x="24" y="400" font-family="'JetBrains Mono', monospace" font-size="9" fill="#505869">TOUCHPOINTS: Engineering Specs, Tenders</text>
+  </g>
+
+  <!-- CARD 4: The Bespoke Joinery Joint -->
+  <g transform="translate(1175, 210)">
+    <rect width="335" height="420" rx="8" fill="url(#cardGrad)" stroke="#232732" stroke-width="1" />
+    
+    <!-- Concept Symbol -->
+    <g transform="translate(117, 85)">
+      <!-- Interlocking Mortise & Tenon / Geometric Angles -->
+      <polygon points="20,20 48,20 62,50 34,50" fill="url(#bronze)" />
+      <polygon points="52,20 80,20 80,50 64,50" fill="#FFFFFF" />
+      <polygon points="34,54 64,54 64,90 34,90" fill="url(#bronze)" opacity="0.8" />
+      <rect x="42" y="38" width="16" height="24" fill="#121317" />
+    </g>
+
+    <text x="167" y="240" text-anchor="middle" font-family="'Cinzel', serif" font-size="17" font-weight="600" letter-spacing="3" fill="#FFFFFF">YASHMEEN</text>
+    <text x="167" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" letter-spacing="4" fill="#C5A880">FIT-OUT CONTRACTING</text>
+    
+    <line x1="24" y1="285" x2="311" y2="285" stroke="#252934" stroke-width="1" />
+    
+    <text x="24" y="315" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#E0E4EC">Option 04: The Joinery Tenon</text>
+    <text x="24" y="336" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">Celebrates Al Quoz 35,000 sq.ft</text>
+    <text x="24" y="354" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">in-house joinery &amp; artisanal craft,</text>
+    <text x="24" y="372" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">interlocking wood &amp; marble precision.</text>
+    
+    <text x="24" y="400" font-family="'JetBrains Mono', monospace" font-size="9" fill="#505869">TOUCHPOINTS: Joinery Badges, Packaging</text>
+  </g>
+
+  <!-- ================= ROW 2 (Cards 5 to 8) ================= -->
+
+  <!-- CARD 5: The Modernist Arch & Monolith -->
+  <g transform="translate(80, 680)">
+    <rect width="335" height="420" rx="8" fill="url(#cardGrad)" stroke="#232732" stroke-width="1" />
+    
+    <!-- Concept Symbol -->
+    <g transform="translate(117, 85)">
+      <!-- Elegant Arch Cut -->
+      <path d="M 22 85 L 22 50 C 22 25, 78 25, 78 50 L 78 85" stroke="#FFFFFF" stroke-width="3" fill="none" />
+      <line x1="50" y1="25" x2="50" y2="85" stroke="url(#bronze)" stroke-width="4" />
+      <circle cx="50" cy="18" r="4" fill="#C5A880" />
+    </g>
+
+    <text x="167" y="240" text-anchor="middle" font-family="'Cinzel', serif" font-size="17" font-weight="600" letter-spacing="3" fill="#FFFFFF">YASHMEEN</text>
+    <text x="167" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" letter-spacing="4" fill="#8C93A0">ESTABLISHED 2016</text>
+    
+    <line x1="24" y1="285" x2="311" y2="285" stroke="#252934" stroke-width="1" />
+    
+    <text x="24" y="315" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#E0E4EC">Option 05: Modernist Archway</text>
+    <text x="24" y="336" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">Middle Eastern architectural portal</text>
+    <text x="24" y="354" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">fused with Nordic minimal geometry,</text>
+    <text x="24" y="372" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">signifying sanctuary and entryway.</text>
+    
+    <text x="24" y="400" font-family="'JetBrains Mono', monospace" font-size="9" fill="#505869">TOUCHPOINTS: Villa Welcome Folios, Seals</text>
+  </g>
+
+  <!-- CARD 6: The Isometric Spatial Volume -->
+  <g transform="translate(445, 680)">
+    <rect width="335" height="420" rx="8" fill="url(#cardGrad)" stroke="#232732" stroke-width="1" />
+    
+    <!-- Concept Symbol -->
+    <g transform="translate(117, 85)">
+      <!-- Isometric Cube with Y Negative Space -->
+      <!-- Top plane -->
+      <polygon points="50,15 85,35 50,55 15,35" fill="#FFFFFF" opacity="0.9" />
+      <!-- Left plane -->
+      <polygon points="15,38 50,58 50,96 15,76" fill="url(#bronze)" />
+      <!-- Right plane -->
+      <polygon points="52,58 87,38 87,76 52,96" fill="#3D4556" />
+    </g>
+
+    <text x="167" y="240" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="700" letter-spacing="4.5" fill="#FFFFFF">YASHMEEN</text>
+    <text x="167" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" letter-spacing="4" fill="#C5A880">SPATIAL CONTRACTING</text>
+    
+    <line x1="24" y1="285" x2="311" y2="285" stroke="#252934" stroke-width="1" />
+    
+    <text x="24" y="315" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#E0E4EC">Option 06: Spatial Volume</text>
+    <text x="24" y="336" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">Pure 3D interior isometric cube,</text>
+    <text x="24" y="354" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">emphasizing transformation of bare</text>
+    <text x="24" y="372" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">volumes into luxury inhabited spaces.</text>
+    
+    <text x="24" y="400" font-family="'JetBrains Mono', monospace" font-size="9" fill="#505869">TOUCHPOINTS: 3D Renders, AR Models</text>
+  </g>
+
+  <!-- CARD 7: The Cantilever Horizon -->
+  <g transform="translate(810, 680)">
+    <rect width="335" height="420" rx="8" fill="url(#cardGrad)" stroke="#232732" stroke-width="1" />
+    
+    <!-- Concept Symbol -->
+    <g transform="translate(117, 85)">
+      <!-- Horizon Foundation & Cantilever Beam -->
+      <line x1="12" y1="84" x2="88" y2="84" stroke="#4B5366" stroke-width="3" />
+      <polygon points="28,45 88,25 88,40 28,60" fill="url(#bronze)" />
+      <polygon points="28,65 52,48 52,80 28,80" fill="#FFFFFF" />
+    </g>
+
+    <text x="167" y="240" text-anchor="middle" font-family="'Cinzel', serif" font-size="17" font-weight="600" letter-spacing="3" fill="#FFFFFF">YASHMEEN</text>
+    <text x="167" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8.5" letter-spacing="5" fill="#C5A880">FUTURE BUILDING</text>
+    
+    <line x1="24" y1="285" x2="311" y2="285" stroke="#252934" stroke-width="1" />
+    
+    <text x="24" y="315" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#E0E4EC">Option 07: The Horizon Beam</text>
+    <text x="24" y="336" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">Inspired by Mies van der Rohe &amp; Zaha</text>
+    <text x="24" y="354" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">cantilevers: daring structural grace</text>
+    <text x="24" y="372" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">balanced over solid ground foundation.</text>
+    
+    <text x="24" y="400" font-family="'JetBrains Mono', monospace" font-size="9" fill="#505869">TOUCHPOINTS: Hoarding, Signage</text>
+  </g>
+
+  <!-- CARD 8: The Heritage Dubai Architectural Seal -->
+  <g transform="translate(1175, 680)">
+    <rect width="335" height="420" rx="8" fill="url(#cardGrad)" stroke="#232732" stroke-width="1" />
+    
+    <!-- Concept Symbol -->
+    <g transform="translate(117, 85)">
+      <circle cx="50" cy="50" r="44" stroke="url(#bronze)" stroke-width="1.5" fill="none" />
+      <circle cx="50" cy="50" r="38" stroke="#3A4050" stroke-width="1" stroke-dasharray="2 3" fill="none" />
+      <!-- Stylized Monogram in Seal -->
+      <path d="M 32 32 L 50 54 L 68 32 M 50 54 L 50 72" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <text x="50" y="22" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="6" fill="#C5A880">25.1867°N · 55.2744°E</text>
+    </g>
+
+    <text x="167" y="240" text-anchor="middle" font-family="'Cinzel', serif" font-size="16" font-weight="600" letter-spacing="3" fill="#FFFFFF">YASHMEEN LLC</text>
+    <text x="167" y="260" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="3.5" fill="#7E8798">BUSINESS BAY · DUBAI</text>
+    
+    <line x1="24" y1="285" x2="311" y2="285" stroke="#252934" stroke-width="1" />
+    
+    <text x="24" y="315" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#E0E4EC">Option 08: The Architect's Seal</text>
+    <text x="24" y="336" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">Prestigious circular authority stamp</text>
+    <text x="24" y="354" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">bearing GPS coordinates of Business Bay,</text>
+    <text x="24" y="372" font-family="'Inter', sans-serif" font-size="11" fill="#7E8798">ideal for wax seals &amp; handover binders.</text>
+    
+    <text x="24" y="400" font-family="'JetBrains Mono', monospace" font-size="9" fill="#505869">TOUCHPOINTS: Contracts, Leather Folios</text>
+  </g>
+</svg>

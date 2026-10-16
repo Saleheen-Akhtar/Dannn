@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <!-- Yashmeen Future Building - Architectural Monolith Symbol -->
+  <defs>
+    <linearGradient id="bronzeSymbol" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C79E" />
+      <stop offset="50%" stop-color="#C5A880" />
+      <stop offset="100%" stop-color="#9C7E54" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Architectural Container -->
+  <rect width="128" height="128" rx="20" fill="#0E0F12" />
+  
+  <!-- Blueprint Hairline Frame -->
+  <rect x="16" y="16" width="96" height="96" rx="6" stroke="#252830" stroke-width="1.2" stroke-dasharray="3 3" fill="none" />
+  
+  <!-- Left Pillar (Champagne Bronze) -->
+  <polygon points="36,34 57,34 64,59 64,94 48,94 48,66" fill="url(#bronzeSymbol)" />
+  
+  <!-- Right Cantilever (Crisp Titanium White) -->
+  <polygon points="92,34 71,34 64,59 64,94 80,94 80,66" fill="#FFFFFF" fill-opacity="0.95" />
+  
+  <!-- Keystone Anchor -->
+  <rect x="60" y="82" width="8" height="12" fill="url(#bronzeSymbol)" />
+  <circle cx="64" cy="101" r="2.5" fill="#C5A880" />
+</svg>
